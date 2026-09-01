@@ -141,6 +141,7 @@ export const DOCTOR_PROFILE: Doctor = {
   safeTitleEn: 'Dental Practitioner committed to holistic oral health and care',
   specializationAr: 'طب الفم وتقويم الأسنان',
   specializationEn: 'Oral Health & Orthodontics',
+  image: 'assets/images/doctor/dr-moaz-portrait.jpg',
   bioAr:
     'طبيب أسنان يركز على تقديم رعاية طبية دقيقة وشخصية لكل مريض، مع الاهتمام بالتشخيص الصحيح واختيار العلاج الأنسب للحفاظ على صحة الأسنان الطبيعية والابتسامة المريحة.',
   bioEn:
@@ -799,9 +800,114 @@ export const INITIAL_TECHNOLOGY: TechnologyItem[] = [
     isFeatured: true,
   },
   {
+    id: 'digital-xray-sensor',
+    slug: 'digital-xray-sensor',
+    titleAr: 'حساس الأشعة الرقمية (Digital X-Ray Sensor - RVG)',
+    titleEn: 'Digital Intraoral X-Ray Sensor',
+    shortDescriptionAr:
+      'تقنية التصوير الإشعاعي الرقمي الفوري داخل الفم بدقة متناهية مع تقليل نسبة التعرض الإشعاعي بنسبة تفوق 80%.',
+    shortDescriptionEn:
+      'High-resolution instant intraoral digital radiography sensor with up to 80% reduced radiation exposure.',
+    overviewAr:
+      'يُعد حساس الأشعة الرقمية (Digital Sensor) من أهم أدوات التشخيص السريري الدقيق في عيادة الحياة، حيث يوفر صوراً فورية عالية التباين لجذور الأسنان وعظام الفك تظهر مباشرة على شاشة العيادة خلال ثوانٍ، مما يتيح تشخيص التسوس الخفي وأمراض الجذور واللثة بأمان وسرعة فائقة.',
+    overviewEn:
+      'High-definition digital radiography sensors providing instant chairside imagery with minimal radiation dosage.',
+    clinicalPurposeAr: 'تشخيص دقيق وفوري لجذور الأسنان، التسوس بين الأسنان، ومتابعة حالات علاج العصب.',
+    clinicalPurposeEn: 'Instant diagnosis of interproximal caries, root pathology, and endodontic working length.',
+    patientBenefitAr: 'أمان إشعاعي فائق، سرعة فورية بدون انتظار تحميض الأفلام، ورؤية تفاصيل السن بوضوح.',
+    patientBenefitEn: 'Ultra-low radiation dose, instant results without chemical processing, and clear visualization.',
+    benefitsAr: [
+      'تقليل التعرض للإشعاع بنسبة تصل إلى 80-90% مقارنة بالأفلام التقليدية.',
+      'ظهور الصورة فورياً على شاشة العرض عالية الدقة أمام المريض في ثوانٍ.',
+      'إمكانية تكبير الصورة وتعديل التباين لتشخيص أدق التفاصيل غير المرئية.',
+      'أرشفة رقمية متكاملة لملف المريض لمقارنة التطور عبر الزيارات.',
+    ],
+    workflowStepsAr: [
+      {
+        number: '01',
+        titleAr: 'وضع الحساس الرقمي المريح',
+        descriptionAr: 'وضع الحساس ذي الحواف الانسيابية بدقة داخل الفم بجوار السن المراد فحصه.',
+      },
+      {
+        number: '02',
+        titleAr: 'التقاط الصورة بأقل جرعة إشعاع',
+        descriptionAr: 'تسليط الأشعة لجزء من الثانية بأعلى معايير الأمان الإشعاعي.',
+      },
+      {
+        number: '03',
+        titleAr: 'المعالجة والعرض الفوري',
+        descriptionAr: 'انتقال الصورة السينية فورياً لشاشة العرض أمام الطبيب والمريض.',
+      },
+      {
+        number: '04',
+        titleAr: 'الشرح ووضع خطة العلاج',
+        descriptionAr: 'مناقشة حالة السن والجذور مع المريض بوضوح وشفافية تامة.',
+      },
+    ],
+    comparisonAr: {
+      traditionalTitleAr: 'الأشعة التقليدية (أفلام التحميض)',
+      traditionalPointsAr: [
+        'جرعة إشعاعية أعلى مقارنة بالحساسات الرقمية الحديثة.',
+        'الحاجة للانتظار لدقائق لتحميض الفيلم بالمواد الكيميائية.',
+        'صعوبة تكبير الصورة أو تعديل تباينها بدقة على الشاشة.',
+        'عرضة للتلف أو الخدش بمرور الوقت.',
+      ],
+      digitalTitleAr: 'حساس الأشعة الديجيتال (Digital Sensor)',
+      digitalPointsAr: [
+        'جرعة إشعاعية منخفضة جداً وآمنة لكافة الفئات.',
+        'ظهور الصورة الفوري على شاشة العرض بدون أي مواد تحميض.',
+        'إمكانية قياس أطوال الجذور بالأجزاء من المليمتر وتكبير التفاصيل.',
+        'حفظ رقمي دائم وسهل الاسترجاع والمقارنة في أي وقت.',
+      ],
+    },
+    relatedServiceSlugs: ['root-canal', 'restorative-dentistry', 'orthodontics'],
+    faqs: [
+      {
+        questionAr: 'هل الأشعة الرقمية آمنة؟',
+        answerAr: 'نعم، تتميز الأشعة الرقمية بجرعة منخفضة جداً مقارنة بالأشعة التقليدية وتعتبر آمنة ومطابقة لأعلى معايير السلامة الإشعاعية.',
+      },
+      {
+        questionAr: 'كم من الوقت يستغرق ظهور صورة الأشعة؟',
+        answerAr: 'تظهر الصورة فورياً خلال 2 إلى 3 ثوانٍ على الشاشة مباشرة.',
+      },
+    ],
+    isFeatured: true,
+  },
+  {
+    id: 'digital-xray-unit',
+    slug: 'digital-xray-unit',
+    titleAr: 'جهاز الأشعة الديجيتال (Digital X-Ray Unit)',
+    titleEn: 'Digital Dental X-Ray Unit',
+    shortDescriptionAr:
+      'وحدة إشعاعية دقيقة ومحكمة مخصصة لتصوير الأسنان بدقة وأمان متناهي في فرعي العيادة.',
+    shortDescriptionEn:
+      'High-precision dental X-ray emission unit ensuring targeted diagnosis and optimum patient safety.',
+    overviewAr:
+      'جهاز الأشعة الديجيتال المعتمد في عيادة الحياة يتميز بتركيز دقيق للشعاع الإشعاعي (DC High Frequency) لضمان أعلى جودة للصورة مع حماية كاملة للمريض وتقليل التشتت الإشعاعي للحد الأدنى، لتشخيص دقيق لجميع حالات الفم والأسنان.',
+    overviewEn:
+      'State-of-the-art dental X-ray equipment designed for pinpoint diagnostic accuracy and patient comfort.',
+    clinicalPurposeAr: 'توفير مصدر إشعاعي فائق الدقة والأمان لتصوير الأسنان والجذور سريرياً.',
+    clinicalPurposeEn: 'High-frequency controlled X-ray generator for intraoral diagnostics.',
+    patientBenefitAr: 'فحص مريح وسريع، أعلى درجات الأمان والوقاية، مع دقة تشخيصية لا تترك مجالاً للشك.',
+    patientBenefitEn: 'Maximum safety, quick non-invasive examination, and reliable diagnosis.',
+    benefitsAr: [
+      'تكنولوجيا التردد العالي DC التي تضمن نقاء تاماً للصورة.',
+      'أعلى معايير الوقاية والسلامة المعتمدة طبياً.',
+      'توجيه دقيق وسلس للذراع حول مقعد العلاج لراحة المريض.',
+    ],
+    relatedServiceSlugs: ['root-canal', 'restorative-dentistry'],
+    faqs: [
+      {
+        questionAr: 'هل يلزم المريض ارتداء واقي الرصاص؟',
+        answerAr: 'نعم، نوفر سترة واقية لضمان أقصى درجات الأمان والراحة أثناء التصوير.',
+      },
+    ],
+    isFeatured: true,
+  },
+  {
     id: 'rotary-endodontics',
     slug: 'rotary-endodontics',
-    titleAr: 'أجهزة علاج الجذور الآلية الحديثة',
+    titleAr: 'أجهزة علاج الجذور وحشو العصب الآلية',
     titleEn: 'Rotary Endodontic System',
     shortDescriptionAr: 'أجهزة متطورة لتنظيف وتشكيل قنوات العصب بدقة عالية وتقليل وقت الجلسة وألم ما بعد العلاج.',
     shortDescriptionEn: 'Precision motor-driven root canal shaping for efficient, painless therapy.',
