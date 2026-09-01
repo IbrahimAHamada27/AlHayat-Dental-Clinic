@@ -1,0 +1,35 @@
+<article class="case-editorial-card" [attr.aria-label]="caseItem().titleAr">
+  <!-- Interactive Visual Preview -->
+  <div class="card-visual-wrapper">
+    <app-before-after-slider
+      [beforeImage]="caseItem().beforeImage"
+      [afterImage]="caseItem().afterImage"
+      [beforeLabel]="caseItem().beforeLabelAr || 'قبل العلاج'"
+      [afterLabel]="caseItem().afterLabelAr || 'بعد العلاج'"
+      [altText]="caseItem().titleAr"
+    />
+  </div>
+
+  <!-- Editorial Info Body -->
+  <div class="card-info-body">
+    <div class="card-header-row">
+      <app-badge variant="sage">{{ caseItem().categoryAr }}</app-badge>
+      <span class="treatment-type-tag">{{ caseItem().treatmentTypeAr }}</span>
+    </div>
+
+    <h3 class="case-card-title">
+      <a [routerLink]="['/cases', caseItem().slug]" (click)="onSelect()" class="title-link">
+        {{ caseItem().titleAr }}
+      </a>
+    </h3>
+
+    <p class="case-card-desc">{{ caseItem().shortDescriptionAr }}</p>
+
+    <div class="card-action-row">
+      <a [routerLink]="['/cases', caseItem().slug]" (click)="onSelect()" class="details-action-link">
+        <span>عرض تفاصيل الخطة العلاجية</span>
+        <app-icon name="arrow-start" size="xs" class="action-arrow" />
+      </a>
+    </div>
+  </div>
+</article>

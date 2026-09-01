@@ -1,0 +1,64 @@
+<main class="contact-page-flow">
+  <!-- 1. Hero Section -->
+  <app-contact-hero
+    (whatsAppClick)="onHeroWhatsApp()"
+    (phoneClick)="onHeroPhone()"
+    (scrollFormClick)="scrollToForm()"
+  />
+
+  <!-- 2. Master 2-Column Section (Form + Info Card) -->
+  <section class="section contact-main-grid-section" aria-label="طلب استشارة وبيانات الاتصال">
+    <div class="container container-max">
+      <div class="contact-2col-layout">
+        <!-- Column 1: Consultation Request Form -->
+        <div class="contact-form-column">
+          <app-contact-form
+            [initialLocationId]="preselectedLocation()"
+            [initialServiceSlug]="preselectedService()"
+          />
+        </div>
+
+        <!-- Column 2: Editorial Contact Information Card -->
+        <div class="contact-info-column">
+          <app-contact-info-card
+            (phoneClick)="onHeroPhone()"
+            (whatsAppClick)="onHeroWhatsApp()"
+            (directionsClick)="onDirections($event)"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Dual Branches Detailed Overview -->
+  <section class="section section-sage contact-locations-section" aria-label="فروع العيادة">
+    <div class="container container-max">
+      <app-section-heading
+        eyebrow="فروع العيادة"
+        title="موقعا العيادة في برج العرب"
+        description="اختر الفرع الأقرب إليك للحصول على اتجاهات الطريق وتفاصيل العنوان."
+      />
+
+      <div class="branches-cards-grid">
+        @for (loc of locations; track loc.id) {
+          <app-clinic-location-card
+            [location]="loc"
+            (directionsClick)="onDirections($event)"
+            (phoneClick)="onHeroPhone()"
+            (whatsAppClick)="onHeroWhatsApp()"
+          />
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Contact FAQs Section -->
+  <section class="section contact-faq-section" aria-label="الأسئلة الشائعة حول الحجز والتواصل">
+    <div class="container container-md">
+      <app-service-faq
+        [faqs]="contactFaqs"
+        serviceTitle="التواصل والحجز"
+      />
+    </div>
+  </section>
+</main>

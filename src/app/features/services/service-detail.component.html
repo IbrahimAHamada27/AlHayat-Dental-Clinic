@@ -1,0 +1,333 @@
+<main class="service-detail-flow">
+  @if (service(); as item) {
+    <!-- 1. Breadcrumbs & Hero -->
+    <section class="section service-hero-section" [attr.aria-label]="item.titleAr">
+      <div class="container container-max">
+        <!-- Breadcrumb Navigation -->
+        <nav class="service-breadcrumbs" aria-label="مسار التنقل">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a routerLink="/" class="breadcrumb-link">الرئيسية</a>
+            </li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item">
+              <a routerLink="/services" class="breadcrumb-link">الخدمات</a>
+            </li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ item.titleAr }}</li>
+          </ol>
+        </nav>
+
+        <div class="service-hero-grid">
+          <div class="service-hero-main">
+            <div class="category-badge-wrap">
+              <app-badge variant="sage">{{ item.categoryAr }}</app-badge>
+              @if (item.usesDigitalTech) {
+                <app-badge variant="subtle">تقنيات رقمية</app-badge>
+              }
+            </div>
+
+            <h1 class="service-hero-title">{{ item.titleAr }}</h1>
+            <p class="service-hero-subtitle">{{ item.shortDescriptionAr }}</p>
+
+            <div class="service-hero-actions">
+              <app-button
+                variant="primary"
+                size="lg"
+                iconEnd="arrow-start"
+                [ariaLabel]="'احجز استشارتك لخدمة ' + item.titleAr"
+                (btnClick)="onBookingClick(item.titleAr, 'service_hero_book')"
+              >
+                احجز استشارتك
+              </app-button>
+
+              <app-button
+                variant="secondary"
+                size="lg"
+                iconStart="whatsapp"
+                [ariaLabel]="'استفسار واتساب عن ' + item.titleAr"
+                (btnClick)="onWhatsAppClick(item.titleAr, 'service_hero_whatsapp')"
+              >
+                اسألنا عبر واتساب
+              </app-button>
+            </div>
+
+            <div class="service-phone-line">
+              <button
+                type="button"
+                class="phone-touch-btn touch-target"
+                (click)="onPhoneClick('service_hero_phone')"
+                aria-label="الاتصال بالعيادة هاتفياً"
+              >
+                <app-icon name="phone" size="xs" class="phone-svg" />
+                <span>للحجز المباشر: <strong class="phone-number">{{ config.contact.phoneFormatted }}</strong></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="service-hero-side-card">
+            <div class="service-identity-card">
+              <div class="service-icon-large">
+                <app-icon [name]="item.iconName" size="xl" />
+              </div>
+              <h3 class="side-card-title">{{ config.clinicNameAr }}</h3>
+              <p class="side-card-doctor">بإشراف د. معاذ سمير</p>
+              <div class="divider-subtle"></div>
+              <p class="side-card-note">
+                فحص سريري متأني وخطة علاجية مخصصة تناسب احتياجاتك بفرعينا ببرج العرب.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Service Overview & Clinical Scope -->
+    <section class="section service-overview-section" aria-label="نظرة عامة على الخدمة">
+      <div class="container container-max">
+        <div class="overview-grid">
+          <div class="overview-content">
+            <span class="eyebrow">عن الخدمة</span>
+            <h2 class="section-title">نظرة عامة والتشخيص الطبي</h2>
+            <p class="overview-text">{{ item.overviewAr }}</p>
+
+            @if (item.benefitsAr && item.benefitsAr.length > 0) {
+              <div class="benefits-block">
+                <h3 class="benefits-title">الفوائد والنتائج المتوقعة:</h3>
+                <ul class="benefits-list">
+                  @for (benefit of item.benefitsAr; track benefit) {
+                    <li class="benefit-item">
+                      <app-icon name="check" size="xs" class="benefit-check" />
+                      <span>{{ benefit }}</span>
+                    </li>
+                  }
+                </ul>
+              </div>
+            }
+          </div>
+
+          <!-- "متى قد يكون هذا الخيار مناسباً؟" (Who it is for) -->
+          @if (item.whoItIsForAr && item.whoItIsForAr.length > 0) {
+            <div class="who-it-is-for-card">
+              <div class="who-header">
+                <app-icon name="heart-pulse" size="sm" class="who-icon" />
+                <h3 class="who-title">متى قد يكون هذا الخيار مناسباً؟</h3>
+              </div>
+              <ul class="who-list">
+                @for (indication of item.whoItIsForAr; track indication) {
+                  <li class="who-item">
+                    <app-icon name="check" size="xs" class="who-check" />
+                    <span>{{ indication }}</span>
+                  </li>
+                }
+              </ul>
+              <div class="who-note">
+                <app-icon name="info" size="xs" class="info-icon" />
+                <span>يحدد الطبيب مدى ملاءمة الإجراء لحالتك بعد الفحص السريري المباشر.</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Clinical Process Steps -->
+    @if (item.processStepsAr && item.processStepsAr.length > 0) {
+      <app-service-process
+        [steps]="item.processStepsAr"
+        [serviceTitle]="item.titleAr"
+      />
+    }
+
+    <!-- 4. Digital Dentistry & Scanner Integration (if relevant) -->
+    @if (item.usesDigitalTech) {
+      <section class="section section-dark service-digital-block" aria-label="التقنيات الرقمية المساعدة">
+        <div class="container container-max">
+          <div class="digital-tech-grid">
+            <div class="digital-tech-text">
+              <span class="eyebrow-light">طب الأسنان الرقمي</span>
+              <h2 class="digital-title">دقة وراحة أكبر مع تقنيات المسح الضوئي الرقمي</h2>
+              <p class="digital-desc">
+                نستخدم أحدث أجهزة الـ Intraoral Scanner في عيادة الحياة لأخذ المقاسات الرقمية ثلاثية الأبعاد بدقة فائقة، مما يوفر تجربة مريحة وسريعة للمريض بعيداً عن الطريقة التقليدية للعجينة.
+              </p>
+              <app-button
+                variant="secondary"
+                size="md"
+                routerLink="/technology"
+                iconEnd="arrow-start"
+              >
+                اكتشف تقنيات العيادة
+              </app-button>
+            </div>
+
+            <div class="digital-tech-card">
+              <div class="digital-chip">Intraoral Scanner Technology</div>
+              <h3 class="digital-card-name">المسح الفموي ثلاثي الأبعاد</h3>
+              <p class="digital-card-sub">راحة، وسرعة، ودقة متناهية في تصميم وتثبيت التركيبات والتقويم.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    }
+
+    <!-- 5. Important Medical Considerations / Notes -->
+    @if (item.considerationsAr && item.considerationsAr.length > 0) {
+      <section class="section service-considerations-section" aria-label="ملاحظات مهمة حول العلاج">
+        <div class="container container-max">
+          <div class="considerations-card">
+            <div class="considerations-header">
+              <app-icon name="info" size="sm" class="cons-icon" />
+              <h3 class="cons-title">ملاحظات وإرشادات سريرية مهمة</h3>
+            </div>
+            <ul class="cons-list">
+              @for (cons of item.considerationsAr; track cons) {
+                <li class="cons-item">
+                  <span class="cons-bullet">•</span>
+                  <span>{{ cons }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      </section>
+    }
+
+    <!-- 6. Service FAQ Accordion -->
+    @if (item.faqs && item.faqs.length > 0) {
+      <app-service-faq
+        [faqs]="item.faqs"
+        [serviceTitle]="item.titleAr"
+        (faqExpand)="onFaqExpand($event)"
+      />
+    }
+
+    <!-- 7. Related Services Component -->
+    <app-related-services
+      [relatedServices]="relatedServices()"
+      (relatedClick)="onRelatedServiceClick($event)"
+    />
+
+    <!-- 8. Locations Block -->
+    <section class="section section-sage service-locations-section" aria-label="فروع تقديم الخدمة">
+      <div class="container container-max">
+        <app-section-heading
+          eyebrow="فروع العيادة"
+          [title]="'خدمة ' + item.titleAr + ' متاحة بفرعي برج العرب'"
+          description="نستقبلكم في فرع برج العرب الجديدة وفرع برج العرب القديمة مع إمكانية الحجز المسبق."
+        />
+
+        <div class="grid-2">
+          @for (loc of locations; track loc.id) {
+            <app-card variant="surface" padding="spacious" class="loc-item-card">
+              <div class="loc-head">
+                <app-icon name="location" size="md" class="loc-svg" />
+                <div>
+                  <h3 class="loc-title">{{ loc.nameAr }}</h3>
+                  <p class="loc-address-text">{{ loc.addressAr }}</p>
+                </div>
+              </div>
+              <p class="loc-building-text">{{ loc.buildingDetailsAr }} ({{ loc.landmarksAr.join(' • ') }})</p>
+              <div class="loc-btns">
+                <app-button
+                  variant="primary"
+                  size="sm"
+                  iconStart="whatsapp"
+                  (btnClick)="onBranchWhatsApp(loc.nameAr, item.titleAr)"
+                >
+                  حجز موعد بالفرع
+                </app-button>
+                <app-button
+                  variant="outline"
+                  size="sm"
+                  iconStart="phone"
+                  (btnClick)="onBranchCall(loc.nameAr)"
+                >
+                  اتصال هاتفياً
+                </app-button>
+              </div>
+            </app-card>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Medical Disclaimer Note -->
+    <div class="container container-max">
+      <div class="service-disclaimer-bar">
+        <app-icon name="info" size="xs" class="disc-icon" />
+        <p>
+          تنويه طبي: المعلومات الواردة في هذه الصفحة للتوعية العامة ولا تغني بأي حال عن الفحص السريري الدقيق واستشارة الطبيب المعالج لتحديد الخطة المناسبة لكل حالة.
+        </p>
+      </div>
+    </div>
+
+    <!-- 10. Final Reassuring Consultation CTA -->
+    <section class="section service-final-cta-section" aria-label="حجز استشارة الخدمة">
+      <div class="container container-md text-center">
+        <div class="service-cta-wrapper">
+          <span class="cta-tag">استشارة طبية متخصصة</span>
+          <h2 class="service-cta-title">
+            هل ترغب في معرفة ما إذا كانت خدمة {{ item.titleAr }} مناسبة لحالتك؟
+          </h2>
+          <p class="service-cta-sub">
+            ابدأ بحجز استشارة كشف وفحص شامل مع د. معاذ سمير في عيادة الحياة لطب الأسنان ببرج العرب.
+          </p>
+
+          <div class="service-cta-btns">
+            <app-button
+              variant="primary"
+              size="lg"
+              iconEnd="arrow-start"
+              (btnClick)="onBookingClick(item.titleAr, 'service_final_cta')"
+            >
+              احجز استشارتك الآن
+            </app-button>
+
+            <app-button
+              variant="secondary"
+              size="lg"
+              iconStart="whatsapp"
+              (btnClick)="onWhatsAppClick(item.titleAr, 'service_final_cta_whatsapp')"
+            >
+              تواصل عبر واتساب
+            </app-button>
+          </div>
+
+          <div class="service-cta-call">
+            <button
+              type="button"
+              class="call-btn-link touch-target"
+              (click)="onPhoneClick('service_final_cta_phone')"
+              aria-label="الاتصال بالعيادة"
+            >
+              <app-icon name="phone" size="sm" class="call-icon-svg" />
+              <span>أو اتصل بنا مباشرة: <strong class="phone-number">{{ config.contact.phoneFormatted }}</strong></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  } @else {
+    <!-- 404 / Service Not Found Graceful State -->
+    <section class="section service-not-found-section" aria-label="الخدمة غير موجودة">
+      <div class="container container-md text-center py-4xl">
+        <div class="not-found-icon-box">
+          <app-icon name="info" size="xl" />
+        </div>
+        <h1 class="font-h1 mb-sm">الخدمة المطلوبة غير متوفرة</h1>
+        <p class="body-large text-secondary max-w-600 mb-xl">
+          عذراً، لم نتمكن من العثور على الصفحة أو الخدمة المطلوبة. يمكنك استعراض كافة خدمات عيادة الحياة لطب الأسنان أو التواصل معنا مباشرة.
+        </p>
+
+        <div class="not-found-actions">
+          <app-button variant="primary" size="lg" routerLink="/services" iconEnd="arrow-start">
+            استعراض كافة الخدمات
+          </app-button>
+          <app-button variant="secondary" size="lg" routerLink="/" iconStart="home">
+            الصفحة الرئيسية
+          </app-button>
+        </div>
+      </div>
+    </section>
+  }
+</main>

@@ -1,0 +1,167 @@
+.services-hero-section {
+  padding-top: var(--spacing-lg);
+  padding-bottom: var(--spacing-2xl);
+  background: linear-gradient(180deg, var(--color-background) 0%, var(--color-background-soft) 100%);
+  border-bottom: 1px solid var(--color-border);
+
+  @media (min-width: 992px) {
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-3xl);
+  }
+}
+
+.services-breadcrumbs {
+  margin-bottom: var(--spacing-lg);
+
+  .breadcrumb-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2xs);
+    font-size: var(--font-size-caption);
+  }
+
+  .breadcrumb-item {
+    color: var(--color-text-muted);
+
+    &.active {
+      color: var(--color-accent);
+      font-weight: var(--font-weight-medium);
+    }
+  }
+
+  .breadcrumb-link {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  .breadcrumb-separator {
+    color: var(--color-border-strong);
+  }
+}
+
+.services-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+
+  @media (min-width: 992px) {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--spacing-3xl);
+  }
+}
+
+.hero-eyebrow-wrap {
+  margin-bottom: var(--spacing-xs);
+}
+
+.services-hero-title {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-dark);
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+}
+
+.services-hero-subtitle {
+  font-size: var(--font-size-body-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  max-width: 620px;
+  margin-bottom: var(--spacing-xl);
+}
+
+.services-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.services-phone-strip {
+  .phone-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2xs);
+    font-size: var(--font-size-body-sm);
+    color: var(--color-text-muted);
+    padding: var(--spacing-2xs) var(--spacing-xs);
+    border-radius: var(--radius-xs);
+    transition: color var(--transition-fast);
+
+    &:hover {
+      color: var(--color-primary);
+    }
+
+    .phone-icon {
+      color: var(--color-accent);
+    }
+
+    .phone-number {
+      color: var(--color-text);
+      font-weight: var(--font-weight-bold);
+    }
+  }
+}
+
+// Scope Card Side
+.clinic-scope-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.scope-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-sm);
+
+  .scope-icon {
+    color: var(--color-accent);
+  }
+
+  .scope-title {
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-dark);
+    margin: 0;
+  }
+}
+
+.scope-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+
+  .check-bullet {
+    color: var(--color-accent);
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+}

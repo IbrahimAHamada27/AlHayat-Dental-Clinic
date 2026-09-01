@@ -1,0 +1,107 @@
+.doctor-technology-section {
+  background: linear-gradient(145deg, #0e3d36 0%, #082622 100%);
+  color: var(--color-text-inverse);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.doctor-tech-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+
+  @media (min-width: 992px) {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--spacing-3xl);
+  }
+}
+
+.tech-points-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.point-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.point-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-xs);
+  background-color: rgba(70, 117, 104, 0.3);
+  color: #a8d3c5;
+  border: 1px solid rgba(70, 117, 104, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.point-text {
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-inverse-muted);
+  line-height: 1.6;
+
+  strong {
+    color: var(--color-text-inverse);
+    margin-inline-end: var(--spacing-3xs);
+    font-weight: var(--font-weight-semibold);
+  }
+}
+
+.tech-cta-row {
+  display: flex;
+}
+
+// Visual Card
+.tech-scanner-showcase {
+  background: linear-gradient(145deg, #13423a 0%, #0c2f29 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.showcase-badge {
+  display: inline-block;
+  font-family: var(--font-family-latin);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #a8d3c5;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--spacing-md);
+}
+
+.showcase-title {
+  font-family: var(--font-family-latin);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: #ffffff;
+  margin-bottom: var(--spacing-xs);
+}
+
+.showcase-desc {
+  font-size: var(--font-size-body-sm);
+  color: #a8d3c5;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+}
+
+.showcase-tag {
+  font-size: var(--font-size-caption);
+  color: #8daea3;
+}

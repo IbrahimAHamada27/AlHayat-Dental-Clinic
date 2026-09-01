@@ -1,0 +1,53 @@
+@if (cases().length > 0) {
+  <section class="section cases-preview-section" aria-label="حالات العيادة ونتائج العلاج">
+    <div class="container container-max">
+      <app-section-heading
+        eyebrow="نتائج العلاج"
+        title="من حالات ونتائج العيادة"
+        description="نماذج واقعية من خطط العلاج وتقويم وتجميل الأسنان التي تم تنفيذها وفق المعايير الطبية السليمة."
+      >
+        <app-button action variant="text" routerLink="/cases" iconEnd="arrow-start">
+          شاهد المزيد من الحالات
+        </app-button>
+      </app-section-heading>
+
+      <!-- Cases Cards Grid -->
+      <div class="grid-3">
+        @for (caseItem of cases(); track caseItem.id) {
+          <div class="case-card-wrapper">
+            <app-card variant="surface" padding="spacious" class="case-card">
+              <div class="case-category-wrap">
+                <app-badge variant="sage">{{ caseItem.categoryAr }}</app-badge>
+              </div>
+
+              <!-- Case Visual Comparison Placeholder Box -->
+              <div class="case-preview-frame">
+                <div class="frame-tag-side">
+                  <span class="tag-label">خطة علاجية مخصصة</span>
+                </div>
+                <div class="frame-icon-center">
+                  <app-icon name="tooth-align" size="lg" />
+                </div>
+              </div>
+
+              <h3 class="case-title">{{ caseItem.titleAr }}</h3>
+              <p class="case-summary">{{ caseItem.summaryAr }}</p>
+
+              <div class="case-footer">
+                <span class="case-disclaimer-pill">تشخيص سريري مخصص</span>
+              </div>
+            </app-card>
+          </div>
+        }
+      </div>
+
+      <!-- Medical Disclaimer Note -->
+      <div class="cases-medical-disclaimer">
+        <app-icon name="info" size="xs" class="disc-icon" />
+        <p>
+          ملاحظة طبية: تختلف تفاصيل ومدة الخطة العلاجية والنتائج من شخص لآخر بناءً على التقييم السريري الدقيق والفحص المباشر لدى الطبيب.
+        </p>
+      </div>
+    </div>
+  </section>
+}

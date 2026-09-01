@@ -1,0 +1,81 @@
+<section class="section section-sage services-preview-section" aria-label="خدمات العيادة">
+  <div class="container container-max">
+    <app-section-heading
+      eyebrow="خدمات العيادة"
+      title="رعاية متكاملة لصحة وجمال أسنانك"
+      description="خدمات تشخيصية وعلاجية وتجميلية قائمة على أحدث الممارسات الطبية لتوفير الراحة والنتائج الدائمة."
+    >
+      <app-button action variant="text" routerLink="/services" iconEnd="arrow-start">
+        جميع الخدمات الطبية
+      </app-button>
+    </app-section-heading>
+
+    <!-- Services Hierarchy: Featured Highlight + Grid -->
+    <div class="services-layout">
+      <!-- Featured Highlight Card (Orthodontics / Key Area) -->
+      @if (featuredService; as featured) {
+        <div class="featured-service-block">
+          <div class="featured-card">
+            <div class="featured-content">
+              <app-badge variant="primary" class="mb-xs">من خدمات العيادة المميزة</app-badge>
+              <h3 class="featured-title">{{ featured.titleAr }}</h3>
+              <p class="featured-desc">{{ featured.shortDescriptionAr }}</p>
+
+              <div class="featured-points">
+                <div class="point-item">
+                  <app-icon name="check" size="xs" class="point-check" />
+                  <span>تقييم شامل لحالة الإطباق واصطفاف الأسنان</span>
+                </div>
+                <div class="point-item">
+                  <app-icon name="check" size="xs" class="point-check" />
+                  <span>خطط علاج تناسب مختلف الفئات العمرية</span>
+                </div>
+                <div class="point-item">
+                  <app-icon name="check" size="xs" class="point-check" />
+                  <span>متابعة دورية دقيقة طوال فترة العلاج</span>
+                </div>
+              </div>
+
+              <div class="featured-action">
+                <app-button
+                  variant="primary"
+                  size="md"
+                  [routerLink]="['/services', featured.slug]"
+                  iconEnd="arrow-start"
+                >
+                  تفاصيل خدمة التقويم
+                </app-button>
+              </div>
+            </div>
+
+            <div class="featured-icon-badge">
+              <app-icon [name]="featured.iconName" size="xl" />
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Secondary Services Grid -->
+      <div class="regular-services-grid">
+        @for (srv of regularServices; track srv.id) {
+          <a
+            [routerLink]="['/services', srv.slug]"
+            class="service-item-card"
+            [attr.aria-label]="srv.titleAr"
+          >
+            <div class="srv-icon-box">
+              <app-icon [name]="srv.iconName" size="md" />
+            </div>
+            <div class="srv-text-block">
+              <h4 class="srv-title">{{ srv.titleAr }}</h4>
+              <p class="srv-desc">{{ srv.shortDescriptionAr }}</p>
+            </div>
+            <div class="srv-arrow">
+              <app-icon name="chevron-start" size="xs" />
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,165 @@
+<!-- HERO SECTION (Foundation Preview) -->
+<section class="section hero-section">
+  <div class="container container-max">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <span class="eyebrow">عيادة الحياة لطب الأسنان — برج العرب</span>
+        <h1 class="hero-title">
+          رعاية أسنان حديثة،
+          <span class="title-highlight">تبدأ بالتشخيص الدقيق</span>
+          والاهتمام بصحتك.
+        </h1>
+        <p class="hero-subtitle">
+          نقدم رعاية متكاملة لصحة الفم وتقويم وتجميل الأسنان بإشراف {{ doctor.nameAr }}، من خلال أحدث المعايير الطبية وبيئة علاجية مريحة وآمنة بفرعينا في برج العرب.
+        </p>
+
+        <div class="hero-actions">
+          <app-button
+            variant="primary"
+            size="lg"
+            iconEnd="arrow-start"
+            (btnClick)="onWhatsAppConsult()"
+          >
+            احجز استشارتك عبر واتساب
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            size="lg"
+            routerLink="/doctor"
+          >
+            عن د. معاذ سمير
+          </app-button>
+        </div>
+
+        <div class="hero-features">
+          <div class="feature-item">
+            <app-icon name="check" size="sm" class="feature-icon" />
+            <span>خطة علاجية مخصصة لكل حالة</span>
+          </div>
+          <div class="feature-item">
+            <app-icon name="check" size="sm" class="feature-icon" />
+            <span>فرعان لخدمتكم ببرج العرب</span>
+          </div>
+          <div class="feature-item">
+            <app-icon name="check" size="sm" class="feature-icon" />
+            <span>أعلى معايير التعقيم والسلامة</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card-side">
+        <app-card variant="surface" padding="spacious" class="hero-doctor-card">
+          <div class="doctor-badge-top">
+            <app-badge variant="sage">{{ doctor.specializationAr }}</app-badge>
+          </div>
+          <h3 class="card-doctor-name">{{ doctor.nameAr }}</h3>
+          <p class="card-doctor-title">{{ doctor.safeTitleAr }}</p>
+          <div class="divider"></div>
+          
+          <div class="card-branch-info">
+            <span class="branch-label">فروع العيادة:</span>
+            <ul class="branches-mini-list">
+              @for (loc of locations; track loc.id) {
+                <li>
+                  <strong>{{ loc.nameAr }}:</strong> {{ loc.addressAr }}
+                </li>
+              }
+            </ul>
+          </div>
+
+          <div class="card-cta">
+            <app-button
+              variant="outline"
+              size="md"
+              [fullWidth]="true"
+              iconStart="phone"
+              (btnClick)="onCall()"
+            >
+              اتصال مباشر: {{ config.contact.phoneFormatted }}
+            </app-button>
+          </div>
+        </app-card>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES PREVIEW SECTION -->
+<section class="section section-sage">
+  <div class="container container-max">
+    <app-section-heading
+      eyebrow="الخدمات الطبية"
+      title="رعاية متكاملة لصحة وجمال أسنانك"
+      description="خدمات تشخيصية وعلاجية وتجميلية قائمة على أحدث الممارسات الطبية لتوفير الراحة والنتائج الدائمة."
+    >
+      <app-button action variant="text" routerLink="/services" iconEnd="arrow-start">
+        جميع الخدمات
+      </app-button>
+    </app-section-heading>
+
+    <div class="grid-3">
+      @for (srv of services; track srv.id) {
+        <app-card variant="surface" [routerLink]="['/services', srv.slug]" class="service-preview-card">
+          <div class="service-icon-box">
+            <app-icon [name]="srv.iconName" size="lg" />
+          </div>
+          <h3 class="service-title">{{ srv.titleAr }}</h3>
+          <p class="service-desc">{{ srv.shortDescriptionAr }}</p>
+          <div class="service-link-wrap">
+            <span class="service-learn-more">تفاصيل الخدمة</span>
+            <app-icon name="arrow-start" size="xs" />
+          </div>
+        </app-card>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS PREVIEW SECTION -->
+<section class="section">
+  <div class="container container-max">
+    <app-section-heading
+      eyebrow="فروعنا"
+      title="في خدمتكم ببرج العرب"
+      description="مواقع يسهل الوصول إليها في برج العرب الجديدة والقديمة لتوفير أعلى مستويات الراحة لمرضانا."
+    />
+
+    <div class="grid-2">
+      @for (loc of locations; track loc.id) {
+        <app-card variant="surface" padding="spacious" class="location-card">
+          <div class="location-card-head">
+            <app-icon name="location" size="md" class="loc-pin" />
+            <div>
+              <h3 class="loc-name">{{ loc.nameAr }}</h3>
+              <p class="loc-address">{{ loc.addressAr }}</p>
+            </div>
+          </div>
+          <p class="loc-details">
+            <strong>تفاصيل الموقع:</strong> {{ loc.buildingDetailsAr }}
+            @if (loc.landmarksAr.length) {
+              ({{ loc.landmarksAr.join('، ') }})
+            }
+          </p>
+          <div class="loc-actions">
+            <app-button
+              variant="outline"
+              size="sm"
+              iconStart="whatsapp"
+              (btnClick)="onWhatsAppConsult()"
+            >
+              استفسار عن الفرع
+            </app-button>
+            <app-button
+              variant="ghost"
+              size="sm"
+              [routerLink]="['/locations', loc.slug]"
+            >
+              معلومات الفرع
+            </app-button>
+          </div>
+        </app-card>
+      }
+    </div>
+  </div>
+</section>

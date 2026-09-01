@@ -1,0 +1,177 @@
+// ==========================================================================
+// AL HAYAT DENTAL CLINIC — CONTAINER & LAYOUT SYSTEM
+// Logical RTL/LTR Container System and Responsive Gutters
+// ==========================================================================
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// App Root Shell
+.app-root-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// Main Page Content Area
+.main-content {
+  flex: 1 0 auto;
+  padding-bottom: calc(var(--mobile-bar-height) + env(safe-area-inset-bottom, 0px));
+
+  @media (min-width: 992px) {
+    padding-bottom: 0;
+  }
+}
+
+// Global Containers
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--gutter-mobile);
+
+  @media (min-width: 768px) {
+    padding-inline: var(--gutter-tablet);
+  }
+
+  @media (min-width: 1024px) {
+    padding-inline: var(--gutter-desktop);
+  }
+}
+
+.container-sm {
+  max-width: var(--container-sm);
+}
+
+.container-md {
+  max-width: var(--container-md);
+}
+
+.container-lg {
+  max-width: var(--container-lg);
+}
+
+.container-xl {
+  max-width: var(--container-xl);
+}
+
+.container-max {
+  max-width: var(--container-max);
+}
+
+// Section Architecture
+.section {
+  padding-block: var(--spacing-2xl);
+
+  @media (min-width: 768px) {
+    padding-block: var(--spacing-3xl);
+  }
+
+  @media (min-width: 1200px) {
+    padding-block: var(--spacing-4xl);
+  }
+}
+
+.section-compact {
+  padding-block: var(--spacing-xl);
+
+  @media (min-width: 768px) {
+    padding-block: var(--spacing-2xl);
+  }
+}
+
+// Section Background Variants
+.section-default {
+  background-color: var(--color-background);
+}
+
+.section-surface {
+  background-color: var(--color-surface);
+}
+
+.section-soft {
+  background-color: var(--color-background-soft);
+}
+
+.section-sage {
+  background-color: var(--color-sage-soft);
+}
+
+.section-dark {
+  background-color: var(--color-surface-dark);
+  color: var(--color-text-inverse);
+
+  h1, h2, h3, h4, .font-h1, .font-h2, .font-h3 {
+    color: var(--color-text-inverse);
+  }
+
+  p, .body-regular, .body-large {
+    color: var(--color-text-inverse-muted);
+  }
+
+  .eyebrow {
+    color: var(--color-accent-light);
+
+    &::before {
+      background-color: var(--color-accent-light);
+    }
+  }
+}
+
+// Responsive Grids
+.grid-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+  }
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+  }
+}

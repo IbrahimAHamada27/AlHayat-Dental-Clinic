@@ -1,0 +1,52 @@
+@if (routerLink()) {
+  <a
+    [routerLink]="routerLink()"
+    [class]="classes()"
+    [attr.aria-label]="ariaLabel() || null"
+    [attr.aria-disabled]="disabled() || loading() ? 'true' : null"
+    (click)="handleClick($event)"
+  >
+    <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+  </a>
+} @else if (href()) {
+  <a
+    [href]="href()"
+    [class]="classes()"
+    [attr.target]="target() || null"
+    [attr.rel]="target() === '_blank' ? (rel() || 'noopener noreferrer') : (rel() || null)"
+    [attr.aria-label]="ariaLabel() || null"
+    [attr.aria-disabled]="disabled() || loading() ? 'true' : null"
+    (click)="handleClick($event)"
+  >
+    <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+  </a>
+} @else {
+  <button
+    [type]="type()"
+    [class]="classes()"
+    [disabled]="disabled() || loading()"
+    [attr.aria-label]="ariaLabel() || null"
+    [attr.aria-busy]="loading() ? 'true' : null"
+    (click)="handleClick($event)"
+  >
+    <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+  </button>
+}
+
+<ng-template #buttonContent>
+  @if (loading()) {
+    <span class="btn-spinner" aria-hidden="true"></span>
+  }
+  
+  <span class="btn-inner" [class.btn-inner-hidden]="loading()">
+    @if (iconStart()) {
+      <app-icon [name]="iconStart()!" size="sm" class="btn-icon-start" />
+    }
+    <span class="btn-label">
+      <ng-content></ng-content>
+    </span>
+    @if (iconEnd()) {
+      <app-icon [name]="iconEnd()!" size="sm" class="btn-icon-end" />
+    }
+  </span>
+</ng-template>

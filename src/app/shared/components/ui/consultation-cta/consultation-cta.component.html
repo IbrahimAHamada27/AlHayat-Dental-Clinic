@@ -1,0 +1,43 @@
+<section class="consultation-cta-banner" aria-label="حجز موعد واستشارة">
+  <div class="container container-md text-center">
+    <div class="cta-inner-wrap">
+      <span class="cta-eyebrow">{{ eyebrow() }}</span>
+      <h2 class="cta-title">{{ title() }}</h2>
+      <p class="cta-desc">{{ description() }}</p>
+
+      <div class="cta-buttons-row">
+        <app-button
+          variant="primary"
+          size="lg"
+          iconEnd="arrow-start"
+          ariaLabel="احجز استشارتك الآن"
+          (btnClick)="onBookingClick()"
+        >
+          احجز استشارتك الآن
+        </app-button>
+
+        <app-button
+          variant="secondary"
+          size="lg"
+          iconStart="whatsapp"
+          ariaLabel="تواصل عبر واتساب"
+          (btnClick)="onWhatsAppClick()"
+        >
+          تواصل عبر واتساب
+        </app-button>
+      </div>
+
+      <div class="cta-phone-strip">
+        <button
+          type="button"
+          class="phone-call-btn touch-target"
+          (click)="onPhoneClick()"
+          aria-label="الاتصال بالعيادة هاتفياً"
+        >
+          <app-icon name="phone" size="sm" class="phone-svg" />
+          <span>للحجز والاستفسار: <strong class="phone-number">{{ config.contact.phoneFormatted }}</strong></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,64 @@
+<section class="section doctor-intro-section" aria-label="نبذة عن الدكتور معاذ سمير">
+  <div class="container container-max">
+    <div class="intro-grid">
+      <!-- Start / Lead Column: Section Heading & Editorial Bio -->
+      <div class="intro-main">
+        <app-section-heading
+          eyebrow="نبذة مهنية"
+          title="رعاية تبدأ بفهم الحالة واحتياجات المريض"
+          [description]="doctor().safeTitleAr"
+        />
+
+        <p class="intro-paragraph-lead">
+          {{ doctor().bioAr }}
+        </p>
+
+        <p class="intro-paragraph-body">
+          {{ doctor().philosophyAr }}
+        </p>
+      </div>
+
+      <!-- End / Side Column: "المريض أولاً" Philosophy Highlight -->
+      <div class="intro-philosophy-card">
+        <div class="card-inner">
+          <div class="card-header-icon">
+            <app-icon name="heart-pulse" size="md" />
+          </div>
+
+          <h3 class="philosophy-card-title">المريض أولًا: ركائز الممارسة السريرية</h3>
+
+          <ul class="philosophy-principles">
+            <li class="principle-item">
+              <app-icon name="check" size="xs" class="principle-check" />
+              <div>
+                <strong>الاستماع الواعي:</strong>
+                <span>فهم مخاوف المريض وأهدافه العلاجية قبل البدء.</span>
+              </div>
+            </li>
+            <li class="principle-item">
+              <app-icon name="check" size="xs" class="principle-check" />
+              <div>
+                <strong>الفحص والتشخيص الشامل:</strong>
+                <span>تقييم دقيق لصحة الفم والأسنان بأحدث الوسائل المتاحة.</span>
+              </div>
+            </li>
+            <li class="principle-item">
+              <app-icon name="check" size="xs" class="principle-check" />
+              <div>
+                <strong>الشفافية وشرح الخيارات:</strong>
+                <span>توضيح كل خطوة علاجية والبدائل المتاحة بوضوح تام.</span>
+              </div>
+            </li>
+            <li class="principle-item">
+              <app-icon name="check" size="xs" class="principle-check" />
+              <div>
+                <strong>بيئة علاجية مريحة:</strong>
+                <span>الحرص على تقليل التوتر وتوفير أعلى معايير الهدوء والتعقيم.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

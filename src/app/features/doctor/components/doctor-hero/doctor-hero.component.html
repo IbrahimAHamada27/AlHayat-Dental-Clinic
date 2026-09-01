@@ -1,0 +1,113 @@
+<section class="section doctor-hero-section" aria-label="الملف المهني للدكتور معاذ سمير">
+  <div class="container container-max">
+    <!-- Breadcrumb Visual Navigation -->
+    <nav class="doctor-breadcrumbs" aria-label="مسار التنقل">
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item">
+          <a routerLink="/" class="breadcrumb-link">الرئيسية</a>
+        </li>
+        <li class="breadcrumb-separator" aria-hidden="true">/</li>
+        <li class="breadcrumb-item active" aria-current="page">عن الدكتور</li>
+      </ol>
+    </nav>
+
+    <div class="doctor-hero-grid">
+      <!-- Start Column: Personal Branding & Bio Statement -->
+      <div class="doctor-hero-content">
+        <!-- Latin & Arabic Eyebrows -->
+        <div class="eyebrows-wrap">
+          <span class="latin-eyebrow">DR. MOAZ SAMIR</span>
+          <span class="clinic-sub-eyebrow">{{ config().clinicNameAr }}</span>
+        </div>
+
+        <h1 class="doctor-hero-title">
+          <span class="name-ar">{{ doctor().nameAr }}</span>
+          <span class="title-ar">{{ doctor().titleAr }}</span>
+        </h1>
+
+        <!-- Safe Clinical Statement -->
+        <p class="doctor-hero-statement">
+          «أهتم بأن تبدأ رحلة العلاج بالاستماع الواعي لحالتك واحتياجاتك، واختيار خطة العلاج الأنسب للحفاظ على صحة وراحة أسنانك الطبيعية.»
+        </p>
+
+        <!-- Doctor Badges Strip -->
+        <div class="doctor-badges-row">
+          <app-badge variant="sage">{{ doctor().specializationAr }}</app-badge>
+          <app-badge variant="subtle">رعاية مخصصة وشخصية</app-badge>
+          <app-badge variant="subtle">تقنيات طب الأسنان الرقمي</app-badge>
+        </div>
+
+        <!-- Action Row -->
+        <div class="doctor-hero-actions">
+          <app-button
+            variant="primary"
+            size="lg"
+            iconEnd="arrow-start"
+            ariaLabel="احجز استشارتك مع د. معاذ سمير"
+            (btnClick)="onBook()"
+          >
+            احجز استشارتك
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            size="lg"
+            iconStart="whatsapp"
+            ariaLabel="تواصل عبر واتساب مع د. معاذ سمير"
+            (btnClick)="onWhatsApp()"
+          >
+            تواصل عبر واتساب
+          </app-button>
+        </div>
+
+        <!-- Direct Phone Strip -->
+        <div class="doctor-phone-strip">
+          <button
+            type="button"
+            class="phone-touch-link touch-target"
+            (click)="onCall()"
+            aria-label="الاتصال بالعيادة"
+          >
+            <app-icon name="phone" size="xs" class="phone-icon" />
+            <span>للحجز والاستفسار الهاتفي: <strong class="phone-number">{{ config().contact.phoneFormatted }}</strong></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- End Column: Rectangular Editorial Portrait Card -->
+      <div class="doctor-hero-portrait-wrap">
+        <div class="portrait-rectangular-frame">
+          <div class="portrait-slot">
+            @if (doctor().image) {
+              <img
+                [src]="doctor().image"
+                [alt]="doctor().nameAr + ' - طبيب أسنان'"
+                class="portrait-real-img"
+                loading="eager"
+                width="420"
+                height="520"
+              />
+            } @else {
+              <!-- Refined Editorial Portrait Placeholder Slot -->
+              <div class="portrait-placeholder-slot">
+                <div class="avatar-editorial-circle">
+                  <app-icon name="user" size="xl" class="avatar-hero-icon" />
+                </div>
+                <div class="placeholder-caption">
+                  <span class="caption-doctor-name">{{ doctor().nameAr }}</span>
+                  <span class="caption-doctor-role">{{ doctor().safeTitleAr }}</span>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- Subtle Overlapping Brand Chip -->
+          <div class="portrait-floating-chip">
+            <app-icon name="shield-check" size="xs" class="chip-icon" />
+            <span>{{ config().clinicNameAr }} — برج العرب</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

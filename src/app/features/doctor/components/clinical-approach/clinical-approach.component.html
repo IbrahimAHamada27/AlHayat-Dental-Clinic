@@ -1,0 +1,26 @@
+<section class="section section-sage clinical-approach-section" aria-label="نهج الرعاية وخطوات العلاج">
+  <div class="container container-max">
+    <app-section-heading
+      eyebrow="فلسفة الرعاية"
+      title="نهج الرعاية وخطوات العلاج"
+      description="خمس خطوات متسلسلة تضمن وضوح الخطة العلاجية والراحة التامة للمريض طوال فترة العلاج."
+      align="center"
+    />
+
+    <!-- Editorial Horizontal / Vertical Process Timeline -->
+    <div class="approach-timeline-wrap">
+      <div class="approach-timeline-track">
+        @for (step of steps; track step.number) {
+          <div class="approach-step-card">
+            <div class="step-num-badge">{{ step.number }}</div>
+            <div class="step-icon-box">
+              <app-icon [name]="step.icon" size="sm" />
+            </div>
+            <h3 class="step-title">{{ step.title }}</h3>
+            <p class="step-description">{{ step.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

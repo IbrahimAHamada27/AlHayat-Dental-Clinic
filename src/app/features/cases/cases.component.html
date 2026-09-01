@@ -1,0 +1,170 @@
+<main class="cases-page-flow">
+  <!-- 1. Hero Section -->
+  <app-cases-hero
+    [config]="config"
+    (bookingClick)="onBookingClick($event)"
+    (whatsAppClick)="onWhatsAppClick($event)"
+    (phoneClick)="onPhoneClick($event)"
+  />
+
+  <!-- 2. Cases Gallery & Filtering Section -->
+  <section class="section cases-catalog-section" aria-label="معرض الحالات السريرية">
+    <div class="container container-max">
+      <!-- Section Heading -->
+      <app-section-heading
+        eyebrow="النتائج السريرية"
+        title="معرض الحالات وخطط العلاج"
+        description="استعرض نماذج مقارنة قبل وبعد الإجراء العلاجي، مع التعرف على الخطوات المتبعة لكل حالة."
+        align="center"
+      />
+
+      <!-- Category Filter Tabs -->
+      <div class="cases-filter-bar">
+        <div class="filter-chips-scroll" role="tablist" aria-label="أقسام الحالات">
+          @for (cat of categories; track cat.id) {
+            <button
+              type="button"
+              class="filter-chip-btn touch-target"
+              [class.active]="selectedCategory() === cat.id"
+              role="tab"
+              [attr.aria-selected]="selectedCategory() === cat.id"
+              (click)="setCategory(cat.id)"
+            >
+              <span>{{ cat.labelAr }}</span>
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Cases Grid or Graceful Empty State -->
+      @if (filteredCases().length > 0) {
+        <div class="cases-grid">
+          @for (caseItem of filteredCases(); track caseItem.id) {
+            <app-case-card
+              [caseItem]="caseItem"
+              (cardClick)="onCaseSelected($event)"
+            />
+          }
+        </div>
+      } @else {
+        <!-- Empty State -->
+        <div class="cases-empty-card">
+          <div class="empty-icon-frame">
+            <app-icon name="shield-check" size="xl" />
+          </div>
+          <h3 class="empty-title">لا توجد حالات معروضة في هذا القسم حالياً</h3>
+          <p class="empty-desc">
+            يتم نشر الحالات العلاجية الجديدة تباعاً بعد استيفاء بروتوكولات المتابعة الطبية والحصول على الموافقة المسبقة.
+          </p>
+          <app-button variant="primary" size="md" (btnClick)="setCategory('all')">
+            عرض كافة الحالات
+          </app-button>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- 3. Dual Branch Locations Block -->
+  <section class="section section-sage cases-locations-section" aria-label="فروع العيادة ببرج العرب">
+    <div class="container container-max">
+      <app-section-heading
+        eyebrow="فروع العيادة"
+        title="استشارات الكشف والتقييم بفرعي برج العرب"
+        description="نستقبلكم في موقعين لتقديم الرعاية المتكاملة والفحص السريري الدقيق لتحديد الخطة الأنسب لحالتك."
+      />
+
+      <div class="grid-2">
+        @for (loc of locations; track loc.id) {
+          <app-card variant="surface" padding="spacious" class="cases-loc-card">
+            <div class="loc-head">
+              <app-icon name="location" size="md" class="loc-pin" />
+              <div>
+                <h3 class="loc-title">{{ loc.nameAr }}</h3>
+                <p class="loc-address-text">{{ loc.addressAr }}</p>
+              </div>
+            </div>
+
+            <p class="loc-building-text">{{ loc.buildingDetailsAr }} ({{ loc.landmarksAr.join(' • ') }})</p>
+
+            <div class="loc-btns">
+              <app-button
+                variant="primary"
+                size="sm"
+                iconStart="whatsapp"
+                (btnClick)="onBranchWhatsApp(loc.nameAr)"
+              >
+                حجز موعد بالفرع
+              </app-button>
+
+              <app-button
+                variant="outline"
+                size="sm"
+                iconStart="phone"
+                (btnClick)="onBranchCall(loc.nameAr)"
+              >
+                اتصال هاتفياً
+              </app-button>
+            </div>
+          </app-card>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Medical Disclaimer Note -->
+  <div class="container container-max">
+    <div class="cases-disclaimer-bar">
+      <app-icon name="info" size="xs" class="disc-icon" />
+      <p>
+        تنويه سريري: الصور والبيانات المعروضة أعلاه لأغراض التوعية والإيضاح السريري فقط. تختلف نتائج ومدة العلاج من مريض لآخر بحسب التشخيص الطبي الفردي وخطة العلاج المعتمدة.
+      </p>
+    </div>
+  </div>
+
+  <!-- 5. Final Consultation CTA -->
+  <section class="section cases-final-cta-section" aria-label="حجز موعد استشارة">
+    <div class="container container-md text-center">
+      <div class="cases-cta-wrapper">
+        <span class="cases-cta-tag">استشارة وتقييم سريري</span>
+        <h2 class="cases-cta-title">هل ترغب في تقييم حالتك وتحديد الخطة العلاجية الأنسب؟</h2>
+        <p class="cases-cta-subtitle">
+          ابدأ بحجز استشارة كشف وفحص شامل مع د. معاذ سمير في عيادة الحياة لطب الأسنان ببرج العرب، ودعنا نساعدك في تحقيق ابتسامة صحية ومتناسقة.
+        </p>
+
+        <div class="cases-cta-btns">
+          <app-button
+            variant="primary"
+            size="lg"
+            iconEnd="arrow-start"
+            ariaLabel="احجز استشارتك الآن"
+            (btnClick)="onBookingClick('cases_final_cta')"
+          >
+            احجز استشارتك الآن
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            size="lg"
+            iconStart="whatsapp"
+            ariaLabel="تواصل عبر واتساب"
+            (btnClick)="onWhatsAppClick('cases_final_cta_whatsapp')"
+          >
+            تواصل عبر واتساب
+          </app-button>
+        </div>
+
+        <div class="cases-cta-phone">
+          <button
+            type="button"
+            class="phone-touch-action touch-target"
+            (click)="onPhoneClick('cases_final_cta_phone')"
+            aria-label="الاتصال بالعيادة هاتفياً"
+          >
+            <app-icon name="phone" size="sm" class="phone-action-svg" />
+            <span>للحجز المباشر: <strong class="phone-num">{{ config.contact.phoneFormatted }}</strong></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

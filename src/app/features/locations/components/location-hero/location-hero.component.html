@@ -1,0 +1,89 @@
+<section class="section loc-hero-section" aria-label="فروع عيادة الحياة لطب الأسنان">
+  <div class="container container-max">
+    <!-- Breadcrumbs -->
+    <nav class="loc-breadcrumbs" aria-label="مسار التنقل">
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item">
+          <a routerLink="/" class="breadcrumb-link">الرئيسية</a>
+        </li>
+        <li class="breadcrumb-separator" aria-hidden="true">/</li>
+        <li class="breadcrumb-item active" aria-current="page">فروع العيادة</li>
+      </ol>
+    </nav>
+
+    <div class="loc-hero-grid">
+      <div class="loc-hero-content">
+        <div class="hero-eyebrow-wrap">
+          <span class="eyebrow">مواقع الفروع — {{ config().clinicNameAr }}</span>
+        </div>
+
+        <h1 class="loc-hero-title">
+          أماكن وفروع عيادة الحياة لطب الأسنان ببرج العرب
+        </h1>
+
+        <p class="loc-hero-subtitle">
+          نستقبلكم في فرعي برج العرب الجديدة وبرج العرب القديمة لتقديم رعاية طبية متكاملة لصحة الفم والأسنان وتقويم الأسنان والمسح الرقمي، بإشراف مباشر من د. معاذ سمير.
+        </p>
+
+        <div class="loc-hero-actions">
+          <app-button
+            variant="primary"
+            size="lg"
+            iconEnd="arrow-start"
+            ariaLabel="احجز موعد كشف في أقرب فرع"
+            (btnClick)="onBook()"
+          >
+            احجز موعد كشف
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            size="lg"
+            iconStart="whatsapp"
+            ariaLabel="تواصل عبر واتساب لتحديد الفرع"
+            (btnClick)="onWhatsApp()"
+          >
+            تواصل عبر واتساب
+          </app-button>
+        </div>
+
+        <div class="loc-phone-strip">
+          <button
+            type="button"
+            class="phone-touch-btn touch-target"
+            (click)="onCall()"
+            aria-label="الاتصال بالعيادة هاتفياً"
+          >
+            <app-icon name="phone" size="xs" class="phone-svg" />
+            <span>الرقم الموحد للحجز: <strong class="phone-number">{{ config().contact.phoneFormatted }}</strong></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="loc-hero-summary-box">
+        <div class="summary-card">
+          <div class="summary-header">
+            <app-icon name="location" size="md" class="summary-icon" />
+            <h3 class="summary-title">فرعان لخدمة مجتمع برج العرب</h3>
+          </div>
+          <div class="branches-mini-list">
+            <div class="mini-branch-item">
+              <span class="mini-num">01</span>
+              <div>
+                <strong class="mini-name">فرع برج العرب الجديدة</strong>
+                <p class="mini-desc">شارع الجهاز – أعلى صيدلية د. رشا (الدور الأول – بجوار سيتي لاب)</p>
+              </div>
+            </div>
+            <div class="mini-branch-item">
+              <span class="mini-num">02</span>
+              <div>
+                <strong class="mini-name">فرع برج العرب القديمة</strong>
+                <p class="mini-desc">شارع الوحدة الصحية – خلف مكتب البريد وخلف مسجد التقوى</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

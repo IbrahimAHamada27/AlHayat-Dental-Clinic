@@ -1,0 +1,25 @@
+<section class="section section-sage workflow-section" aria-label="سير العمل الرقمي السريري">
+  <div class="container container-max">
+    <app-section-heading
+      eyebrow="سير العمل السريري"
+      title="كيف يعمل المسح الفموي الرقمي خطوة بخطوة؟"
+      description="مراحل متتالية دقيقة تضمن تحويل القياسات إلى تيجان وتركيبات متطابقة تماماً مع بنية الفم الطبيعية."
+      align="center"
+    />
+
+    <div class="workflow-steps-grid">
+      @for (step of steps(); track step.number) {
+        <div class="workflow-step-card">
+          <div class="step-badge">{{ step.number }}</div>
+          <h3 class="step-title">{{ step.titleAr }}</h3>
+          <p class="step-desc">{{ step.descriptionAr }}</p>
+        </div>
+      }
+    </div>
+
+    <div class="workflow-disclaimer-note">
+      <app-icon name="info" size="xs" class="info-svg" />
+      <span>تختلف خطوات استخدام المسح الرقمي حسب نوع الحالة السريرية وطبيعة الإجراء المطلوب.</span>
+    </div>
+  </div>
+</section>

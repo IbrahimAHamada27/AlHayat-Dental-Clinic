@@ -1,0 +1,208 @@
+@if (activeArticle(); as art) {
+  <main class="article-detail-flow">
+    <!-- 1. Header & Breadcrumbs Section -->
+    <header class="section article-header-section" aria-label="عنوان المقال وبيانات النشر">
+      <div class="container container-md">
+        <!-- Breadcrumbs -->
+        <nav class="article-breadcrumbs" aria-label="مسار التنقل">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a routerLink="/" class="breadcrumb-link">الرئيسية</a>
+            </li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item">
+              <a routerLink="/blog" class="breadcrumb-link">المقالات والتثقيف الصحي</a>
+            </li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ art.titleAr }}</li>
+          </ol>
+        </nav>
+
+        <div class="article-meta-top">
+          <app-badge variant="sage">{{ art.categoryAr }}</app-badge>
+          <span class="reading-time">
+            <app-icon name="clock" size="xs" />
+            {{ art.readingTimeMinutes }} دقائق قراءة
+          </span>
+        </div>
+
+        <h1 class="article-main-title">{{ art.titleAr }}</h1>
+        <p class="article-main-excerpt">{{ art.excerptAr }}</p>
+
+        <div class="article-author-byline">
+          <div class="byline-avatar">
+            <app-icon name="user" size="sm" />
+          </div>
+          <div class="byline-info">
+            <strong class="byline-name">بقلم: {{ art.authorNameAr }}</strong>
+            <span class="byline-title">{{ art.authorTitleAr }}</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. Main Article Body & Table of Contents -->
+    <section class="section article-body-section" aria-label="محتوى المقال">
+      <div class="container container-md">
+        <!-- Table of Contents -->
+        @if (articleHeadings().length > 0) {
+          <app-article-toc [headings]="articleHeadings()" />
+        }
+
+        <!-- Structured Blocks Content -->
+        <app-article-renderer [blocks]="art.blocks" />
+
+        <!-- Social Share Strip -->
+        <app-article-share
+          [title]="art.titleAr"
+          [url]="articleUrl()"
+          (shareClick)="onShareClick($event)"
+        />
+
+        <!-- Doctor Author Bio Card -->
+        <div class="author-bio-card">
+          <div class="author-bio-head">
+            <div class="bio-avatar-frame">
+              <app-icon name="user" size="md" />
+            </div>
+            <div>
+              <h3 class="bio-name">{{ doctor.nameAr }}</h3>
+              <p class="bio-title">{{ doctor.safeTitleAr }}</p>
+            </div>
+          </div>
+          <p class="bio-desc">
+            طبيب أسنان يُعنى بتقديم رعاية شاملة لصحة الفم والأسنان وتقويم الأسنان وتوظيف التقنيات الرقمية في عيادة الحياة بفرعي برج العرب الجديدة والقديمة.
+          </p>
+          <div class="bio-action">
+            <a routerLink="/doctor" class="bio-link">
+              <span>تعرف على المسيرة المهنية لدكتور معاذ سمير</span>
+              <app-icon name="arrow-start" size="xs" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Article FAQs Accordion -->
+    @if (art.faqs && art.faqs.length > 0) {
+      <app-service-faq
+        [faqs]="art.faqs"
+        serviceTitle="الموضوع المطروح"
+      />
+    }
+
+    <!-- 4. Related Clinical Services -->
+    @if (relatedServices().length > 0) {
+      <section class="section section-sage related-services-section" aria-label="خدمات مرتبطة بالمقال">
+        <div class="container container-max">
+          <app-section-heading
+            eyebrow="خدمات مرتبطة"
+            title="إجراءات علاجية ذات صلة بهذا المقال"
+            description="تعرف على تفاصيل الخدمات الطبية المطبقة في عيادتنا."
+          />
+
+          <div class="services-3col-grid">
+            @for (srv of relatedServices(); track srv.id) {
+              <a [routerLink]="['/services', srv.slug]" class="service-compact-card">
+                <div class="srv-icon-badge">
+                  <app-icon [name]="srv.iconName" size="sm" />
+                </div>
+                <h3 class="srv-card-title">{{ srv.titleAr }}</h3>
+                <p class="srv-card-desc">{{ srv.shortDescriptionAr }}</p>
+                <div class="srv-box-arrow">
+                  <span>تفاصيل الخدمة</span>
+                  <app-icon name="arrow-start" size="xs" />
+                </div>
+              </a>
+            }
+          </div>
+        </div>
+      </section>
+    }
+
+    <!-- 5. Related Articles -->
+    @if (relatedArticles().length > 0) {
+      <section class="section related-articles-section" aria-label="مقالات ذات صلة">
+        <div class="container container-max">
+          <app-section-heading
+            eyebrow="مواصلة القراءة"
+            title="مقالات أخرى قد تهمك"
+            description="استكشف المزيد من الإرشادات والمعلومات الموثوقة لصحة فمك وأسنانك."
+          />
+
+          <div class="related-grid">
+            @for (rel of relatedArticles(); track rel.id) {
+              <app-article-card [article]="rel" />
+            }
+          </div>
+        </div>
+      </section>
+    }
+
+    <!-- 6. Local SEO Note & Final Consultation CTA -->
+    <section class="section article-final-cta-section" aria-label="حجز موعد استشارة">
+      <div class="container container-md text-center">
+        <div class="article-cta-wrapper">
+          <span class="cta-tag">استشارة وتقييم سريري</span>
+          <h2 class="cta-title">هل لديك استفسار يخص حالتك الفردية؟</h2>
+          <p class="cta-subtitle">
+            إذا كنت تبحث عن تقييم دقيق في برج العرب، يسعدنا استقبالك في عيادة الحياة لطب الأسنان بفرعي برج العرب الجديدة وبرج العرب القديمة بإشراف د. معاذ سمير.
+          </p>
+
+          <div class="cta-actions">
+            <app-button
+              variant="primary"
+              size="lg"
+              iconEnd="arrow-start"
+              ariaLabel="احجز استشارتك الآن"
+              (btnClick)="onBookingClick('article_detail_final_cta')"
+            >
+              احجز استشارتك الآن
+            </app-button>
+
+            <app-button
+              variant="secondary"
+              size="lg"
+              iconStart="whatsapp"
+              ariaLabel="تواصل عبر واتساب"
+              (btnClick)="onWhatsAppClick('article_detail_final_cta_whatsapp')"
+            >
+              تواصل عبر واتساب
+            </app-button>
+          </div>
+
+          <div class="cta-phone">
+            <button
+              type="button"
+              class="phone-touch-action touch-target"
+              (click)="onPhoneClick('article_detail_final_cta_phone')"
+              aria-label="الاتصال بالعيادة هاتفياً"
+            >
+              <app-icon name="phone" size="sm" class="phone-action-svg" />
+              <span>للحجز المباشر: <strong class="phone-num">{{ config.contact.phoneFormatted }}</strong></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+} @else {
+  <!-- 404 Fallback -->
+  <main class="not-found-flow section">
+    <div class="container container-md text-center">
+      <div class="not-found-card">
+        <app-icon name="alert-circle" size="xl" class="alert-svg" />
+        <h1 class="nf-title">عذراً، لم نتمكن من العثور على المقال المطلوب</h1>
+        <p class="nf-desc">قد يكون الرابط غير صحيح أو تم تحديث عنوان المقال.</p>
+        <div class="nf-actions">
+          <app-button variant="primary" size="md" [routerLink]="['/blog']">
+            العودة لصفحة المقالات
+          </app-button>
+          <app-button variant="outline" size="md" [routerLink]="['/services']">
+            استعراض الخدمات
+          </app-button>
+        </div>
+      </div>
+    </div>
+  </main>
+}

@@ -1,0 +1,25 @@
+<section class="section why-clinic-section" aria-label="فلسفة ومعايير الرعاية في عيادة الحياة">
+  <div class="container container-max">
+    <div class="why-header-wrap">
+      <app-section-heading
+        eyebrow="فلسفة الرعاية"
+        title="لأن كل حالة لها قصتها واحتياجاتها الخاصة"
+        description="نحرص على بناء علاقة علاجية مبنية على الثقة والشفافية الطبية لضمان سلامة وراحة أسنانك."
+        align="center"
+      />
+    </div>
+
+    <!-- 4 Pillars Staggered Grid -->
+    <div class="pillars-grid">
+      @for (pillar of pillars; track pillar.title) {
+        <div class="pillar-card">
+          <div class="pillar-icon-box">
+            <app-icon [name]="pillar.icon" size="md" />
+          </div>
+          <h3 class="pillar-title">{{ pillar.title }}</h3>
+          <p class="pillar-desc">{{ pillar.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

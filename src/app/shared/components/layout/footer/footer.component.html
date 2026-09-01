@@ -1,0 +1,142 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container container-max footer-container">
+    <!-- Top Grid Section -->
+    <div class="footer-grid">
+      <!-- Clinic Brand & Overview -->
+      <div class="footer-col footer-col-brand">
+        <div class="footer-brand-header">
+          <div class="brand-badge">
+            <app-icon name="tooth-align" size="md" />
+          </div>
+          <div class="brand-text">
+            <span class="footer-clinic-name">{{ config.clinicNameAr }}</span>
+            <span class="footer-clinic-name-en">{{ config.clinicNameEn }}</span>
+          </div>
+        </div>
+
+        <p class="footer-description">
+          {{ config.shortDescriptionAr }}
+        </p>
+
+        <div class="footer-doctor-badge">
+          <span class="badge-label">إشراف طبي:</span>
+          <strong class="doctor-name">{{ config.doctorNameAr }}</strong>
+          <span class="doctor-sub">طبيب أسنان</span>
+        </div>
+
+        <!-- Social Channels -->
+        @if (config.social.facebook || config.social.instagram) {
+          <div class="footer-social-links">
+            @if (config.social.facebook) {
+              <a
+                [href]="config.social.facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-btn touch-target"
+                aria-label="صفحة فيسبوك لعيادة الحياة"
+              >
+                <app-icon name="facebook" size="sm" />
+              </a>
+            }
+            @if (config.social.instagram) {
+              <a
+                [href]="config.social.instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-btn touch-target"
+                aria-label="حساب إنستجرام لعيادة الحياة"
+              >
+                <app-icon name="instagram" size="sm" />
+              </a>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="footer-col">
+        <h4 class="footer-title">روابط سريعة</h4>
+        <ul class="footer-links-list">
+          @for (link of quickLinks; track link.path) {
+            <li>
+              <a [routerLink]="link.path" class="footer-link">
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Clinic Branches -->
+      <div class="footer-col">
+        <h4 class="footer-title">فروع العيادة</h4>
+        <div class="footer-branches-list">
+          @for (loc of locations; track loc.id) {
+            <div class="branch-card">
+              <div class="branch-header">
+                <app-icon name="location" size="sm" class="branch-icon" />
+                <h5 class="branch-name">{{ loc.nameAr }}</h5>
+              </div>
+              <p class="branch-address">{{ loc.addressAr }}</p>
+              @if (loc.buildingDetailsAr) {
+                <p class="branch-details">{{ loc.buildingDetailsAr }}</p>
+              }
+              @if (loc.landmarksAr.length) {
+                <p class="branch-landmarks">{{ loc.landmarksAr.join(' • ') }}</p>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Direct Contact & Hours -->
+      <div class="footer-col">
+        <h4 class="footer-title">تواصل وحجز</h4>
+        <div class="footer-contact-items">
+          <button type="button" class="contact-card touch-target" (click)="onPhoneClick()">
+            <app-icon name="phone" size="sm" class="contact-icon" />
+            <div class="contact-meta">
+              <span class="contact-label">الاتصال الهاتفي المباشر</span>
+              <span class="contact-value phone-number">{{ config.contact.phoneFormatted }}</span>
+            </div>
+          </button>
+
+          <button type="button" class="contact-card touch-target" (click)="onWhatsAppClick()">
+            <app-icon name="whatsapp" size="sm" class="contact-icon" />
+            <div class="contact-meta">
+              <span class="contact-label">المحادثة والحجز عبر واتساب</span>
+              <span class="contact-value phone-number">{{ config.contact.phoneFormatted }}</span>
+            </div>
+          </button>
+
+          <div class="working-hours-summary">
+            <app-icon name="clock" size="sm" class="hours-icon" />
+            <div>
+              <span class="hours-title">مواعيد العمل:</span>
+              <p class="hours-text">السبت – الخميس: ٤:٠٠ م – ١٠:٠٠ م</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Legal Bar -->
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        <p>© {{ currentYear }} {{ config.clinicNameAr }} ({{ config.clinicNameEn }}). جميع الحقوق محفوظة.</p>
+      </div>
+
+      <nav class="footer-legal-nav" aria-label="الروابط القانونية">
+        <ul class="legal-links-list">
+          @for (item of legalLinks; track item.path) {
+            <li>
+              <a [routerLink]="item.path" class="legal-link">
+                {{ item.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>

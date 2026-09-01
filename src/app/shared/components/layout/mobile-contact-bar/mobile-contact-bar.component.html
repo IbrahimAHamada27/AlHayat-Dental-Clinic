@@ -1,0 +1,36 @@
+<aside class="mobile-bottom-bar" aria-label="أزرار التواصل السريع">
+  <div class="bar-grid">
+    <!-- Call Action -->
+    <button
+      type="button"
+      class="bar-action action-call touch-target"
+      aria-label="اتصال بالعيادة"
+      (click)="onCallClick()"
+    >
+      <app-icon name="phone" size="sm" class="action-icon" />
+      <span class="action-label">اتصال</span>
+    </button>
+
+    <!-- WhatsApp Action -->
+    <button
+      type="button"
+      class="bar-action action-whatsapp touch-target"
+      aria-label="محادثة واتساب"
+      (click)="onWhatsAppClick()"
+    >
+      <app-icon name="whatsapp" size="sm" class="action-icon" />
+      <span class="action-label">واتساب</span>
+    </button>
+
+    <!-- Primary Booking CTA -->
+    <button
+      type="button"
+      class="bar-action action-booking touch-target"
+      aria-label="احجز استشارتك"
+      (click)="onBookClick()"
+    >
+      <app-icon name="calendar" size="sm" class="action-icon" />
+      <span class="action-label">حجز كشف</span>
+    </button>
+  </div>
+</aside>

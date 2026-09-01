@@ -1,0 +1,44 @@
+<section class="section comparison-section" aria-label="مقارنة بين المقاس التقليدي والمقاس الرقمي">
+  <div class="container container-max">
+    <app-section-heading
+      eyebrow="تطور الإجراءات السريرية"
+      title="من المقاس التقليدي إلى المقاس الرقمي"
+      description="نظرة توضيحية هادئة وموضوعية حول الفارق بين أخذ الطبعة بالمواد التقليدية واستخدام المسح الضوئي الرقمي في الحالات المناسبة."
+      align="center"
+    />
+
+    <div class="comparison-grid">
+      <!-- Traditional Column -->
+      <div class="comparison-col traditional-col">
+        <div class="col-header">
+          <app-icon name="clock" size="sm" class="col-icon" />
+          <h3 class="col-title">{{ comparison().traditionalTitleAr }}</h3>
+        </div>
+        <ul class="points-list">
+          @for (point of comparison().traditionalPointsAr; track point) {
+            <li class="point-item">
+              <span class="bullet-dot">•</span>
+              <span>{{ point }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Digital Column -->
+      <div class="comparison-col digital-col">
+        <div class="col-header">
+          <app-icon name="sparkle" size="sm" class="col-icon" />
+          <h3 class="col-title">{{ comparison().digitalTitleAr }}</h3>
+        </div>
+        <ul class="points-list">
+          @for (point of comparison().digitalPointsAr; track point) {
+            <li class="point-item">
+              <app-icon name="check" size="xs" class="check-icon" />
+              <span>{{ point }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

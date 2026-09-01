@@ -1,0 +1,128 @@
+// ==========================================================================
+// AL HAYAT DENTAL CLINIC — UTILITIES & ACCESSIBILITY
+// Accessible Focus States, Screen Reader Helpers, Dividers
+// ==========================================================================
+
+// Screen Reader Only
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Focus Rings for Keyboard Navigation
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+// Skip To Main Content Link
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  right: var(--spacing-md);
+  background-color: var(--color-primary);
+  color: #ffffff;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-body-sm);
+  z-index: 9999;
+  transition: top var(--transition-fast);
+
+  [dir='ltr'] & {
+    right: auto;
+    left: var(--spacing-md);
+  }
+
+  &:focus {
+    top: var(--spacing-md);
+    outline: 3px solid var(--color-accent);
+  }
+}
+
+// Reset Link & Button Defaults
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-primary-light);
+  }
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+// Subtle Dividers
+.divider {
+  height: 1px;
+  background-color: var(--color-border);
+  margin-block: var(--spacing-lg);
+  border: none;
+}
+
+.divider-subtle {
+  height: 1px;
+  background-color: var(--color-border-subtle);
+  border: none;
+}
+
+.divider-dark {
+  height: 1px;
+  background-color: var(--color-border-dark);
+  border: none;
+}
+
+// Editorial Card Foundation
+.medical-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl);
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+
+  &:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+// Minimum Touch Target
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Smooth scrolling with reduced-motion respect
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

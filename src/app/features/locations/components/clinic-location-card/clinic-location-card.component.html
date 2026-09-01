@@ -1,0 +1,99 @@
+<article class="location-branch-card" [attr.aria-label]="location().nameAr">
+  <!-- Card Header -->
+  <div class="branch-card-header">
+    <div class="header-main-info">
+      <div class="branch-icon-frame">
+        <app-icon name="location" size="md" />
+      </div>
+      <div>
+        @if (location().isPrimary) {
+          <app-badge variant="primary" class="mb-2xs">الفرع الرئيسي</app-badge>
+        } @else {
+          <app-badge variant="sage" class="mb-2xs">فرع العيادة</app-badge>
+        }
+        <h3 class="branch-name">
+          <a [routerLink]="['/locations', location().slug]" class="branch-title-link">
+            {{ location().nameAr }}
+          </a>
+        </h3>
+        <p class="branch-district">{{ location().districtAr }}، {{ location().cityAr }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Address Block -->
+  <div class="branch-card-body">
+    <div class="address-item-row">
+      <app-icon name="home" size="xs" class="row-icon" />
+      <div class="row-text">
+        <strong class="row-label">العنوان:</strong>
+        <span class="row-value">{{ location().addressAr }}</span>
+      </div>
+    </div>
+
+    @if (location().buildingDetailsAr) {
+      <div class="address-item-row">
+        <app-icon name="info" size="xs" class="row-icon" />
+        <div class="row-text">
+          <strong class="row-label">تفاصيل المبنى:</strong>
+          <span class="row-value">{{ location().buildingDetailsAr }}</span>
+        </div>
+      </div>
+    }
+
+    @if (location().landmarksAr && location().landmarksAr.length > 0) {
+      <div class="address-item-row">
+        <app-icon name="award" size="xs" class="row-icon" />
+        <div class="row-text">
+          <strong class="row-label">علامات مميزة:</strong>
+          <span class="row-value">{{ location().landmarksAr.join(' • ') }}</span>
+        </div>
+      </div>
+    }
+
+    @if (location().directionsAr) {
+      <p class="directions-summary">{{ location().directionsAr }}</p>
+    }
+  </div>
+
+  <!-- Actions Row -->
+  <div class="branch-card-actions">
+    <app-button
+      variant="primary"
+      size="sm"
+      iconStart="location"
+      ariaLabel="فتح موقع الفرع على خرائط جوجل"
+      (btnClick)="onDirections()"
+    >
+      الاتجاهات على الخريطة
+    </app-button>
+
+    <app-button
+      variant="secondary"
+      size="sm"
+      iconStart="whatsapp"
+      ariaLabel="حجز موعد بالفرع عبر واتساب"
+      (btnClick)="onWhatsApp()"
+    >
+      واتساب
+    </app-button>
+
+    <app-button
+      variant="outline"
+      size="sm"
+      iconStart="phone"
+      ariaLabel="اتصال هاتفياً بالعيادة"
+      (btnClick)="onCall()"
+    >
+      اتصال
+    </app-button>
+  </div>
+
+  <!-- Detail Link Footer -->
+  <div class="branch-card-footer">
+    <a [routerLink]="['/locations', location().slug]" class="branch-detail-link">
+      <span>استعراض كافة تفاصيل الفرع والخدمات</span>
+      <app-icon name="arrow-start" size="xs" />
+    </a>
+  </div>
+</article>

@@ -1,0 +1,91 @@
+<section class="section services-hero-section" aria-label="مقدمة خدمات عيادة الحياة لطب الأسنان">
+  <div class="container container-max">
+    <!-- Breadcrumbs -->
+    <nav class="services-breadcrumbs" aria-label="مسار التنقل">
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item">
+          <a routerLink="/" class="breadcrumb-link">الرئيسية</a>
+        </li>
+        <li class="breadcrumb-separator" aria-hidden="true">/</li>
+        <li class="breadcrumb-item active" aria-current="page">خدمات العيادة</li>
+      </ol>
+    </nav>
+
+    <div class="services-hero-grid">
+      <div class="services-hero-content">
+        <div class="hero-eyebrow-wrap">
+          <span class="eyebrow">خدمات العيادة — {{ config().clinicNameAr }}</span>
+        </div>
+
+        <h1 class="services-hero-title">
+          رعاية متكاملة لصحة وجمال أسنانك
+        </h1>
+
+        <p class="services-hero-subtitle">
+          نقدم في عيادة الحياة مجموعة شاملة من الخدمات التشخيصية والعلاجية والوقائية وتجميل وتقويم الأسنان ببرج العرب، تبدأ بالفهم الدقيق لاحتياجاتك واستخدام التقنيات الحديثة لتوفير تجربة علاج مريحة وآمنة.
+        </p>
+
+        <div class="services-hero-actions">
+          <app-button
+            variant="primary"
+            size="lg"
+            iconEnd="arrow-start"
+            ariaLabel="احجز استشارتك في عيادة الحياة"
+            (btnClick)="onBook()"
+          >
+            احجز استشارتك
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            size="lg"
+            iconStart="whatsapp"
+            ariaLabel="استفسار فوري عبر واتساب"
+            (btnClick)="onWhatsApp()"
+          >
+            استفسار عبر واتساب
+          </app-button>
+        </div>
+
+        <div class="services-phone-strip">
+          <button
+            type="button"
+            class="phone-link touch-target"
+            (click)="onCall()"
+            aria-label="الاتصال بالعيادة هاتفياً"
+          >
+            <app-icon name="phone" size="xs" class="phone-icon" />
+            <span>للحجز والاستفسار: <strong class="phone-number">{{ config().contact.phoneFormatted }}</strong></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="services-hero-card-side">
+        <div class="clinic-scope-card">
+          <div class="scope-card-header">
+            <app-icon name="shield-check" size="md" class="scope-icon" />
+            <h3 class="scope-title">معايير تقديم الخدمة الطبية</h3>
+          </div>
+          <ul class="scope-points">
+            <li class="point-item">
+              <app-icon name="check" size="xs" class="check-bullet" />
+              <span>فحص سريري متأني وشرح واضح لكل خطوة للمريض.</span>
+            </li>
+            <li class="point-item">
+              <app-icon name="check" size="xs" class="check-bullet" />
+              <span>استخدام أحدث أجهزة المسح الضوئي الرقمي (Intraoral Scanner).</span>
+            </li>
+            <li class="point-item">
+              <app-icon name="check" size="xs" class="check-bullet" />
+              <span>أجهزة علاج العصب الآلية Rotary لتقليل وقت الجلسة والألم.</span>
+            </li>
+            <li class="point-item">
+              <app-icon name="check" size="xs" class="check-bullet" />
+              <span>أعلى مستويات التعقيم والراحة بفرعينا ببرج العرب.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

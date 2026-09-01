@@ -1,0 +1,127 @@
+// ==========================================================================
+// AL HAYAT DENTAL CLINIC — DESIGN TOKENS & VARIABLES
+// Premium Medical Editorial Palette & Metric Scale
+// ==========================================================================
+
+:root {
+  // Brand Primary — Deep Sophisticated Medical Green
+  --color-primary: #0e3d36;
+  --color-primary-hover: #134e45;
+  --color-primary-dark: #082622;
+  --color-primary-light: #1b5c53;
+  --color-primary-subtle: #e6f0ed;
+
+  // Brand Accent / Secondary — Muted Sage
+  --color-accent: #467568;
+  --color-accent-hover: #375e53;
+  --color-accent-light: #d6e4de;
+  --color-sage-soft: #f0f5f2;
+  --color-sage-border: #d4e2db;
+
+  // Backgrounds — Warm Editorial Off-White & Clean Surface
+  --color-background: #faf8f5;
+  --color-background-soft: #f3efe8;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f7faf8;
+  --color-surface-dark: #0a2d28;
+
+  // Typography & Content — Charcoal & Muted Greens
+  --color-text: #162420;
+  --color-text-secondary: #3b4e47;
+  --color-text-muted: #62776f;
+  --color-text-light: #899c95;
+  --color-text-inverse: #ffffff;
+  --color-text-inverse-muted: #c8ded7;
+
+  // Subtle Medical Borders
+  --color-border: #e2ede7;
+  --color-border-strong: #c8dcd2;
+  --color-border-subtle: #f0f5f2;
+  --color-border-dark: rgba(255, 255, 255, 0.12);
+
+  // Semantic States
+  --color-success: #1b633e;
+  --color-success-bg: #edf7f0;
+  --color-warning: #b25e02;
+  --color-warning-bg: #fef5ea;
+  --color-error: #b72b2b;
+  --color-error-bg: #fdf2f2;
+  --color-info: #135f8a;
+  --color-info-bg: #eff7fc;
+
+  // Typography Hierarchy
+  --font-family-arabic: 'IBM Plex Sans Arabic', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-latin: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-base: var(--font-family-arabic);
+
+  // Font Sizes
+  --font-size-display: clamp(2rem, 4vw, 3.25rem);
+  --font-size-h1: clamp(1.75rem, 3.2vw, 2.5rem);
+  --font-size-h2: clamp(1.5rem, 2.5vw, 2rem);
+  --font-size-h3: clamp(1.25rem, 2vw, 1.5rem);
+  --font-size-h4: 1.125rem;
+  --font-size-body-lg: 1.125rem;
+  --font-size-body: 1rem;
+  --font-size-body-sm: 0.875rem;
+  --font-size-caption: 0.75rem;
+  --font-size-button: 0.9375rem;
+  --font-size-label: 0.8125rem;
+
+  // Font Weights
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  // Spacing Scale
+  --spacing-3xs: 0.125rem; // 2px
+  --spacing-2xs: 0.25rem;  // 4px
+  --spacing-xs: 0.5rem;    // 8px
+  --spacing-sm: 0.75rem;   // 12px
+  --spacing-md: 1rem;      // 16px
+  --spacing-lg: 1.5rem;    // 24px
+  --spacing-xl: 2rem;      // 32px
+  --spacing-2xl: 3rem;     // 48px
+  --spacing-3xl: 4.5rem;   // 72px
+  --spacing-4xl: 6rem;     // 96px
+
+  // Container Max-Widths
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1200px;
+  --container-max: 1320px;
+
+  // Layout Gutters
+  --gutter-mobile: 1rem;
+  --gutter-tablet: 1.5rem;
+  --gutter-desktop: 2rem;
+
+  // Border Radius (Moderate, Architectural, Non-AI Pill Aesthetic)
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  // Shadows (Restrained, Subtle Medical Depth)
+  --shadow-xs: 0 1px 2px rgba(14, 61, 54, 0.04);
+  --shadow-sm: 0 2px 6px rgba(14, 61, 54, 0.06);
+  --shadow-md: 0 6px 18px rgba(14, 61, 54, 0.07);
+  --shadow-lg: 0 12px 36px rgba(14, 61, 54, 0.09);
+  --shadow-navbar: 0 2px 14px rgba(14, 61, 54, 0.05);
+
+  // Transitions
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  // Header & Navigation Heights
+  --navbar-height: 76px;
+  --navbar-height-mobile: 68px;
+  --mobile-bar-height: 68px;
+  --z-index-navbar: 100;
+  --z-index-drawer: 200;
+  --z-index-sticky-bar: 90;
+}

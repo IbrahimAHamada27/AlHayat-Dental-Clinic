@@ -1,0 +1,277 @@
+@if (activeCase(); as c) {
+  <main class="case-detail-flow">
+    <!-- 1. Hero & Breadcrumbs -->
+    <section class="section case-hero-section" aria-label="تفاصيل الحالة السريرية">
+      <div class="container container-max">
+        <!-- Breadcrumbs -->
+        <nav class="case-breadcrumbs" aria-label="مسار التنقل">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a routerLink="/" class="breadcrumb-link">الرئيسية</a>
+            </li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item">
+              <a routerLink="/cases" class="breadcrumb-link">الحالات والنتائج العلاجية</a>
+            </li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ c.titleAr }}</li>
+          </ol>
+        </nav>
+
+        <div class="case-hero-grid">
+          <!-- Text Overview -->
+          <div class="case-hero-text">
+            <div class="badges-row">
+              <app-badge variant="sage">{{ c.categoryAr }}</app-badge>
+              <span class="treatment-type-pill">{{ c.treatmentTypeAr }}</span>
+            </div>
+
+            <h1 class="case-title">{{ c.titleAr }}</h1>
+            <p class="case-desc">{{ c.shortDescriptionAr }}</p>
+
+            <div class="case-hero-ctas">
+              <app-button
+                variant="primary"
+                size="lg"
+                iconEnd="arrow-start"
+                (btnClick)="onBookingClick('case_detail_hero_book')"
+              >
+                احجز استشارة لحالتك
+              </app-button>
+
+              <app-button
+                variant="secondary"
+                size="lg"
+                iconStart="whatsapp"
+                (btnClick)="onWhatsAppClick('case_detail_hero_whatsapp')"
+              >
+                استفسار عبر واتساب
+              </app-button>
+            </div>
+          </div>
+
+          <!-- Interactive Before/After Visual -->
+          <div class="case-hero-slider-wrap">
+            <app-before-after-slider
+              [beforeImage]="c.beforeImage"
+              [afterImage]="c.afterImage"
+              [beforeLabel]="c.beforeLabelAr || 'قبل العلاج'"
+              [afterLabel]="c.afterLabelAr || 'بعد العلاج'"
+              [altText]="c.titleAr"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Clinical Overview & Notes -->
+    @if (c.overviewAr) {
+      <section class="section case-overview-section" aria-label="نظرة سريرية عامة">
+        <div class="container container-max">
+          <div class="overview-grid">
+            <div class="overview-main">
+              <app-section-heading
+                eyebrow="التقرير السريري"
+                title="السياق الطبي للحالة"
+              />
+              <p class="overview-text">{{ c.overviewAr }}</p>
+            </div>
+
+            @if (c.clinicalNotesAr && c.clinicalNotesAr.length > 0) {
+              <div class="clinical-notes-card">
+                <div class="notes-header">
+                  <app-icon name="shield-check" size="sm" class="notes-svg" />
+                  <h3 class="notes-title">ملاحظات الطبيب السريرية</h3>
+                </div>
+                <ul class="notes-list">
+                  @for (note of c.clinicalNotesAr; track note) {
+                    <li class="note-item">
+                      <app-icon name="check" size="xs" class="check-bullet" />
+                      <span>{{ note }}</span>
+                    </li>
+                  }
+                </ul>
+              </div>
+            }
+          </div>
+        </div>
+      </section>
+    }
+
+    <!-- 3. Treatment Approach Step-by-Step -->
+    @if (c.treatmentApproachAr && c.treatmentApproachAr.length > 0) {
+      <section class="section section-sage case-approach-section" aria-label="مراحل سير الخطة العلاجية">
+        <div class="container container-max">
+          <app-section-heading
+            eyebrow="خطة العلاج"
+            title="مراحل سير الخطة العلاجية"
+            description="الخطوات الطبية المتتالية التي تم تطبيقها للوصول إلى النتيجة المستقرة."
+            align="center"
+          />
+
+          <div class="approach-steps-grid">
+            @for (step of c.treatmentApproachAr; track step.number) {
+              <div class="approach-step-card">
+                <div class="step-num">{{ step.number }}</div>
+                <h3 class="step-title">{{ step.titleAr }}</h3>
+                <p class="step-desc">{{ step.descriptionAr }}</p>
+              </div>
+            }
+          </div>
+        </div>
+      </section>
+    }
+
+    <!-- 4. Related Services -->
+    @if (relatedServices().length > 0) {
+      <section class="section case-related-services-section" aria-label="خدمات مرتبطة بالحالة">
+        <div class="container container-max">
+          <app-section-heading
+            eyebrow="الخدمات المرتبطة"
+            title="إجراءات علاجية ذات صلة بهذه الحالة"
+            description="تعرف على تفاصيل الخدمات الطبية المطبقة في هذه الخطة."
+          />
+
+          <div class="related-services-grid">
+            @for (srv of relatedServices(); track srv.id) {
+              <a [routerLink]="['/services', srv.slug]" class="related-service-card">
+                <div class="srv-icon-frame">
+                  <app-icon [name]="srv.iconName" size="md" />
+                </div>
+                <h3 class="srv-card-title">{{ srv.titleAr }}</h3>
+                <p class="srv-card-desc">{{ srv.shortDescriptionAr }}</p>
+                <div class="srv-link-more">
+                  <span>تفاصيل الخدمة</span>
+                  <app-icon name="arrow-start" size="xs" />
+                </div>
+              </a>
+            }
+          </div>
+        </div>
+      </section>
+    }
+
+    <!-- 5. Locations Practice Block -->
+    <section class="section section-sage case-locations-section" aria-label="فروع العيادة ببرج العرب">
+      <div class="container container-max">
+        <app-section-heading
+          eyebrow="فروع العيادة"
+          title="احجز استشارتك بفرع برج العرب الأقرب إليك"
+          description="نستقبلكم في فرعي برج العرب الجديدة وبرج العرب القديمة بإشراف د. معاذ سمير."
+        />
+
+        <div class="grid-2">
+          @for (loc of locations; track loc.id) {
+            <app-card variant="surface" padding="spacious" class="case-loc-card">
+              <div class="loc-head">
+                <app-icon name="location" size="md" class="loc-pin" />
+                <div>
+                  <h3 class="loc-title">{{ loc.nameAr }}</h3>
+                  <p class="loc-address-text">{{ loc.addressAr }}</p>
+                </div>
+              </div>
+
+              <p class="loc-building-text">{{ loc.buildingDetailsAr }} ({{ loc.landmarksAr.join(' • ') }})</p>
+
+              <div class="loc-btns">
+                <app-button
+                  variant="primary"
+                  size="sm"
+                  iconStart="whatsapp"
+                  (btnClick)="onBranchWhatsApp(loc.nameAr)"
+                >
+                  حجز موعد بالفرع
+                </app-button>
+
+                <app-button
+                  variant="outline"
+                  size="sm"
+                  iconStart="phone"
+                  (btnClick)="onBranchCall(loc.nameAr)"
+                >
+                  اتصال هاتفياً
+                </app-button>
+              </div>
+            </app-card>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Subtle Medical Disclaimer -->
+    <div class="container container-max">
+      <div class="case-disclaimer-bar">
+        <app-icon name="info" size="xs" class="disc-icon" />
+        <p>
+          تنويه سريري: {{ c.disclaimerAr || 'النتيجة المعروضة تعكس مخرجات العلاج لهذه الحالة الفردية؛ وتختلف النتائج ومدة العلاج باختلاف الحالة السريرية لكل مريض.' }}
+        </p>
+      </div>
+    </div>
+
+    <!-- 7. Final Consultation CTA -->
+    <section class="section case-final-cta-section" aria-label="حجز موعد استشارة">
+      <div class="container container-md text-center">
+        <div class="cta-wrap">
+          <span class="cta-pill">استشارة طبية مخصصة</span>
+          <h2 class="cta-title">هل تفكر في إجراء علاجي مشابه؟</h2>
+          <p class="cta-subtitle">
+            ابدأ بحجز استشارة كشف وفحص شامل مع د. معاذ سمير في عيادة الحياة لطب الأسنان ببرج العرب لتشخيص حالتك بدقة وتحديد الخطة العلاجية الملائمة.
+          </p>
+
+          <div class="cta-buttons">
+            <app-button
+              variant="primary"
+              size="lg"
+              iconEnd="arrow-start"
+              ariaLabel="احجز استشارتك الآن"
+              (btnClick)="onBookingClick('case_detail_final_cta')"
+            >
+              احجز استشارتك الآن
+            </app-button>
+
+            <app-button
+              variant="secondary"
+              size="lg"
+              iconStart="whatsapp"
+              ariaLabel="تواصل عبر واتساب"
+              (btnClick)="onWhatsAppClick('case_detail_final_cta_whatsapp')"
+            >
+              تواصل عبر واتساب
+            </app-button>
+          </div>
+
+          <div class="cta-phone">
+            <button
+              type="button"
+              class="phone-touch-action touch-target"
+              (click)="onPhoneClick('case_detail_final_cta_phone')"
+              aria-label="الاتصال بالعيادة هاتفياً"
+            >
+              <app-icon name="phone" size="sm" class="phone-action-svg" />
+              <span>للحجز المباشر: <strong class="phone-num">{{ config.contact.phoneFormatted }}</strong></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+} @else {
+  <!-- 404 Fallback -->
+  <main class="not-found-flow section">
+    <div class="container container-md text-center">
+      <div class="not-found-card">
+        <app-icon name="alert-circle" size="xl" class="alert-svg" />
+        <h1 class="nf-title">عذراً، لم نتمكن من العثور على الحالة المطلوبة</h1>
+        <p class="nf-desc">قد يكون الرابط غير صحيح أو تم تحديث بيانات الحالة.</p>
+        <div class="nf-actions">
+          <app-button variant="primary" size="md" [routerLink]="['/cases']">
+            العودة لصفحة الحالات
+          </app-button>
+          <app-button variant="outline" size="md" [routerLink]="['/services']">
+            استعراض الخدمات
+          </app-button>
+        </div>
+      </div>
+    </div>
+  </main>
+}

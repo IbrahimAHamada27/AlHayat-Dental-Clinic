@@ -1,0 +1,57 @@
+<section class="section clinic-connection-section" aria-label="د. معاذ سمير في عيادة الحياة لطب الأسنان">
+  <div class="container container-max">
+    <div class="connection-layout">
+      <!-- Start: Context Narrative -->
+      <div class="connection-text">
+        <app-section-heading
+          eyebrow="العلامة والعيادة"
+          [title]="doctor().nameAr + ' في ' + config().clinicNameAr"
+          description="يمارس د. معاذ سمير عمله الطبي من خلال عيادة الحياة لطب الأسنان، موفراً أعلى مستويات الرعاية والتعقيم لخدمة مرضى برج العرب."
+        />
+
+        <p class="connection-body-text">
+          تأسست عيادة الحياة لطب الأسنان لتكون صرحاً طبياً يقدم تجربة علاجية هادئة وشخصية لكل مراجع. يعمل د. معاذ سمير وفريق العيادة المساعد بتنسيق متكامل لضمان تقديم تشخيص دقيق، وتطبيق المعايير الطبية المعتمدة في كافة التخصصات العلاجية والتجميلية.
+        </p>
+
+        <div class="connection-features-list">
+          <div class="feat-item">
+            <app-icon name="location" size="xs" class="feat-icon" />
+            <span>فرعان رئيسيان لخدمة أهالي برج العرب الجديدة وبرج العرب القديمة.</span>
+          </div>
+          <div class="feat-item">
+            <app-icon name="shield-check" size="xs" class="feat-icon" />
+            <span>بروتوكولات تعقيم صارمة وأجهزة طبية متطورة تضمن سلامتك أولاً.</span>
+          </div>
+          <div class="feat-item">
+            <app-icon name="sparkle" size="xs" class="feat-icon" />
+            <span>دمج تقنيات المسح الضوئي الرقمي لتحسين تجربة أخذ المقاسات والتركيبات.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- End: Visual Synergy Card -->
+      <div class="connection-brand-card">
+        <div class="brand-card-inner">
+          <div class="clinic-emblem">
+            <app-icon name="tooth-align" size="xl" class="emblem-icon" />
+          </div>
+
+          <h3 class="clinic-brand-title">{{ config().clinicNameAr }}</h3>
+          <span class="clinic-brand-latin">{{ config().clinicNameEn }}</span>
+
+          <p class="clinic-brand-tagline">
+            {{ config().taglineAr }}
+          </p>
+
+          <div class="divider-subtle"></div>
+
+          <div class="doctor-badge-footer">
+            <span class="badge-label">الإشراف الطبي:</span>
+            <strong class="badge-name">{{ doctor().nameAr }}</strong>
+            <span class="badge-role">({{ doctor().titleAr }})</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

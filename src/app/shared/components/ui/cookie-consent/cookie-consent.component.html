@@ -1,0 +1,125 @@
+<!-- Consent Banner (Shows when not answered) -->
+@if (!consentService.hasAnsweredConsent()) {
+  <aside class="consent-banner-shell" aria-label="إعدادات الخصوصية وملفات تعريف الارتباط" role="region">
+    <div class="container container-max">
+      <div class="consent-banner-inner">
+        <div class="consent-text-side">
+          <div class="consent-icon-circle">
+            <app-icon name="shield-check" size="sm" />
+          </div>
+          <div class="consent-message-wrap">
+            <strong class="consent-heading">نحرص على خصوصيتك</strong>
+            <p class="consent-desc">
+              نستخدم أدوات قياس مجهولة لتحسين تجربة تصفحك وتطوير المحتوى الطبي المقدم في عيادة الحياة دون حفظ أي بيانات شخصية أو صحية.
+            </p>
+          </div>
+        </div>
+
+        <div class="consent-actions-side">
+          <button
+            type="button"
+            class="consent-btn btn-accept-all touch-target"
+            (click)="onAcceptAll()"
+            aria-label="قبول كافة التفضيلات"
+          >
+            قبول الكل
+          </button>
+
+          <button
+            type="button"
+            class="consent-btn btn-necessary touch-target"
+            (click)="onAcceptNecessary()"
+            aria-label="قبول الضرورية فقط"
+          >
+            الضرورية فقط
+          </button>
+
+          <button
+            type="button"
+            class="consent-btn btn-manage touch-target"
+            (click)="onOpenPreferences()"
+            aria-label="تخصيص الخيارات"
+          >
+            تخصيص الخيارات
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+}
+
+<!-- Preferences Modal Dialog -->
+@if (consentService.isPreferencesModalOpen()) {
+  <div
+    class="consent-modal-backdrop"
+    (click)="onClosePreferences()"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-consent-title"
+  >
+    <div class="consent-modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h2 id="modal-consent-title" class="modal-title">
+          <app-icon name="shield-check" size="sm" class="modal-shield" />
+          إعدادات الخصوصية والتحليلات
+        </h2>
+        <button
+          type="button"
+          class="modal-close-btn"
+          (click)="onClosePreferences()"
+          aria-label="إغلاق النافذة"
+        >
+          <app-icon name="close" size="xs" />
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p class="modal-intro">
+          يمكنك تخصيص الأدوات والملفات التي توافق على تشغيلها أثناء تصفحك للموقع.
+        </p>
+
+        <!-- Toggle Item 1: Necessary -->
+        <div class="preference-item">
+          <div class="pref-text">
+            <strong class="pref-name">الأدوات والملفات الضرورية</strong>
+            <span class="pref-desc">لازمة لعمل وظائف الموقع الأساسية والأمان ولا يمكن تعطيلها.</span>
+          </div>
+          <span class="pref-badge always-active">دائماً نشطة</span>
+        </div>
+
+        <!-- Toggle Item 2: Analytics -->
+        <div class="preference-item">
+          <div class="pref-text">
+            <strong class="pref-name">التحليلات والإحصاءات (Google Analytics 4)</strong>
+            <span class="pref-desc">تساعدنا على فهم الصفحات الأكثر زيارة وتطوير تجربة المريض بشكل مجهول الهوية.</span>
+          </div>
+          <label class="switch-toggle">
+            <input type="checkbox" [checked]="analyticsToggle()" (change)="analyticsToggle.set(!analyticsToggle())" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <!-- Toggle Item 3: Marketing -->
+        <div class="preference-item">
+          <div class="pref-text">
+            <strong class="pref-name">التواصل والتسويق (Meta Pixel)</strong>
+            <span class="pref-desc">لقياس فاعلية حملات التوعية وتسهيل الوصول لخدمات العيادة عبر منصات التواصل.</span>
+          </div>
+          <label class="switch-toggle">
+            <input type="checkbox" [checked]="marketingToggle()" (change)="marketingToggle.set(!marketingToggle())" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-save-prefs touch-target" (click)="onSavePreferences()">
+          حفظ التفضيلات
+        </button>
+        <button type="button" class="btn-cancel-prefs touch-target" (click)="onClosePreferences()">
+          إلغاء
+        </button>
+      </div>
+    </div>
+  </div>
+}

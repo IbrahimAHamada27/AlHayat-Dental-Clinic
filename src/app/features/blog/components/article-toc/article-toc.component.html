@@ -1,0 +1,18 @@
+@if (headings().length > 0) {
+  <nav class="article-toc-box" aria-label="فهرس المقال">
+    <div class="toc-header">
+      <app-icon name="menu" size="xs" class="toc-icon" />
+      <h2 class="toc-title">محتويات المقال</h2>
+    </div>
+
+    <ol class="toc-list">
+      @for (h of headings(); track h.id) {
+        <li class="toc-item" [class.sub-heading]="h.level === 3">
+          <button type="button" class="toc-btn" (click)="scrollTo(h.id)">
+            {{ h.textAr }}
+          </button>
+        </li>
+      }
+    </ol>
+  </nav>
+}

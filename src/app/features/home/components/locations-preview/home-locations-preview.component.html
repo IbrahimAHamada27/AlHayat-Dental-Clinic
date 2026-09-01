@@ -1,0 +1,69 @@
+<section class="section locations-preview-section" aria-label="فروع العيادة في برج العرب">
+  <div class="container container-max">
+    <app-section-heading
+      eyebrow="فروعنا ببرج العرب"
+      title="زورنا في الفرع الأقرب إليك"
+      description="مواقع مميزة ومجهزة لخدمتكم في برج العرب الجديدة وبرج العرب القديمة مع إمكانية الحجز المسبق لتقليل وقت الانتظار."
+    />
+
+    <!-- Dual Branch Cards Grid -->
+    <div class="grid-2">
+      @for (loc of locations(); track loc.id) {
+        <app-card variant="surface" padding="spacious" class="location-branch-card">
+          <!-- Branch Header -->
+          <div class="branch-card-header">
+            <div class="branch-icon-wrap">
+              <app-icon name="location" size="md" />
+            </div>
+            <div class="branch-title-meta">
+              <h3 class="branch-heading">{{ loc.nameAr }}</h3>
+              <p class="branch-sub">{{ loc.addressAr }}</p>
+            </div>
+          </div>
+
+          <!-- Address & Landmarks Details -->
+          <div class="branch-address-box">
+            <span class="box-label">العنوان بالتفصيل:</span>
+            <p class="box-main-text">{{ loc.buildingDetailsAr }}</p>
+            @if (loc.landmarksAr.length) {
+              <div class="landmarks-list-wrap">
+                <span class="landmarks-label">علامات مميزة:</span>
+                <span class="landmarks-text">{{ loc.landmarksAr.join(' • ') }}</span>
+              </div>
+            }
+          </div>
+
+          <!-- Working Hours Mini Block -->
+          <div class="branch-hours-box">
+            <app-icon name="clock" size="xs" class="hours-icon" />
+            <div class="hours-content">
+              <span class="hours-title">مواعيد الكشف والاستقبال:</span>
+              <span class="hours-val">السبت – الخميس: ٤:٠٠ عصراً – ١٠:٠٠ مساءً</span>
+            </div>
+          </div>
+
+          <!-- Actions Row -->
+          <div class="branch-actions-row">
+            <app-button
+              variant="primary"
+              size="sm"
+              iconStart="whatsapp"
+              (btnClick)="onWhatsApp(loc.nameAr)"
+            >
+              حجز موعد بالفرع
+            </app-button>
+
+            <app-button
+              variant="outline"
+              size="sm"
+              iconStart="phone"
+              (btnClick)="onCall(loc.nameAr)"
+            >
+              اتصال هاتفياً
+            </app-button>
+          </div>
+        </app-card>
+      }
+    </div>
+  </div>
+</section>

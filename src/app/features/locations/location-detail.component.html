@@ -1,0 +1,280 @@
+@if (activeLocation(); as loc) {
+  <main class="location-detail-flow">
+    <!-- 1. Hero & Breadcrumbs -->
+    <section class="section loc-detail-hero-section" [attr.aria-label]="loc.nameAr">
+      <div class="container container-max">
+        <!-- Breadcrumbs -->
+        <nav class="loc-breadcrumbs" aria-label="مسار التنقل">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item">
+              <a routerLink="/" class="breadcrumb-link">الرئيسية</a>
+            </li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item">
+              <a routerLink="/locations" class="breadcrumb-link">فروع العيادة</a>
+            </li>
+            <li class="breadcrumb-separator" aria-hidden="true">/</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ loc.nameAr }}</li>
+          </ol>
+        </nav>
+
+        <div class="loc-detail-hero-grid">
+          <div class="loc-hero-info">
+            <div class="badges-row">
+              @if (loc.isPrimary) {
+                <app-badge variant="primary">الفرع الرئيسي</app-badge>
+              } @else {
+                <app-badge variant="sage">فرع العيادة</app-badge>
+              }
+              <span class="city-tag">{{ loc.districtAr }}، {{ loc.cityAr }}</span>
+            </div>
+
+            <h1 class="loc-main-title">{{ loc.nameAr }}</h1>
+            <p class="loc-main-desc">{{ loc.descriptionAr }}</p>
+
+            <div class="loc-hero-ctas">
+              <app-button
+                variant="primary"
+                size="lg"
+                iconStart="location"
+                (btnClick)="onDirectionsClick()"
+              >
+                الاتجاهات على الخريطة
+              </app-button>
+
+              <app-button
+                variant="secondary"
+                size="lg"
+                iconStart="whatsapp"
+                (btnClick)="onWhatsAppClick('loc_detail_hero_whatsapp')"
+              >
+                حجز موعد عبر واتساب
+              </app-button>
+
+              <app-button
+                variant="outline"
+                size="lg"
+                iconStart="phone"
+                (btnClick)="onPhoneClick('loc_detail_hero_phone')"
+              >
+                اتصال هاتفياً
+              </app-button>
+            </div>
+          </div>
+
+          <!-- Quick Address Card -->
+          <div class="loc-quick-address-card">
+            <div class="quick-card-head">
+              <app-icon name="location" size="md" class="loc-pin" />
+              <div>
+                <h3 class="quick-head-title">بيانات الموقع المباشر</h3>
+                <p class="quick-head-sub">{{ loc.addressAr }}</p>
+              </div>
+            </div>
+
+            <div class="quick-details-list">
+              <div class="quick-detail-item">
+                <span class="detail-label">العنوان التفصيلي:</span>
+                <span class="detail-val">{{ loc.addressAr }}</span>
+              </div>
+              <div class="quick-detail-item">
+                <span class="detail-label">الطابق والمعالم:</span>
+                <span class="detail-val">{{ loc.buildingDetailsAr }} ({{ loc.landmarksAr.join(' • ') }})</span>
+              </div>
+              <div class="quick-detail-item">
+                <span class="detail-label">هاتف الحجز المباشر:</span>
+                <span class="detail-val font-en">{{ loc.phoneFormatted }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Interactive Map & Step-by-Step Directions -->
+    <section class="section loc-directions-section" aria-label="خريطة الموقع وإرشادات الوصول">
+      <div class="container container-max">
+        <div class="directions-layout-grid">
+          <div class="directions-text-side">
+            <app-section-heading
+              eyebrow="إرشادات الوصول"
+              title="كيف تصل إلى الفرع؟"
+              description="تفاصيل واضحة تساعدك على الوصول إلى مقر العيادة بسهولة ويسر."
+            />
+
+            <div class="steps-box">
+              <div class="dir-step-item">
+                <span class="step-badge">1</span>
+                <div>
+                  <strong class="step-heading">المنطقة والشارع الرئيسي</strong>
+                  <p class="step-text">{{ loc.addressAr }}</p>
+                </div>
+              </div>
+
+              <div class="dir-step-item">
+                <span class="step-badge">2</span>
+                <div>
+                  <strong class="step-heading">العلامات المميزة المحيطة</strong>
+                  <p class="step-text">{{ loc.landmarksAr.join(' — ') }}</p>
+                </div>
+              </div>
+
+              <div class="dir-step-item">
+                <span class="step-badge">3</span>
+                <div>
+                  <strong class="step-heading">موقع العيادة داخل المبنى</strong>
+                  <p class="step-text">{{ loc.buildingDetailsAr }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="directions-map-side">
+            <app-location-map
+              [location]="loc"
+              (directionsClick)="onDirectionsClick()"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Available Dental Services at this Branch -->
+    <section class="section section-sage loc-services-section" aria-label="الخدمات الطبية المتاحة بالفرع">
+      <div class="container container-max">
+        <app-section-heading
+          eyebrow="الخدمات الطبية"
+          title="رعاية متكاملة متوفرة في هذا الفرع"
+          description="نوفر مجموعة متكاملة من خدمات طب الأسنان والتقويم والمسح الرقمي."
+        />
+
+        <div class="services-3col-grid">
+          @for (srv of allServices; track srv.id) {
+            <a [routerLink]="['/services', srv.slug]" class="service-link-box">
+              <div class="srv-icon-badge">
+                <app-icon [name]="srv.iconName" size="sm" />
+              </div>
+              <h3 class="srv-box-title">{{ srv.titleAr }}</h3>
+              <p class="srv-box-desc">{{ srv.shortDescriptionAr }}</p>
+              <div class="srv-box-arrow">
+                <span>تفاصيل الخدمة</span>
+                <app-icon name="arrow-start" size="xs" />
+              </div>
+            </a>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Other Branches Navigation -->
+    @if (otherLocations().length > 0) {
+      <section class="section loc-other-branches-section" aria-label="فروع أخرى لعيادة الحياة">
+        <div class="container container-max">
+          <app-section-heading
+            eyebrow="فروع أخرى"
+            title="فروع إضافية لعيادة الحياة لطب الأسنان"
+            description="يمكنكم أيضاً زيارة فروعنا الأخرى ببرج العرب بالتنسيق المسبق."
+          />
+
+          <div class="other-branches-grid">
+            @for (other of otherLocations(); track other.id) {
+              <div class="other-branch-card">
+                <div class="other-head">
+                  <app-icon name="location" size="sm" class="other-pin" />
+                  <div>
+                    <h3 class="other-name">{{ other.nameAr }}</h3>
+                    <p class="other-addr">{{ other.addressAr }}</p>
+                  </div>
+                </div>
+                <p class="other-desc">{{ other.buildingDetailsAr }} ({{ other.landmarksAr.join(' • ') }})</p>
+                <div class="other-actions">
+                  <app-button
+                    variant="primary"
+                    size="sm"
+                    [routerLink]="['/locations', other.slug]"
+                  >
+                    استعراض الفرع
+                  </app-button>
+                  <app-button
+                    variant="outline"
+                    size="sm"
+                    iconStart="whatsapp"
+                    (btnClick)="onWhatsAppClick('loc_other_branch_' + other.slug)"
+                  >
+                    واتساب
+                  </app-button>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </section>
+    }
+
+    <!-- 5. Final Consultation CTA -->
+    <section class="section loc-final-cta-section" aria-label="حجز موعد استشارة">
+      <div class="container container-md text-center">
+        <div class="cta-wrapper">
+          <span class="cta-pill">حجز موعد بالفرع</span>
+          <h2 class="cta-title">احجز استشارتك في {{ loc.nameAr }}</h2>
+          <p class="cta-subtitle">
+            تواصل مع فريق عيادة الحياة لتنسيق موعد الفحص السريري مع د. معاذ سمير في الوقت الأنسب لك.
+          </p>
+
+          <div class="cta-actions">
+            <app-button
+              variant="primary"
+              size="lg"
+              iconEnd="arrow-start"
+              ariaLabel="احجز استشارتك الآن"
+              (btnClick)="onBookingClick('loc_detail_final_cta')"
+            >
+              احجز استشارتك الآن
+            </app-button>
+
+            <app-button
+              variant="secondary"
+              size="lg"
+              iconStart="whatsapp"
+              ariaLabel="تواصل عبر واتساب"
+              (btnClick)="onWhatsAppClick('loc_detail_final_cta_whatsapp')"
+            >
+              تواصل عبر واتساب
+            </app-button>
+          </div>
+
+          <div class="cta-phone">
+            <button
+              type="button"
+              class="phone-touch-action touch-target"
+              (click)="onPhoneClick('loc_detail_final_cta_phone')"
+              aria-label="الاتصال بالعيادة هاتفياً"
+            >
+              <app-icon name="phone" size="sm" class="phone-action-svg" />
+              <span>هاتف الفرع: <strong class="phone-num">{{ loc.phoneFormatted }}</strong></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+} @else {
+  <!-- 404 Fallback -->
+  <main class="not-found-flow section">
+    <div class="container container-md text-center">
+      <div class="not-found-card">
+        <app-icon name="alert-circle" size="xl" class="alert-svg" />
+        <h1 class="nf-title">عذراً، لم نتمكن من العثور على الفرع المطلوب</h1>
+        <p class="nf-desc">قد يكون الرابط غير صحيح أو تم تحديث بيانات الفرع.</p>
+        <div class="nf-actions">
+          <app-button variant="primary" size="md" [routerLink]="['/locations']">
+            استعراض فروع العيادة
+          </app-button>
+          <app-button variant="outline" size="md" [routerLink]="['/contact']">
+            تواصل معنا
+          </app-button>
+        </div>
+      </div>
+    </div>
+  </main>
+}

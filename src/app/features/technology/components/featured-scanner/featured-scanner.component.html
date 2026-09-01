@@ -1,0 +1,98 @@
+<section class="section section-sage featured-scanner-section" id="intraoral-scanner" aria-label="جهاز الماسح الفموي الرقمي">
+  <div class="container container-max">
+    <div class="scanner-split-grid">
+      <!-- Text Side -->
+      <div class="scanner-text-side">
+        <div class="scanner-badge-row">
+          <app-badge variant="primary">التقنية المحورية بالعيادة</app-badge>
+          <span class="latin-sub">INTRAORAL SCANNER</span>
+        </div>
+
+        <h2 class="scanner-title">
+          الماسح الضوئي الفموي الرقمي (Intraoral Scanner)
+        </h2>
+
+        <p class="scanner-overview-text">
+          {{ scanner().overviewAr }}
+        </p>
+
+        <div class="scanner-use-cases">
+          <h3 class="use-cases-title">أبرز استخدامات الماسح الرقمي في عيادتنا:</h3>
+          <ul class="use-cases-list">
+            <li class="case-item">
+              <app-icon name="check" size="xs" class="check-bullet" />
+              <span>أخذ مقاسات دقيقة لتيجان وجسور الزيركون والإيماكس والعدسات التجميلية.</span>
+            </li>
+            <li class="case-item">
+              <app-icon name="check" size="xs" class="check-bullet" />
+              <span>تسجيل علاقة الإطباق ومحاذاة الأسنان لتخطيط حالات تقويم الأسنان.</span>
+            </li>
+            <li class="case-item">
+              <app-icon name="check" size="xs" class="check-bullet" />
+              <span>أرشفة ومتابعة التغيرات السنية واللثوية على المدى الطويل بدقة.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="scanner-actions-row">
+          <app-button
+            variant="primary"
+            size="md"
+            iconEnd="arrow-start"
+            ariaLabel="احجز استشارة كشف بالماسح الرقمي"
+            (btnClick)="onConsult()"
+          >
+            احجز استشارتك
+          </app-button>
+
+          <app-button
+            variant="outline"
+            size="md"
+            iconStart="whatsapp"
+            ariaLabel="استفسر عن المسح الرقمي عبر واتساب"
+            (btnClick)="onWhatsApp()"
+          >
+            اسألنا عن المسح الرقمي
+          </app-button>
+        </div>
+      </div>
+
+      <!-- Visual Side -->
+      <div class="scanner-visual-side">
+        <div class="scanner-tech-visual-frame">
+          <div class="visual-header-tag">
+            <app-icon name="sparkle" size="xs" />
+            <span>3D Digital Impression Architecture</span>
+          </div>
+
+          <div class="visual-schematic-box">
+            <div class="schematic-screen">
+              <div class="scan-grid-lines"></div>
+              <div class="mesh-point p1"></div>
+              <div class="mesh-point p2"></div>
+              <div class="mesh-point p3"></div>
+              <div class="mesh-point p4"></div>
+              <div class="scan-beam"></div>
+              <div class="screen-caption">Live 3D Arch Mesh</div>
+            </div>
+          </div>
+
+          <div class="visual-footer-info">
+            <div class="info-block">
+              <span class="info-lbl">زمن المسح</span>
+              <span class="info-val">دقائق معدودة</span>
+            </div>
+            <div class="info-block">
+              <span class="info-lbl">نقل البيانات</span>
+              <span class="info-val">رقمي وفوري</span>
+            </div>
+            <div class="info-block">
+              <span class="info-lbl">راحة المريض</span>
+              <span class="info-val">بدون معجون طبعة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

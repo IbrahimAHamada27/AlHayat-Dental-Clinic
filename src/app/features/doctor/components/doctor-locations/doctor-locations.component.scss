@@ -1,0 +1,129 @@
+.doctor-locations-section {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.location-practice-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-color: var(--color-border-strong);
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.practice-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.practice-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-sage-soft);
+  color: var(--color-primary);
+  border: 1px solid var(--color-sage-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.practice-header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.practice-name {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-dark);
+  margin: 0 0 2px;
+}
+
+.practice-address {
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.practice-detail-box {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  flex: 1;
+
+  .detail-label {
+    display: block;
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-muted);
+    margin-bottom: 2px;
+  }
+
+  .detail-main {
+    font-size: var(--font-size-body-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+    margin: 0 0 var(--spacing-2xs);
+  }
+
+  .landmarks-row {
+    font-size: var(--font-size-caption);
+    color: var(--color-accent);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-3xs);
+
+    .landmarks-title {
+      font-weight: var(--font-weight-semibold);
+    }
+  }
+}
+
+.practice-hours-box {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) 0;
+  margin-bottom: var(--spacing-lg);
+
+  .clock-icon {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .hours-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hours-label {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+  }
+
+  .hours-data {
+    font-size: var(--font-size-body-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+  }
+}
+
+.practice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}

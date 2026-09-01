@@ -1,0 +1,87 @@
+<section class="section cases-hero-section" aria-label="مقدمة الحالات والنتائج العلاجية">
+  <div class="container container-max">
+    <!-- Breadcrumbs -->
+    <nav class="cases-breadcrumbs" aria-label="مسار التنقل">
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item">
+          <a routerLink="/" class="breadcrumb-link">الرئيسية</a>
+        </li>
+        <li class="breadcrumb-separator" aria-hidden="true">/</li>
+        <li class="breadcrumb-item active" aria-current="page">الحالات والنتائج العلاجية</li>
+      </ol>
+    </nav>
+
+    <div class="cases-hero-grid">
+      <div class="cases-hero-content">
+        <div class="hero-eyebrow-wrap">
+          <span class="eyebrow">حالات علاجية مدروسة — {{ config().clinicNameAr }}</span>
+        </div>
+
+        <h1 class="cases-hero-title">
+          حالات ونتائج علاجية مدروسة
+        </h1>
+
+        <p class="cases-hero-subtitle">
+          نستعرض في هذا القسم نماذج لحالات عولجت بعناية في عيادة الحياة لتوضيح الخطط والإجراءات المتبعة؛ مع التأكيد على أن كل حالة لها خصوصيتها الفردية وتتطلب خطة علاجية مخصصة بناءً على التقييم السريري.
+        </p>
+
+        <div class="cases-hero-actions">
+          <app-button
+            variant="primary"
+            size="lg"
+            iconEnd="arrow-start"
+            ariaLabel="احجز استشارتك في عيادة الحياة"
+            (btnClick)="onBook()"
+          >
+            احجز استشارتك
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            size="lg"
+            iconStart="whatsapp"
+            ariaLabel="استفسار فوري عبر واتساب"
+            (btnClick)="onWhatsApp()"
+          >
+            استفسار عبر واتساب
+          </app-button>
+        </div>
+
+        <div class="cases-phone-strip">
+          <button
+            type="button"
+            class="phone-touch-btn touch-target"
+            (click)="onCall()"
+            aria-label="الاتصال بالعيادة هاتفياً"
+          >
+            <app-icon name="phone" size="xs" class="phone-svg" />
+            <span>للحجز المباشر: <strong class="phone-number">{{ config().contact.phoneFormatted }}</strong></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="cases-hero-ethics-side">
+        <div class="ethics-card">
+          <div class="ethics-card-header">
+            <app-icon name="shield-check" size="md" class="ethics-icon" />
+            <h3 class="ethics-title">ميثاق الخصوصية والدقة الطبية</h3>
+          </div>
+          <ul class="ethics-list">
+            <li class="ethics-item">
+              <app-icon name="check" size="xs" class="check-bullet" />
+              <span>موافقة موثقة ومعلنة لعرض الحالات لأغراض التوعية والتثقيف.</span>
+            </li>
+            <li class="ethics-item">
+              <app-icon name="check" size="xs" class="check-bullet" />
+              <span>حماية كاملة لخصوصية المرضى وعدم إظهار أي بيانات شخصية.</span>
+            </li>
+            <li class="ethics-item">
+              <app-icon name="check" size="xs" class="check-bullet" />
+              <span>عدم تقديم أي وعود مبالغ فيها أو نتائج نمطية مضمونة.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

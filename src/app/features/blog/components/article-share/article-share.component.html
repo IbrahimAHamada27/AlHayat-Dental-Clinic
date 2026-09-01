@@ -1,0 +1,35 @@
+<div class="article-share-strip" aria-label="مشاركة المقال">
+  <span class="share-label">مشاركة المقال:</span>
+
+  <div class="share-actions">
+    <button
+      type="button"
+      class="share-btn whatsapp-share touch-target"
+      (click)="shareWhatsApp()"
+      aria-label="مشاركة المقال عبر واتساب"
+    >
+      <app-icon name="whatsapp" size="xs" />
+      <span>واتساب</span>
+    </button>
+
+    <button
+      type="button"
+      class="share-btn facebook-share touch-target"
+      (click)="shareFacebook()"
+      aria-label="مشاركة المقال عبر فيسبوك"
+    >
+      <app-icon name="facebook" size="xs" />
+      <span>فيسبوك</span>
+    </button>
+
+    <button
+      type="button"
+      class="share-btn copy-share touch-target"
+      (click)="copyLink()"
+      aria-label="نسخ رابط المقال"
+    >
+      <app-icon name="external-link" size="xs" />
+      <span>{{ copied() ? 'تم النسخ!' : 'نسخ الرابط' }}</span>
+    </button>
+  </div>
+</div>

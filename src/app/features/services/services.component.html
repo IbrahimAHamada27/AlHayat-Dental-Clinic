@@ -1,0 +1,205 @@
+<main class="services-page-flow">
+  <!-- 1. Hero Section -->
+  <app-services-hero
+    [config]="config"
+    (bookingClick)="onBookingClick($event)"
+    (whatsAppClick)="onWhatsAppClick($event)"
+    (phoneClick)="onPhoneClick($event)"
+  />
+
+  <!-- 2. Services Catalog & Filter Section -->
+  <section class="section services-catalog-section" aria-label="دليل خدمات العيادة">
+    <div class="container container-max">
+      <!-- Section Heading -->
+      <app-section-heading
+        eyebrow="دليل الرعاية"
+        title="الخدمات الطبية والتجميلية المتاحة"
+        description="اختر التخصص المطلوب للاطلاع على تفاصيل الإجراء، ومراحله العلاجية، والأسئلة الشائعة حوله."
+        align="center"
+      />
+
+      <!-- Category Filter Tabs -->
+      <div class="category-tabs-container">
+        <div class="category-tabs-scroll" role="tablist" aria-label="أقسام الخدمات الطبية">
+          @for (cat of categories; track cat.id) {
+            <button
+              type="button"
+              class="category-tab-btn touch-target"
+              [class.active]="selectedCategory() === cat.id"
+              role="tab"
+              [attr.aria-selected]="selectedCategory() === cat.id"
+              (click)="setCategory(cat.id)"
+            >
+              <span>{{ cat.labelAr }}</span>
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Featured Highlight (when 'all' is selected) -->
+      @if (selectedCategory() === 'all' && featuredService(); as featured) {
+        <div class="featured-service-hero-card">
+          <div class="featured-inner-grid">
+            <div class="featured-text-side">
+              <div class="badge-row">
+                <app-badge variant="primary">خدمة مميزة بالعيادة</app-badge>
+                <app-badge variant="sage">{{ featured.categoryAr }}</app-badge>
+              </div>
+
+              <h2 class="featured-title">{{ featured.titleAr }}</h2>
+              <p class="featured-desc">{{ featured.overviewAr }}</p>
+
+              <div class="featured-benefits-row">
+                @for (benefit of featured.benefitsAr; track benefit) {
+                  <div class="benefit-chip">
+                    <app-icon name="check" size="xs" class="chip-check" />
+                    <span>{{ benefit }}</span>
+                  </div>
+                }
+              </div>
+
+              <div class="featured-action-row">
+                <app-button
+                  variant="primary"
+                  size="md"
+                  [routerLink]="['/services', featured.slug]"
+                  iconEnd="arrow-start"
+                  (btnClick)="onServiceCardClick(featured)"
+                >
+                  تفاصيل خدمة التقويم
+                </app-button>
+              </div>
+            </div>
+
+            <div class="featured-icon-side">
+              <div class="big-icon-frame">
+                <app-icon [name]="featured.iconName" size="xl" />
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Services Grid -->
+      <div class="services-catalog-grid">
+        @for (service of filteredServices(); track service.id) {
+          <a
+            [routerLink]="['/services', service.slug]"
+            class="catalog-service-card"
+            (click)="onServiceCardClick(service)"
+            [attr.aria-label]="service.titleAr"
+          >
+            <div class="card-top-row">
+              <div class="service-icon-box">
+                <app-icon [name]="service.iconName" size="md" />
+              </div>
+              <app-badge variant="sage">{{ service.categoryAr }}</app-badge>
+            </div>
+
+            <h3 class="service-name">{{ service.titleAr }}</h3>
+            <p class="service-description">{{ service.shortDescriptionAr }}</p>
+
+            <div class="card-footer-row">
+              <span class="read-more-text">تفاصيل الخدمة والأسئلة الشائعة</span>
+              <app-icon name="arrow-start" size="xs" class="arrow-icon" />
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Dual Branch Practice Locations Block -->
+  <section class="section section-sage services-locations-block" aria-label="فروع تقديم الخدمات ببرج العرب">
+    <div class="container container-max">
+      <app-section-heading
+        eyebrow="فروع العيادة"
+        title="خدماتنا متاحة في فرعي برج العرب"
+        description="نستقبلكم في موقعين استراتيجيين ببرج العرب الجديدة وبرج العرب القديمة مع إمكانية التنسيق المسبق."
+      />
+
+      <div class="grid-2">
+        @for (loc of locations; track loc.id) {
+          <app-card variant="surface" padding="spacious" class="service-loc-card">
+            <div class="loc-card-header">
+              <app-icon name="location" size="md" class="loc-icon" />
+              <div>
+                <h3 class="loc-name">{{ loc.nameAr }}</h3>
+                <p class="loc-addr">{{ loc.addressAr }}</p>
+              </div>
+            </div>
+
+            <p class="loc-details">{{ loc.buildingDetailsAr }} ({{ loc.landmarksAr.join(' • ') }})</p>
+
+            <div class="loc-actions-row">
+              <app-button
+                variant="primary"
+                size="sm"
+                iconStart="whatsapp"
+                (btnClick)="onBranchWhatsApp(loc.nameAr)"
+              >
+                حجز موعد بالفرع
+              </app-button>
+
+              <app-button
+                variant="outline"
+                size="sm"
+                iconStart="phone"
+                (btnClick)="onBranchCall(loc.nameAr)"
+              >
+                اتصال هاتفياً
+              </app-button>
+            </div>
+          </app-card>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Final Reassuring Consultation CTA -->
+  <section class="section services-final-cta-section" aria-label="حجز موعد استشارة">
+    <div class="container container-md text-center">
+      <div class="final-cta-wrapper">
+        <span class="cta-pill">عناية طبية متخصصة</span>
+        <h2 class="final-cta-title">هل ترغب في معرفة الخيار العلاجي الأنسب لحالتك؟</h2>
+        <p class="final-cta-subtitle">
+          ابدأ بحجز استشارة كشف وفحص شامل في عيادة الحياة لطب الأسنان، ودعنا نساعدك في الحفاظ على صحة وجمال ابتسامتك.
+        </p>
+
+        <div class="final-cta-btns">
+          <app-button
+            variant="primary"
+            size="lg"
+            iconEnd="arrow-start"
+            ariaLabel="احجز استشارتك الآن"
+            (btnClick)="onBookingClick('services_final_cta')"
+          >
+            احجز استشارتك الآن
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            size="lg"
+            iconStart="whatsapp"
+            ariaLabel="محادثة عبر واتساب"
+            (btnClick)="onWhatsAppClick('services_final_cta_whatsapp')"
+          >
+            تواصل عبر واتساب
+          </app-button>
+        </div>
+
+        <div class="final-cta-phone">
+          <button
+            type="button"
+            class="phone-touch touch-target"
+            (click)="onPhoneClick('services_final_cta_phone')"
+            aria-label="الاتصال بالعيادة هاتفياً"
+          >
+            <app-icon name="phone" size="sm" class="phone-icon-svg" />
+            <span>أو اتصل بنا مباشرة: <strong class="phone-number">{{ config.contact.phoneFormatted }}</strong></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

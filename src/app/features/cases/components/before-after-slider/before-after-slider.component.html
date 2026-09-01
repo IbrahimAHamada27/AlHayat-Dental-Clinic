@@ -1,0 +1,53 @@
+<div
+  #sliderContainer
+  class="before-after-wrapper"
+  [class.is-dragging]="isDragging()"
+  (pointerdown)="onPointerDown($event)"
+  (pointermove)="onPointerMove($event)"
+  (pointerup)="onPointerUp($event)"
+  (pointercancel)="onPointerUp($event)"
+  tabindex="0"
+  role="slider"
+  [attr.aria-label]="altText()"
+  [attr.aria-valuenow]="sliderPosition()"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  (keydown)="onKeyDown($event)"
+>
+  <!-- After Image (Base Layer - 100% width) -->
+  <div class="image-layer after-layer">
+    <img
+      [src]="afterImage()"
+      [alt]="afterLabel() + ' — ' + altText()"
+      class="slider-img"
+      loading="lazy"
+    />
+    <span class="state-pill after-pill">{{ afterLabel() }}</span>
+  </div>
+
+  <!-- Before Image (Clipped Overlay Layer) -->
+  <div
+    class="image-layer before-layer"
+    [style.clip-path]="'inset(0 ' + (100 - sliderPosition()) + '% 0 0)'"
+  >
+    <img
+      [src]="beforeImage()"
+      [alt]="beforeLabel() + ' — ' + altText()"
+      class="slider-img"
+      loading="lazy"
+    />
+    <span class="state-pill before-pill">{{ beforeLabel() }}</span>
+  </div>
+
+  <!-- Divider Line & Handle -->
+  <div
+    class="slider-divider"
+    [style.left.%]="sliderPosition()"
+    aria-hidden="true"
+  >
+    <div class="handle-button">
+      <app-icon name="chevron-start" size="xs" class="handle-arrow" />
+      <app-icon name="chevron-end" size="xs" class="handle-arrow" />
+    </div>
+  </div>
+</div>

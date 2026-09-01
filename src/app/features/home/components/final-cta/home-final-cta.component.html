@@ -1,0 +1,49 @@
+<section class="section final-cta-section" aria-label="حجز استشارة في عيادة الحياة">
+  <div class="container container-md text-center">
+    <div class="final-cta-content">
+      <span class="final-cta-badge">ابدأ عناية صحيحة بأسنانك</span>
+
+      <h2 class="final-cta-title">
+        ابدأ بخطوة بسيطة نحو عناية أفضل بصحة وجمال ابتسامتك
+      </h2>
+
+      <p class="final-cta-desc">
+        احجز موعد كشف واستشارة لدى {{ config().doctorNameAr }} في عيادة الحياة لطب الأسنان، أو تواصل معنا لمعرفة الفرع الأقرب إليك ومواعيد العمل.
+      </p>
+
+      <div class="final-cta-buttons">
+        <app-button
+          variant="primary"
+          size="lg"
+          iconEnd="arrow-start"
+          ariaLabel="احجز استشارتك الآن"
+          (btnClick)="onBook()"
+        >
+          احجز استشارتك الآن
+        </app-button>
+
+        <app-button
+          variant="secondary"
+          size="lg"
+          iconStart="whatsapp"
+          ariaLabel="تواصل فوري عبر واتساب"
+          (btnClick)="onWhatsApp()"
+        >
+          محادثة عبر واتساب
+        </app-button>
+      </div>
+
+      <div class="final-cta-call">
+        <button
+          type="button"
+          class="final-phone-link touch-target"
+          (click)="onCall()"
+          aria-label="الاتصال بالعيادة هاتفياً"
+        >
+          <app-icon name="phone" size="sm" class="phone-cta-icon" />
+          <span>أو اتصل بنا مباشرة: <strong class="phone-number">{{ config().contact.phoneFormatted }}</strong></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

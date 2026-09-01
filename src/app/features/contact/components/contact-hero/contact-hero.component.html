@@ -1,0 +1,70 @@
+<section class="contact-hero-box" aria-label="تواصل مع عيادة الحياة لطب الأسنان">
+  <div class="container container-max">
+    <!-- Breadcrumbs -->
+    <nav class="contact-breadcrumbs" aria-label="مسار التنقل">
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item">
+          <a routerLink="/" class="breadcrumb-link">الرئيسية</a>
+        </li>
+        <li class="breadcrumb-separator" aria-hidden="true">/</li>
+        <li class="breadcrumb-item active" aria-current="page">تواصل معنا</li>
+      </ol>
+    </nav>
+
+    <div class="hero-content text-center">
+      <span class="eyebrow">خدمة المرضى والحجوزات — {{ config.clinicNameAr }}</span>
+      <h1 class="hero-title">تواصل معنا لطلب كشف واستشارة</h1>
+      <p class="hero-subtitle">
+        يسعدنا استقبال استفساراتك وطلب موعدك في عيادة الحياة بفرعي برج العرب الجديدة وبرج العرب القديمة عبر واتساب أو الاتصال الهاتفي المباشر.
+      </p>
+
+      <!-- Fast Action Cards / Buttons -->
+      <div class="hero-actions-grid">
+        <button
+          type="button"
+          class="hero-action-card whatsapp-card touch-target"
+          (click)="whatsAppClick.emit()"
+          aria-label="محادثة واتساب سريعة"
+        >
+          <div class="action-icon-circle whatsapp-circle">
+            <app-icon name="whatsapp" size="sm" />
+          </div>
+          <div class="action-card-text">
+            <strong class="action-card-title">واتساب مباشر</strong>
+            <span class="action-card-sub">تواصل واستفسر فوراً</span>
+          </div>
+        </button>
+
+        <button
+          type="button"
+          class="hero-action-card phone-card touch-target"
+          (click)="phoneClick.emit()"
+          aria-label="الاتصال هاتفياً بالعيادة"
+        >
+          <div class="action-icon-circle phone-circle">
+            <app-icon name="phone" size="sm" />
+          </div>
+          <div class="action-card-text">
+            <strong class="action-card-title">{{ config.contact.phoneFormatted }}</strong>
+            <span class="action-card-sub">اتصال مباشر بالعيادة</span>
+          </div>
+        </button>
+
+        <button
+          type="button"
+          class="hero-action-card form-card touch-target"
+          (click)="scrollFormClick.emit()"
+          aria-label="الانتقال لنموذج طلب الاستشارة"
+        >
+          <div class="action-icon-circle form-circle">
+            <app-icon name="sparkle" size="sm" />
+          </div>
+          <div class="action-card-text">
+            <strong class="action-card-title">طلب استشارة</strong>
+            <span class="action-card-sub">حدد بيانات الموعد</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

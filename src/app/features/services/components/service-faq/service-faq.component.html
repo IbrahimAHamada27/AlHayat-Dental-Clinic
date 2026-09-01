@@ -1,0 +1,43 @@
+@if (faqs().length > 0) {
+  <section class="section service-faq-section" aria-label="الأسئلة الشائعة حول الخدمة">
+    <div class="container container-md">
+      <app-section-heading
+        eyebrow="الأسئلة الشائعة"
+        [title]="'أسئلة متكررة حول ' + serviceTitle()"
+        description="إجابات واضحة ومبسطة لأهم التساؤلات الطبية التي يطرحها المرضى قبل بدء العلاج."
+        align="center"
+      />
+
+      <div class="faq-accordion-list" role="region" aria-label="قائمة الأسئلة الشائعة">
+        @for (faq of faqs(); track faq.questionAr; let i = $index) {
+          <div class="faq-item-card" [class.is-open]="isOpen(i)">
+            <button
+              type="button"
+              class="faq-header-btn touch-target"
+              [attr.aria-expanded]="isOpen(i)"
+              [attr.aria-controls]="'faq-panel-' + i"
+              [id]="'faq-header-' + i"
+              (click)="toggleFaq(i, faq.questionAr)"
+            >
+              <span class="faq-question-text">{{ faq.questionAr }}</span>
+              <div class="faq-toggle-icon">
+                <app-icon [name]="isOpen(i) ? 'chevron-up' : 'chevron-down'" size="xs" />
+              </div>
+            </button>
+
+            @if (isOpen(i)) {
+              <div
+                class="faq-content-panel"
+                [id]="'faq-panel-' + i"
+                [attr.aria-labelledby]="'faq-header-' + i"
+                role="region"
+              >
+                <p class="faq-answer-text">{{ faq.answerAr }}</p>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}

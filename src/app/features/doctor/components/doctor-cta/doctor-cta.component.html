@@ -1,0 +1,49 @@
+<section class="section doctor-cta-section" aria-label="حجز موعد استشارة مع د. معاذ سمير">
+  <div class="container container-md text-center">
+    <div class="doctor-cta-content">
+      <span class="cta-mini-tag">استشارة طبية متخصصة</span>
+
+      <h2 class="doctor-cta-title">
+        هل لديك استفسار أو ترغب في حجز كشف مع {{ doctor().nameAr }}؟
+      </h2>
+
+      <p class="doctor-cta-subtitle">
+        تواصل مع العيادة لمعرفة المواعيد المتاحة والفرع الأقرب إليك ببرج العرب الجديدة أو القديمة.
+      </p>
+
+      <div class="doctor-cta-buttons">
+        <app-button
+          variant="primary"
+          size="lg"
+          iconEnd="arrow-start"
+          ariaLabel="احجز استشارتك مع الطبيب"
+          (btnClick)="onBook()"
+        >
+          احجز استشارتك الآن
+        </app-button>
+
+        <app-button
+          variant="secondary"
+          size="lg"
+          iconStart="whatsapp"
+          ariaLabel="تواصل عبر واتساب"
+          (btnClick)="onWhatsApp()"
+        >
+          محادثة عبر واتساب
+        </app-button>
+      </div>
+
+      <div class="doctor-cta-phone-wrap">
+        <button
+          type="button"
+          class="cta-phone-button touch-target"
+          (click)="onCall()"
+          aria-label="الاتصال بالعيادة هاتفياً"
+        >
+          <app-icon name="phone" size="sm" class="phone-svg" />
+          <span>أو الاتصال المباشر: <strong class="phone-number">{{ config().contact.phoneFormatted }}</strong></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

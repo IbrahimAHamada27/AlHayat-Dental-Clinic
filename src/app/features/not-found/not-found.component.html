@@ -1,0 +1,43 @@
+<main class="not-found-page-flow section">
+  <div class="container container-md text-center">
+    <div class="not-found-card">
+      <div class="nf-code-badge">404</div>
+
+      <div class="nf-icon-wrap">
+        <app-icon name="alert-circle" size="xl" />
+      </div>
+
+      <h1 class="nf-title">عذراً، لم نتمكن من العثور على الصفحة المطلوبة</h1>
+      <p class="nf-desc">
+        ربما تم نقل الصفحة أو تغيير عنوان الرابط. يمكنك العودة للصفحة الرئيسية أو استكشاف خدمات وفروع عيادة الحياة لطب الأسنان.
+      </p>
+
+      <div class="nf-actions-grid">
+        <app-button variant="primary" size="lg" iconEnd="arrow-start" [routerLink]="['/']">
+          العودة للصفحة الرئيسية
+        </app-button>
+
+        <app-button variant="secondary" size="lg" [routerLink]="['/services']">
+          استعراض الخدمات
+        </app-button>
+
+        <app-button variant="outline" size="lg" [routerLink]="['/contact']">
+          تواصل مع العيادة
+        </app-button>
+      </div>
+
+      <div class="nf-quick-links">
+        <span class="links-label">صفحات شائعة:</span>
+        <div class="links-row">
+          <a routerLink="/doctor" class="quick-link">عن د. معاذ سمير</a>
+          <span class="link-dot">•</span>
+          <a routerLink="/locations" class="quick-link">فروع العيادة ببرج العرب</a>
+          <span class="link-dot">•</span>
+          <a routerLink="/technology" class="quick-link">الماسح الرقمي 3D</a>
+          <span class="link-dot">•</span>
+          <a routerLink="/blog" class="quick-link">مقالات التثقيف الصحي</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

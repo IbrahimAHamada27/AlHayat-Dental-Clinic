@@ -1,0 +1,189 @@
+<main class="blog-page-flow">
+  <!-- 1. Hero Section -->
+  <section class="section blog-hero-section" aria-label="المقالات والتثقيف الصحي">
+    <div class="container container-max">
+      <!-- Breadcrumbs -->
+      <nav class="blog-breadcrumbs" aria-label="مسار التنقل">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a routerLink="/" class="breadcrumb-link">الرئيسية</a>
+          </li>
+          <li class="breadcrumb-separator" aria-hidden="true">/</li>
+          <li class="breadcrumb-item active" aria-current="page">المقالات والتثقيف الصحي</li>
+        </ol>
+      </nav>
+
+      <div class="blog-hero-content text-center">
+        <span class="eyebrow">مركز التثقيف الصحي — {{ config.clinicNameAr }}</span>
+        <h1 class="blog-hero-title">معلومات الأسنان بشكل بسيط وواضح</h1>
+        <p class="blog-hero-subtitle">
+          مقالات وإرشادات موثوقة تهدف إلى توعية المرضى بأسس العناية بصحة الفم والأسنان وشرح الإجراءات العلاجية الحديثة بإشراف د. معاذ سمير.
+        </p>
+
+        <!-- Search & Filter Controls -->
+        <div class="blog-search-bar">
+          <div class="search-input-wrap">
+            <app-icon name="tooth-fill" size="xs" class="search-svg" />
+            <input
+              type="text"
+              class="search-input"
+              placeholder="ابحث في المقالات (مثال: تقويم، ماسح رقمي، خيط الأسنان)..."
+              [value]="searchQuery()"
+              (input)="onSearchInput($event)"
+              aria-label="البحث في مقالات طب الأسنان"
+            />
+            @if (searchQuery()) {
+              <button type="button" class="clear-search-btn" (click)="clearSearch()" aria-label="مسح البحث">
+                <app-icon name="close" size="xs" />
+              </button>
+            }
+          </div>
+        </div>
+
+        <!-- Category Chips -->
+        <div class="category-chips-scroll" role="tablist" aria-label="أقسام المقالات">
+          @for (cat of categories; track cat.id) {
+            <button
+              type="button"
+              class="cat-chip-btn touch-target"
+              [class.active]="selectedCategory() === cat.id"
+              role="tab"
+              [attr.aria-selected]="selectedCategory() === cat.id"
+              (click)="setCategory(cat.id)"
+            >
+              <span>{{ cat.labelAr }}</span>
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Featured Article Spotlight (When viewing all and no active search) -->
+  @if (selectedCategory() === 'all' && !searchQuery() && featuredArticle(); as featured) {
+    <section class="section featured-article-section" aria-label="مقال مميز">
+      <div class="container container-max">
+        <article class="featured-spotlight-card">
+          <div class="spotlight-grid">
+            <div class="spotlight-text-side">
+              <div class="spotlight-meta">
+                <app-badge variant="primary">مقال مميز</app-badge>
+                <span class="spotlight-cat">{{ featured.categoryAr }}</span>
+                <span class="spotlight-time">{{ featured.readingTimeMinutes }} دقائق قراءة</span>
+              </div>
+
+              <h2 class="spotlight-title">
+                <a [routerLink]="['/blog', featured.slug]" (click)="onArticleClick(featured)">
+                  {{ featured.titleAr }}
+                </a>
+              </h2>
+
+              <p class="spotlight-excerpt">{{ featured.excerptAr }}</p>
+
+              <div class="spotlight-actions">
+                <app-button
+                  variant="primary"
+                  size="md"
+                  iconEnd="arrow-start"
+                  [routerLink]="['/blog', featured.slug]"
+                >
+                  قراءة المقال كاملاً
+                </app-button>
+              </div>
+            </div>
+
+            <div class="spotlight-visual-side">
+              <div class="spotlight-banner-frame">
+                <app-icon name="sparkle" size="xl" class="banner-icon" />
+                <span class="banner-label">إرشادات سريرية وتوعوية</span>
+                <strong class="banner-author">{{ doctor.nameAr }}</strong>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  }
+
+  <!-- 3. Articles Grid or Empty State -->
+  <section class="section articles-grid-section" aria-label="أحدث المقالات">
+    <div class="container container-max">
+      <div class="section-top-row">
+        <h2 class="section-main-heading">
+          {{ searchQuery() ? 'نتائج البحث' : 'أحدث المقالات المنشورة' }}
+        </h2>
+        <span class="articles-count">{{ filteredArticles().length }} مقال</span>
+      </div>
+
+      @if (latestArticles().length > 0) {
+        <div class="articles-grid">
+          @for (article of latestArticles(); track article.id) {
+            <app-article-card
+              [article]="article"
+              (cardClick)="onArticleClick($event)"
+            />
+          }
+        </div>
+      } @else {
+        <!-- Empty State -->
+        <div class="articles-empty-card">
+          <app-icon name="info" size="xl" class="empty-svg" />
+          <h3 class="empty-title">لا توجد مقالات مطابقة لبحثك</h3>
+          <p class="empty-desc">
+            جرّب البحث بكلمات أخرى أو تصفح المقالات بحسب الأقسام المتاحة.
+          </p>
+          <app-button variant="primary" size="md" (btnClick)="clearSearch(); setCategory('all')">
+            عرض كافة المقالات
+          </app-button>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- 4. Final Consultation CTA -->
+  <section class="section blog-final-cta-section" aria-label="حجز موعد استشارة">
+    <div class="container container-md text-center">
+      <div class="blog-cta-wrapper">
+        <span class="blog-cta-tag">استشارة طبية</span>
+        <h2 class="blog-cta-title">هل لديك استفسار عن صحة أسنانك؟</h2>
+        <p class="blog-cta-subtitle">
+          المعلومات التوعوية خطوة أولى، ويبقى الفحص السريري المباشر هو الطريق الدقيق للتشخيص. تواصل معنا في عيادة الحياة ببرج العرب لحجز موعد استشارتك.
+        </p>
+
+        <div class="blog-cta-btns">
+          <app-button
+            variant="primary"
+            size="lg"
+            iconEnd="arrow-start"
+            ariaLabel="احجز استشارتك الآن"
+            (btnClick)="onBookingClick('blog_final_cta')"
+          >
+            احجز استشارتك الآن
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            size="lg"
+            iconStart="whatsapp"
+            ariaLabel="تواصل عبر واتساب"
+            (btnClick)="onWhatsAppClick('blog_final_cta_whatsapp')"
+          >
+            تواصل عبر واتساب
+          </app-button>
+        </div>
+
+        <div class="blog-cta-phone">
+          <button
+            type="button"
+            class="phone-touch-action touch-target"
+            (click)="onPhoneClick('blog_final_cta_phone')"
+            aria-label="الاتصال بالعيادة هاتفياً"
+          >
+            <app-icon name="phone" size="sm" class="phone-action-svg" />
+            <span>للحجز والاستفسار: <strong class="phone-num">{{ config.contact.phoneFormatted }}</strong></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

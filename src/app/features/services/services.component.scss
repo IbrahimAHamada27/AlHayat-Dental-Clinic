@@ -1,0 +1,373 @@
+.services-page-flow {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.services-catalog-section {
+  background-color: var(--color-background);
+}
+
+// Category Tabs
+.category-tabs-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.category-tabs-scroll {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  overflow-x: auto;
+  padding: 4px;
+  max-width: 100%;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.category-tab-btn {
+  padding: 0.5rem 1.15rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-primary);
+  }
+
+  &.active {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-xs);
+  }
+}
+
+// Featured Service Hero Card
+.featured-service-hero-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-2xl);
+  box-shadow: var(--shadow-sm);
+
+  @media (min-width: 768px) {
+    padding: var(--spacing-2xl);
+  }
+}
+
+.featured-inner-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+
+  @media (min-width: 992px) {
+    grid-template-columns: 1.25fr 0.75fr;
+  }
+}
+
+.badge-row {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
+}
+
+.featured-title {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.featured-desc {
+  font-size: var(--font-size-body-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  margin-bottom: var(--spacing-lg);
+}
+
+.featured-benefits-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-xl);
+}
+
+.benefit-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2xs);
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text);
+
+  .chip-check {
+    color: var(--color-accent);
+  }
+}
+
+.big-icon-frame {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-sage-soft) 0%, var(--color-primary-subtle) 100%);
+  color: var(--color-primary);
+  border: 1px solid var(--color-sage-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+}
+
+// Catalog Grid
+.services-catalog-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+}
+
+.catalog-service-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
+
+    .service-icon-box {
+      background-color: var(--color-primary);
+      color: #ffffff;
+    }
+
+    .service-name {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.service-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-sage-soft);
+  color: var(--color-primary);
+  border: 1px solid var(--color-sage-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.service-name {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-dark);
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.35;
+  transition: color var(--transition-fast);
+}
+
+.service-description {
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--spacing-lg);
+  flex: 1;
+}
+
+.card-footer-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2xs);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: var(--spacing-sm);
+
+  .arrow-icon {
+    transition: transform var(--transition-fast);
+  }
+
+  .catalog-service-card:hover & .arrow-icon {
+    transform: translateX(-3px);
+
+    [dir='ltr'] & {
+      transform: translateX(3px);
+    }
+  }
+}
+
+// Locations Block
+.services-locations-block {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.service-loc-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.loc-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+
+  .loc-icon {
+    color: var(--color-accent);
+    margin-top: 2px;
+  }
+
+  .loc-name {
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-dark);
+    margin: 0;
+  }
+
+  .loc-addr {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+}
+
+.loc-details {
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+  flex: 1;
+}
+
+.loc-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+// Final CTA
+.services-final-cta-section {
+  background: linear-gradient(145deg, #0e3d36 0%, #082622 100%);
+  color: var(--color-text-inverse);
+  padding-block: var(--spacing-3xl);
+
+  @media (min-width: 992px) {
+    padding-block: var(--spacing-4xl);
+  }
+}
+
+.final-cta-wrapper {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.cta-pill {
+  display: inline-block;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #a8d3c5;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--spacing-md);
+}
+
+.final-cta-title {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-bold);
+  color: #ffffff;
+  line-height: 1.3;
+  margin-bottom: var(--spacing-md);
+}
+
+.final-cta-subtitle {
+  font-size: var(--font-size-body-lg);
+  color: #c8ded7;
+  line-height: 1.7;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.final-cta-btns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.final-cta-phone {
+  display: flex;
+  justify-content: center;
+}
+
+.phone-touch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-body-sm);
+  color: #a8d3c5;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+
+  &:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .phone-icon-svg {
+    color: #a8d3c5;
+  }
+
+  .phone-number {
+    color: #ffffff;
+  }
+}
+
+.text-center {
+  text-align: center;
+}

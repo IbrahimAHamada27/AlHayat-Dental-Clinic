@@ -1,0 +1,36 @@
+@if (relatedServices().length > 0) {
+  <section class="section related-services-section" aria-label="خدمات طبية ذات صلة">
+    <div class="container container-max">
+      <app-section-heading
+        eyebrow="خدمات مرتبطة"
+        title="خدمات قد تهمك أيضاً"
+        description="استكشف المزيد من خدمات الرعاية المتكاملة لصحة الفم والأسنان المتاحة في عيادة الحياة."
+      />
+
+      <div class="related-services-grid">
+        @for (srv of relatedServices(); track srv.id) {
+          <a
+            [routerLink]="['/services', srv.slug]"
+            class="related-service-card"
+            (click)="onServiceClick(srv.slug)"
+            [attr.aria-label]="srv.titleAr"
+          >
+            <div class="card-icon-box">
+              <app-icon [name]="srv.iconName" size="md" />
+            </div>
+
+            <div class="card-text-block">
+              <app-badge variant="sage" class="mb-xs">{{ srv.categoryAr }}</app-badge>
+              <h3 class="card-title">{{ srv.titleAr }}</h3>
+              <p class="card-desc">{{ srv.shortDescriptionAr }}</p>
+            </div>
+
+            <div class="card-arrow-icon">
+              <app-icon name="arrow-start" size="xs" />
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+}

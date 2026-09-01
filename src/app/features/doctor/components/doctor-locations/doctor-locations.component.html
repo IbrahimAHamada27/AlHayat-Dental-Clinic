@@ -1,0 +1,65 @@
+<section class="section section-sage doctor-locations-section" aria-label="فروع ممارسة الدكتور معاذ سمير">
+  <div class="container container-max">
+    <app-section-heading
+      eyebrow="فروع الممارسة"
+      title="أين يمارس د. معاذ سمير؟"
+      description="نستقبلكم في فرعي عيادة الحياة ببرج العرب، مع إمكانية التنسيق المسبق لاختيار الموعد والفرع الأقرب إليك."
+    />
+
+    <!-- Dual Branch Cards -->
+    <div class="grid-2">
+      @for (loc of locations(); track loc.id) {
+        <app-card variant="surface" padding="spacious" class="location-practice-card">
+          <div class="practice-card-header">
+            <div class="practice-icon-box">
+              <app-icon name="location" size="md" />
+            </div>
+            <div class="practice-header-text">
+              <h3 class="practice-name">{{ loc.nameAr }}</h3>
+              <p class="practice-address">{{ loc.addressAr }}</p>
+            </div>
+          </div>
+
+          <div class="practice-detail-box">
+            <span class="detail-label">تفاصيل العنوان:</span>
+            <p class="detail-main">{{ loc.buildingDetailsAr }}</p>
+            @if (loc.landmarksAr.length) {
+              <div class="landmarks-row">
+                <span class="landmarks-title">علامات قريبة:</span>
+                <span class="landmarks-content">{{ loc.landmarksAr.join(' • ') }}</span>
+              </div>
+            }
+          </div>
+
+          <div class="practice-hours-box">
+            <app-icon name="clock" size="xs" class="clock-icon" />
+            <div class="hours-text">
+              <span class="hours-label">مواعيد التواجد والكشف:</span>
+              <span class="hours-data">السبت – الخميس: ٤:٠٠ عصراً – ١٠:٠٠ مساءً</span>
+            </div>
+          </div>
+
+          <div class="practice-actions">
+            <app-button
+              variant="primary"
+              size="sm"
+              iconStart="whatsapp"
+              (btnClick)="onWhatsApp(loc.nameAr)"
+            >
+              حجز موعد بالفرع
+            </app-button>
+
+            <app-button
+              variant="outline"
+              size="sm"
+              iconStart="phone"
+              (btnClick)="onCall(loc.nameAr)"
+            >
+              اتصال هاتفياً
+            </app-button>
+          </div>
+        </app-card>
+      }
+    </div>
+  </div>
+</section>

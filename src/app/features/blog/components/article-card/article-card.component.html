@@ -1,0 +1,29 @@
+<article class="article-editorial-card" [attr.aria-label]="article().titleAr">
+  <div class="card-meta-bar">
+    <app-badge variant="sage">{{ article().categoryAr }}</app-badge>
+    <div class="meta-time-wrap">
+      <app-icon name="clock" size="xs" class="meta-icon" />
+      <span>{{ article().readingTimeMinutes }} دقائق قراءة</span>
+    </div>
+  </div>
+
+  <h3 class="article-card-title">
+    <a [routerLink]="['/blog', article().slug]" (click)="onSelect()" class="title-anchor">
+      {{ article().titleAr }}
+    </a>
+  </h3>
+
+  <p class="article-card-excerpt">{{ article().excerptAr }}</p>
+
+  <div class="card-author-footer">
+    <div class="author-info">
+      <app-icon name="user" size="xs" class="author-icon" />
+      <span>{{ article().authorNameAr }}</span>
+    </div>
+
+    <a [routerLink]="['/blog', article().slug]" (click)="onSelect()" class="read-link">
+      <span>قراءة المقال</span>
+      <app-icon name="arrow-start" size="xs" class="read-arrow" />
+    </a>
+  </div>
+</article>

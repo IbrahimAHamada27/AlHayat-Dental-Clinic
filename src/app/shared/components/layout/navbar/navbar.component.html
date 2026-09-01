@@ -1,0 +1,154 @@
+<header
+  class="site-header"
+  [class.header-scrolled]="isScrolled()"
+  role="banner"
+>
+  <div class="container container-max header-container">
+    <!-- Brand / Logo Treatment -->
+    <a routerLink="/" class="brand-logo" aria-label="عيادة الحياة لطب الأسنان - الرئيسية">
+      <div class="brand-icon-box">
+        <app-icon name="tooth-align" size="md" />
+      </div>
+      <div class="brand-text">
+        <span class="brand-title-ar">{{ config.clinicNameAr }}</span>
+        <span class="brand-subtitle-en">{{ config.clinicNameEn }}</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav" aria-label="القائمة الرئيسية" role="navigation">
+      <ul class="nav-list">
+        @for (item of navItems; track item.path) {
+          <li class="nav-item">
+            <a
+              [routerLink]="item.path"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: item.exact || false }"
+              class="nav-link"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Desktop Actions -->
+    <div class="header-actions">
+      <app-button
+        variant="primary"
+        size="md"
+        iconEnd="arrow-start"
+        ariaLabel="احجز استشارتك في عيادة الحياة"
+        (btnClick)="onBookingClick('navbar_desktop')"
+      >
+        احجز استشارتك
+      </app-button>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button
+        type="button"
+        class="mobile-menu-trigger touch-target"
+        [attr.aria-expanded]="isMobileMenuOpen()"
+        aria-controls="mobile-nav-drawer"
+        aria-label="فتح قائمة التصفح"
+        (click)="toggleMobileMenu()"
+      >
+        <app-icon [name]="isMobileMenuOpen() ? 'close' : 'menu'" size="md" />
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer & Backdrop -->
+<div
+  id="mobile-nav-drawer"
+  class="mobile-drawer-wrapper"
+  [class.is-open]="isMobileMenuOpen()"
+  aria-modal="true"
+  role="dialog"
+  [attr.aria-hidden]="!isMobileMenuOpen()"
+>
+  <!-- Backdrop -->
+  <div
+    class="mobile-backdrop"
+    (click)="closeMobileMenu()"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Drawer Panel -->
+  <div class="mobile-drawer-panel">
+    <div class="drawer-header">
+      <div class="brand-text">
+        <span class="brand-title-ar">{{ config.clinicNameAr }}</span>
+        <span class="brand-doctor">{{ config.doctorNameAr }}</span>
+      </div>
+      <button
+        type="button"
+        class="drawer-close-btn touch-target"
+        aria-label="إغلاق القائمة"
+        (click)="closeMobileMenu()"
+      >
+        <app-icon name="close" size="md" />
+      </button>
+    </div>
+
+    <nav class="drawer-nav" aria-label="قائمة التصفح للهواتف">
+      <ul class="drawer-list">
+        @for (item of navItems; track item.path) {
+          <li class="drawer-item">
+            <a
+              [routerLink]="item.path"
+              routerLinkActive="drawer-active"
+              [routerLinkActiveOptions]="{ exact: item.exact || false }"
+              class="drawer-link"
+              (click)="closeMobileMenu()"
+            >
+              <span>{{ item.label }}</span>
+              <app-icon name="chevron-start" size="sm" class="drawer-arrow" />
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <div class="drawer-footer">
+      <app-button
+        variant="primary"
+        size="lg"
+        [fullWidth]="true"
+        iconEnd="arrow-start"
+        (btnClick)="onBookingClick('mobile_menu_cta')"
+      >
+        احجز استشارتك
+      </app-button>
+
+      <div class="drawer-contact-actions">
+        <app-button
+          variant="secondary"
+          size="md"
+          [fullWidth]="true"
+          iconStart="whatsapp"
+          (btnClick)="onWhatsAppClick('mobile_menu_whatsapp')"
+        >
+          واتساب
+        </app-button>
+
+        <app-button
+          variant="outline"
+          size="md"
+          [fullWidth]="true"
+          iconStart="phone"
+          (btnClick)="onPhoneClick('mobile_menu_phone')"
+        >
+          اتصال هاتفياً
+        </app-button>
+      </div>
+
+      <div class="drawer-clinic-meta">
+        <p class="drawer-phone">{{ config.contact.phoneFormatted }}</p>
+        <p class="drawer-branches">فرعي: برج العرب الجديدة والقديمة</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+@if (articles().length > 0) {
+  <section class="section articles-preview-section" aria-label="المقالات والتوعية الطبية">
+    <div class="container container-max">
+      <app-section-heading
+        eyebrow="نصائح وتوعية"
+        title="إرشادات طبية لصحة وسلامة أسنانك"
+        description="معلومات موثوقة ونصائح عملية للعناية اليومية بالفم والوقاية من مشكلات الأسنان واللثة."
+      >
+        <app-button action variant="text" routerLink="/blog" iconEnd="arrow-start">
+          جميع المقالات الطبية
+        </app-button>
+      </app-section-heading>
+
+      <!-- Articles Grid -->
+      <div class="grid-3">
+        @for (article of articles(); track article.id) {
+          <a
+            [routerLink]="['/blog', article.slug]"
+            class="article-card-link"
+            [attr.aria-label]="article.titleAr"
+          >
+            <app-card variant="surface" padding="spacious" class="article-card">
+              <div class="article-badge-wrap">
+                <app-badge variant="sage">{{ article.categoryAr }}</app-badge>
+              </div>
+
+              <h3 class="article-title">{{ article.titleAr }}</h3>
+              <p class="article-excerpt">{{ article.excerptAr }}</p>
+
+              <div class="article-meta-row">
+                <span class="meta-item">
+                  <app-icon name="calendar" size="xs" />
+                  <span>{{ article.publishedDate }}</span>
+                </span>
+                <span class="meta-item">
+                  <app-icon name="clock" size="xs" />
+                  <span>{{ article.readTimeMinutes }} دقائق قراءة</span>
+                </span>
+              </div>
+            </app-card>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+}

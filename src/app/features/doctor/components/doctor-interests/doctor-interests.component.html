@@ -1,0 +1,53 @@
+@if (interests().length > 0) {
+  <section class="section doctor-interests-section" aria-label="مجالات الاهتمام والرعاية السريرية">
+    <div class="container container-max">
+      <app-section-heading
+        eyebrow="مجالات الاهتمام"
+        title="مجالات اهتمام وخدمات مرتبطة بالعيادة"
+        description="نطاقات الرعاية السريرية التي يركز عليها د. معاذ سمير في عيادة الحياة لطب الأسنان ببرج العرب، مع ربط كل مجال بالخدمة التشخيصية أو العلاجية المناسبة."
+      >
+        <app-button action variant="text" routerLink="/services" iconEnd="arrow-start">
+          استعراض كافة خدمات العيادة
+        </app-button>
+      </app-section-heading>
+
+      <!-- Interests Cards Grid -->
+      <div class="interests-grid">
+        @for (item of interests(); track item.id) {
+          <div class="interest-card">
+            <div class="interest-icon-box">
+              <app-icon [name]="item.iconName" size="md" />
+            </div>
+
+            <div class="interest-content">
+              <h3 class="interest-title">{{ item.titleAr }}</h3>
+              <p class="interest-desc">{{ item.descriptionAr }}</p>
+
+              @if (item.serviceSlug) {
+                <a
+                  [routerLink]="['/services', item.serviceSlug]"
+                  class="interest-service-link"
+                  (click)="onServiceClick(item.serviceSlug)"
+                  [attr.aria-label]="'تفاصيل خدمة ' + item.titleAr"
+                >
+                  <span>تفاصيل الخدمة في العيادة</span>
+                  <app-icon name="arrow-start" size="xs" />
+                </a>
+              } @else {
+                <a
+                  routerLink="/technology"
+                  class="interest-service-link"
+                  (click)="onServiceClick('technology')"
+                  aria-label="تفاصيل التكنولوجيا والماسح الضوئي"
+                >
+                  <span>استكشف التقنيات الرقمية</span>
+                  <app-icon name="arrow-start" size="xs" />
+                </a>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}

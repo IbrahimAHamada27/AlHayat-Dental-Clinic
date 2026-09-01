@@ -1,0 +1,49 @@
+<div class="article-content-body">
+  @for (block of blocks(); track $index) {
+    @switch (block.type) {
+      @case ('heading') {
+        @if (block.level === 2) {
+          <h2 [id]="block.id" class="article-h2">{{ block.textAr }}</h2>
+        } @else {
+          <h3 [id]="block.id" class="article-h3">{{ block.textAr }}</h3>
+        }
+      }
+
+      @case ('paragraph') {
+        <p class="article-p">{{ block.textAr }}</p>
+      }
+
+      @case ('list') {
+        <ul class="article-ul">
+          @for (item of block.itemsAr; track item) {
+            <li class="article-li">
+              <app-icon name="check" size="xs" class="li-bullet" />
+              <span>{{ item }}</span>
+            </li>
+          }
+        </ul>
+      }
+
+      @case ('callout') {
+        <aside class="article-callout" [class]="'callout-' + (block.variant || 'info')">
+          <div class="callout-header">
+            <app-icon [name]="block.variant === 'warning' ? 'alert-circle' : 'info'" size="sm" class="callout-icon" />
+            @if (block.titleAr) {
+              <strong class="callout-title">{{ block.titleAr }}</strong>
+            }
+          </div>
+          <p class="callout-text">{{ block.textAr }}</p>
+        </aside>
+      }
+
+      @case ('quote') {
+        <blockquote class="article-quote">
+          <p class="quote-text">{{ block.quoteAr }}</p>
+          @if (block.authorAr) {
+            <footer class="quote-author">— {{ block.authorAr }}</footer>
+          }
+        </blockquote>
+      }
+    }
+  }
+</div>

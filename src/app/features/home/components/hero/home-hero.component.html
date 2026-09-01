@@ -1,0 +1,124 @@
+<section class="section hero-section" aria-label="مقدمة عيادة الحياة لطب الأسنان">
+  <div class="container container-max">
+    <div class="hero-grid">
+      <!-- Left / Start Column: Personal Brand & Editorial Messaging -->
+      <div class="hero-content">
+        <!-- Brand Hierarchy Eyebrow -->
+        <div class="hero-eyebrow-wrap">
+          <span class="eyebrow">{{ config().clinicNameAr }} — برج العرب</span>
+        </div>
+
+        <!-- Main Heading & Doctor Identity -->
+        <h1 class="hero-title">
+          <span class="doctor-highlight">{{ doctor().nameAr }}</span>
+          <span class="heading-subline">رعاية أسنان حديثة، تبدأ بفهم حالتك واحتياجاتك.</span>
+        </h1>
+
+        <!-- Supporting Medical Copy -->
+        <p class="hero-subtitle">
+          نقدم رعاية متكاملة لصحة الفم والأسنان وتقويم وتجميل الابتسامة، مع الاهتمام بالتشخيص الدقيق واستخدام التقنيات الحديثة لتوفير تجربة علاج مريحة وآمنة بفرعينا في برج العرب.
+        </p>
+
+        <!-- Primary & Secondary CTAs -->
+        <div class="hero-actions">
+          <app-button
+            variant="primary"
+            size="lg"
+            iconEnd="arrow-start"
+            ariaLabel="احجز استشارتك في عيادة الحياة"
+            (btnClick)="onBook()"
+          >
+            احجز استشارتك
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            size="lg"
+            routerLink="/doctor"
+            ariaLabel="تعرف على د. معاذ سمير"
+          >
+            تعرف على الدكتور
+          </app-button>
+
+          <button
+            type="button"
+            class="hero-whatsapp-link touch-target"
+            aria-label="تواصل مباشر عبر واتساب"
+            (click)="onWhatsApp()"
+          >
+            <app-icon name="whatsapp" size="sm" class="whatsapp-icon" />
+            <span>استفسار واتساب</span>
+          </button>
+        </div>
+
+        <!-- Verified Trust Line -->
+        <div class="hero-trust-bar">
+          <div class="trust-pill">
+            <app-icon name="location" size="xs" class="trust-icon" />
+            <span>فرعان في برج العرب (الجديدة والقديمة)</span>
+          </div>
+          <div class="trust-pill">
+            <app-icon name="shield-check" size="xs" class="trust-icon" />
+            <span>أعلى معايير التعقيم والراحة</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right / End Column: Editorial Portrait & Doctor Presentation -->
+      <div class="hero-visual-side">
+        <div class="hero-portrait-card">
+          <!-- Portrait Header -->
+          <div class="portrait-header">
+            <div class="portrait-avatar-box">
+              <app-icon name="user" size="lg" class="avatar-fallback-icon" />
+            </div>
+            <div class="portrait-meta">
+              <span class="portrait-doctor-name">{{ doctor().nameAr }}</span>
+              <span class="portrait-doctor-title">{{ doctor().titleAr }}</span>
+              <app-badge variant="sage" class="mt-2xs">{{ doctor().specializationAr }}</app-badge>
+            </div>
+          </div>
+
+          <!-- Doctor Statement -->
+          <div class="portrait-quote">
+            <p>
+              «هدفنا الأول هو توفير بيئة علاجية مريحة وشرح كل خطوة للمريض، مع خطة علاج مخصصة تضمن الحفاظ على صحة وجمال الأسنان الطبيعية.»
+            </p>
+          </div>
+
+          <div class="divider-subtle"></div>
+
+          <!-- Branch Fast Info -->
+          <div class="portrait-branches">
+            <span class="branches-title">فروع العيادة ببرج العرب:</span>
+            <ul class="branches-list">
+              @for (loc of locations(); track loc.id) {
+                <li class="branch-item">
+                  <app-icon name="location" size="xs" class="loc-bullet" />
+                  <span class="branch-name">{{ loc.nameAr }}:</span>
+                  <span class="branch-street">{{ loc.addressAr }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+          <!-- Direct Phone Bar -->
+          <div class="portrait-call-box">
+            <button
+              type="button"
+              class="direct-call-btn touch-target"
+              (click)="onCall()"
+              aria-label="الاتصال بالعيادة هاتفياً"
+            >
+              <app-icon name="phone" size="sm" />
+              <div class="call-text">
+                <span class="call-label">للحجز والاستفسار المباشر:</span>
+                <span class="call-number phone-number">{{ config().contact.phoneFormatted }}</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,129 @@
+.tech-editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+
+  @media (min-width: 992px) {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--spacing-3xl);
+  }
+}
+
+.tech-benefits-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.benefit-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.benefit-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(70, 117, 104, 0.25);
+  color: #a8d3c5;
+  border: 1px solid rgba(70, 117, 104, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.benefit-text {
+  flex: 1;
+}
+
+.benefit-title {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-inverse);
+  margin: 0 0 2px;
+}
+
+.benefit-desc {
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-inverse-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.tech-action-row {
+  display: flex;
+}
+
+// Scanner Feature Card
+.tech-device-card {
+  background: linear-gradient(145deg, #113630 0%, #0a2521 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+.scanner-badge-wrap {
+  margin-bottom: var(--spacing-lg);
+}
+
+.scanner-chip {
+  display: inline-block;
+  font-family: var(--font-family-latin);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #a8d3c5;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scanner-illustration {
+  margin-block: var(--spacing-lg);
+}
+
+.scanner-optic-circle {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(70, 117, 104, 0.4) 0%, rgba(14, 61, 54, 0.1) 70%);
+  border: 1px solid rgba(168, 211, 197, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+  color: #a8d3c5;
+}
+
+.scanner-title {
+  font-family: var(--font-family-latin);
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-inverse);
+  margin-bottom: 2px;
+}
+
+.scanner-subtitle {
+  font-size: var(--font-size-body-sm);
+  color: #a8d3c5;
+  margin-bottom: var(--spacing-md);
+}
+
+.scanner-footer-text {
+  font-size: var(--font-size-caption);
+  color: #8daea3;
+  margin: 0;
+  line-height: 1.5;
+}

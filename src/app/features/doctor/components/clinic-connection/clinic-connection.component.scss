@@ -1,0 +1,110 @@
+.clinic-connection-section {
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.connection-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+
+  @media (min-width: 992px) {
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: var(--spacing-3xl);
+  }
+}
+
+.connection-body-text {
+  font-size: var(--font-size-body-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-xl);
+}
+
+.connection-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.feat-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text);
+
+  .feat-icon {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+}
+
+// Brand Card
+.connection-brand-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.clinic-emblem {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--color-sage-soft) 0%, var(--color-primary-subtle) 100%);
+  color: var(--color-primary);
+  border: 1px solid var(--color-sage-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+  margin-bottom: var(--spacing-md);
+}
+
+.clinic-brand-title {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-dark);
+  margin-bottom: 2px;
+}
+
+.clinic-brand-latin {
+  display: block;
+  font-family: var(--font-family-latin);
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-md);
+}
+
+.clinic-brand-tagline {
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+}
+
+.doctor-badge-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-3xs);
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text);
+
+  .badge-label {
+    color: var(--color-text-muted);
+  }
+
+  .badge-name {
+    color: var(--color-primary);
+  }
+
+  .badge-role {
+    color: var(--color-text-muted);
+  }
+}

@@ -1,0 +1,77 @@
+<section class="section doctor-preview-section" aria-label="عن الطبيب المشرف">
+  <div class="container container-max">
+    <div class="doctor-editorial-grid">
+      <!-- Portrait Card / Visual Block -->
+      <div class="doctor-image-wrap">
+        <app-card variant="surface" padding="spacious" class="portrait-card">
+          <div class="doctor-avatar-large">
+            <app-icon name="user" size="xl" class="user-large-icon" />
+          </div>
+          <div class="doctor-card-info">
+            <h3 class="doctor-card-name">{{ doctor().nameAr }}</h3>
+            <p class="doctor-card-title">{{ doctor().safeTitleAr }}</p>
+            <app-badge variant="sage" class="mt-xs">{{ doctor().specializationAr }}</app-badge>
+          </div>
+          <div class="divider-subtle"></div>
+          <div class="doctor-quote-box">
+            <app-icon name="heart-pulse" size="sm" class="quote-icon" />
+            <p class="quote-text">
+              «طب الأسنان يبدأ بالاستماع الواعي لحالة المريض، والشرح الواضح لكل خطوة علاجية.»
+            </p>
+          </div>
+        </app-card>
+      </div>
+
+      <!-- Narrative & Clinical Philosophy -->
+      <div class="doctor-text-content">
+        <app-section-heading
+          eyebrow="عن الطبيب"
+          [title]="doctor().nameAr"
+          [description]="doctor().safeTitleAr"
+        />
+
+        <p class="body-large text-secondary mb-md">
+          {{ doctor().bioAr }}
+        </p>
+
+        <p class="body-regular mb-lg">
+          {{ doctor().philosophyAr }}
+        </p>
+
+        <!-- Key Focus Areas -->
+        <div class="focus-areas-block mb-xl">
+          <h4 class="focus-title">مجالات الاهتمام والرعاية السريرية:</h4>
+          <ul class="focus-grid">
+            @for (spec of doctor().specialtiesAr; track spec) {
+              <li class="focus-item">
+                <app-icon name="check" size="xs" class="focus-check" />
+                <span>{{ spec }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <!-- Action Row -->
+        <div class="doctor-cta-row">
+          <app-button
+            variant="primary"
+            size="md"
+            routerLink="/doctor"
+            iconEnd="arrow-start"
+          >
+            الملف التعريفي الكامل للدكتور
+          </app-button>
+
+          <app-button
+            variant="outline"
+            size="md"
+            iconStart="whatsapp"
+            (btnClick)="onConsult()"
+          >
+            طلب استشارة
+          </app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

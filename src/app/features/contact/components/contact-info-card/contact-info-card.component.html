@@ -1,0 +1,105 @@
+<aside class="contact-info-editorial-card" aria-label="بيانات التواصل وعناوين الفروع">
+  <div class="info-header">
+    <h2 class="info-title">قنوات التواصل المباشرة</h2>
+    <p class="info-subtitle">تواصل معنا بالطريقة الأنسب لك</p>
+  </div>
+
+  <!-- 1. Phone Row -->
+  <div class="channel-box">
+    <div class="channel-icon-wrap phone-wrap">
+      <app-icon name="phone" size="sm" />
+    </div>
+    <div class="channel-text">
+      <span class="channel-label">الاتصال الهاتفي المباشر</span>
+      <strong class="channel-val">{{ config.contact.phoneFormatted }}</strong>
+      <span class="channel-hint">متاح طوال أوقات العمل بالعيادة</span>
+    </div>
+    <button
+      type="button"
+      class="channel-action-btn touch-target"
+      (click)="phoneClick.emit()"
+      aria-label="اتصال هاتفياً الآن"
+    >
+      اتصال
+    </button>
+  </div>
+
+  <!-- 2. WhatsApp Row -->
+  <div class="channel-box">
+    <div class="channel-icon-wrap whatsapp-wrap">
+      <app-icon name="whatsapp" size="sm" />
+    </div>
+    <div class="channel-text">
+      <span class="channel-label">محادثة واتساب</span>
+      <strong class="channel-val">{{ config.contact.phoneFormatted }}</strong>
+      <span class="channel-hint">الرد السريع على الحجوزات والاستفسارات</span>
+    </div>
+    <button
+      type="button"
+      class="channel-action-btn whatsapp-action touch-target"
+      (click)="whatsAppClick.emit()"
+      aria-label="فتح محادثة واتساب"
+    >
+      مراسلة
+    </button>
+  </div>
+
+  <hr class="info-separator" />
+
+  <!-- 3. Clinic Branches -->
+  <div class="branches-section">
+    <h3 class="branches-title">
+      <app-icon name="location" size="xs" class="pin-icon" />
+      فروع العيادة في برج العرب
+    </h3>
+
+    <div class="branches-list">
+      @for (loc of locations; track loc.id) {
+        <div class="branch-item-box">
+          <div class="branch-item-head">
+            <strong class="branch-name">{{ loc.nameAr }}</strong>
+            @if (loc.isPrimary) {
+              <app-badge variant="sage">الفرع الرئيسي</app-badge>
+            }
+          </div>
+
+          <p class="branch-address">{{ loc.addressAr }}</p>
+
+          @if (loc.landmarksAr) {
+            <p class="branch-landmark">
+              <span class="lm-label">المعالم المميزة:</span> {{ loc.landmarksAr }}
+            </p>
+          }
+
+          <div class="branch-actions-row">
+            <button
+              type="button"
+              class="maps-btn touch-target"
+              (click)="directionsClick.emit(loc)"
+              aria-label="الاتجاهات على الخريطة"
+            >
+              <app-icon name="location" size="xs" />
+              <span>الاتجاهات على الخريطة</span>
+            </button>
+
+            <a [routerLink]="['/locations', loc.slug]" class="branch-detail-link">
+              <span>تفاصيل الفرع</span>
+              <app-icon name="arrow-start" size="xs" />
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- 4. Doctor Assurance Footer -->
+  <div class="doctor-assurance-footer">
+    <div class="doc-icon-circle">
+      <app-icon name="tooth-fill" size="xs" />
+    </div>
+    <div class="doc-assurance-text">
+      <strong>{{ doctor.nameAr }}</strong>
+      <span>إشراف طبي مباشر على كافة الحالات العلاجية والتجميلية.</span>
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,29 @@
+export interface ClinicLocation {
+  id: string;
+  slug: string;
+  nameAr: string;
+  nameEn: string;
+  shortNameAr?: string;
+  shortNameEn?: string;
+  cityAr: string;
+  cityEn: string;
+  districtAr: string;
+  districtEn: string;
+  addressAr: string;
+  addressEn: string;
+  buildingDetailsAr: string;
+  buildingDetailsEn?: string;
+  landmarksAr: string[];
+  landmarksEn?: string[];
+  directionsAr?: string;
+  directionsEn?: string;
+  descriptionAr?: string;
+  descriptionEn?: string;
+  phone: string;
+  phoneFormatted?: string;
+  whatsapp: string;
+  googleMapsUrl?: string;
+  mapEmbedUrl?: string;
+  services?: string[];
+  isPrimary?: boolean;
+}

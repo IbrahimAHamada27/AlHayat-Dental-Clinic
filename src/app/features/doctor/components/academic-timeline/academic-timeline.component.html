@@ -1,0 +1,76 @@
+<section class="section section-sage academic-timeline-section" aria-label="المسيرة الأكاديمية والمهنية">
+  <div class="container container-max">
+    <app-section-heading
+      eyebrow="المسار المهني"
+      title="المسيرة الأكاديمية والمهنية"
+      description="توثيق المؤهلات الطبية، والخبرات السريرية، والدورات التدريبية المعتمدة."
+      align="center"
+    />
+
+    @if (hasAcademicData) {
+      <div class="timeline-container">
+        <!-- Education entries -->
+        @if (doctor().education && doctor().education!.length > 0) {
+          <div class="timeline-group">
+            <h3 class="timeline-group-title">
+              <app-icon name="shield-check" size="xs" />
+              <span>المؤهلات الأكاديمية</span>
+            </h3>
+            <div class="timeline-items">
+              @for (edu of doctor().education!; track edu.degreeAr) {
+                <div class="timeline-entry">
+                  @if (edu.year) {
+                    <span class="entry-year">{{ edu.year }}</span>
+                  }
+                  <h4 class="entry-title">{{ edu.degreeAr }}</h4>
+                  <p class="entry-sub">{{ edu.institutionAr }}</p>
+                  @if (edu.descriptionAr) {
+                    <p class="entry-desc">{{ edu.descriptionAr }}</p>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Experience entries -->
+        @if (doctor().experience && doctor().experience!.length > 0) {
+          <div class="timeline-group">
+            <h3 class="timeline-group-title">
+              <app-icon name="user" size="xs" />
+              <span>الخبرة السريرية والممارسة</span>
+            </h3>
+            <div class="timeline-items">
+              @for (exp of doctor().experience!; track exp.titleAr) {
+                <div class="timeline-entry">
+                  @if (exp.startDate) {
+                    <span class="entry-year">{{ exp.startDate }} {{ exp.endDate ? '– ' + exp.endDate : '' }}</span>
+                  }
+                  <h4 class="entry-title">{{ exp.titleAr }}</h4>
+                  <p class="entry-sub">{{ exp.organizationAr }}</p>
+                  @if (exp.descriptionAr) {
+                    <p class="entry-desc">{{ exp.descriptionAr }}</p>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <!-- Minimalist Honest Notice: Zero fake data fabricated -->
+      <div class="timeline-pending-card">
+        <div class="pending-icon-box">
+          <app-icon name="calendar" size="md" />
+        </div>
+        <h3 class="pending-title">التوثيق الأكاديمي والمهني</h3>
+        <p class="pending-desc">
+          سيتم تحديث هذا القسم بالقيد النقابي والمؤهلات الأكاديمية والشهادات المهنية المعتمدة للدكتور معاذ سمير فور اكتمال توثيقها رسمياً.
+        </p>
+        <div class="pending-badge-wrap">
+          <app-badge variant="sage">الممارسة السريرية: عيادة الحياة لطب الأسنان</app-badge>
+        </div>
+      </div>
+    }
+  </div>
+</section>

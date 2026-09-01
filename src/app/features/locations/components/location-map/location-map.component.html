@@ -1,0 +1,30 @@
+<div class="location-map-card" [attr.aria-label]="'خريطة وإرشادات الوصول إلى ' + location().nameAr">
+  <div class="map-visual-frame">
+    <div class="map-grid-pattern"></div>
+    <div class="map-pin-indicator">
+      <div class="pin-pulse"></div>
+      <div class="pin-icon-wrap">
+        <app-icon name="location" size="md" />
+      </div>
+      <span class="pin-label">{{ location().nameAr }}</span>
+    </div>
+  </div>
+
+  <div class="map-footer-content">
+    <div class="directions-guide-text">
+      <app-icon name="info" size="xs" class="guide-icon" />
+      <p class="guide-desc">{{ location().directionsAr || location().addressAr }}</p>
+    </div>
+
+    <app-button
+      variant="primary"
+      size="md"
+      iconStart="location"
+      [ariaLabel]="'فتح اتجاهات الوصول إلى ' + location().nameAr + ' على خرائط جوجل'"
+      (btnClick)="onOpenMap()"
+      class="w-full"
+    >
+      فتح الموقع على Google Maps
+    </app-button>
+  </div>
+</div>

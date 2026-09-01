@@ -1,0 +1,162 @@
+<div class="contact-form-container" id="consultation-form-block">
+  @if (!submissionResult()) {
+    <div class="form-header">
+      <h2 class="form-title">طلب استشارة كشف</h2>
+      <p class="form-desc">
+        املأ البيانات التالية لترتيب وتجهيز استفسارك أو طلب موعدك لدى د. معاذ سمير.
+      </p>
+    </div>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="consultation-form" novalidate>
+      <!-- Full Name -->
+      <div class="form-group" [class.has-error]="isFieldInvalid('fullName')">
+        <label for="fullName" class="form-label">
+          الاسم ثلاثي أو ثنائي <span class="required-star" aria-hidden="true">*</span>
+        </label>
+        <input
+          id="fullName"
+          type="text"
+          formControlName="fullName"
+          class="form-control"
+          placeholder="أدخل الاسم..."
+          autocomplete="name"
+          [attr.aria-invalid]="isFieldInvalid('fullName')"
+          aria-describedby="fullNameError"
+        />
+        @if (isFieldInvalid('fullName')) {
+          <span id="fullNameError" class="field-error-msg" role="alert">
+            <app-icon name="alert-circle" size="xs" />
+            من فضلك أدخل الاسم (3 أحرف على الأقل).
+          </span>
+        }
+      </div>
+
+      <!-- Phone Number -->
+      <div class="form-group" [class.has-error]="isFieldInvalid('phoneNumber')">
+        <label for="phoneNumber" class="form-label">
+          رقم الهاتف / واتساب <span class="required-star" aria-hidden="true">*</span>
+        </label>
+        <input
+          id="phoneNumber"
+          type="tel"
+          formControlName="phoneNumber"
+          class="form-control"
+          placeholder="مثال: 01501701514"
+          autocomplete="tel"
+          [attr.aria-invalid]="isFieldInvalid('phoneNumber')"
+          aria-describedby="phoneError"
+        />
+        @if (isFieldInvalid('phoneNumber')) {
+          <span id="phoneError" class="field-error-msg" role="alert">
+            <app-icon name="alert-circle" size="xs" />
+            من فضلك أدخل رقم هاتف مصري صحيح (مثال: 01501701514).
+          </span>
+        }
+      </div>
+
+      <!-- Row: Location + Service -->
+      <div class="form-row-2col">
+        <!-- Preferred Location -->
+        <div class="form-group">
+          <label for="preferredLocation" class="form-label">الفرع المفضل</label>
+          <select id="preferredLocation" formControlName="preferredLocationId" class="form-control form-select">
+            <option value="no-preference">أي فرع متاح</option>
+            @for (loc of locations; track loc.id) {
+              <option [value]="loc.id">{{ loc.nameAr }} ({{ loc.addressAr }})</option>
+            }
+          </select>
+        </div>
+
+        <!-- Preferred Service -->
+        <div class="form-group">
+          <label for="preferredService" class="form-label">الخدمة المطلوبة</label>
+          <select id="preferredService" formControlName="preferredServiceSlug" class="form-control form-select">
+            <option value="general">استشارة وفحص عام</option>
+            @for (srv of services; track srv.id) {
+              <option [value]="srv.slug">{{ srv.titleAr }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <!-- Preferred Contact Method -->
+      <div class="form-group">
+        <label class="form-label">طريقة التواصل المفضلة</label>
+        <div class="radio-options-row">
+          <label class="radio-label">
+            <input type="radio" formControlName="preferredContactMethod" value="whatsapp" />
+            <span>واتساب</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" formControlName="preferredContactMethod" value="phone" />
+            <span>اتصال هاتفي</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="form-group">
+        <label for="notes" class="form-label">ملاحظات أو استفسار إضافي (اختياري)</label>
+        <textarea
+          id="notes"
+          formControlName="notes"
+          class="form-control form-textarea"
+          rows="3"
+          placeholder="إذا كان لديك استفسار محدد أو وقت تفضله للاستشارة..."
+        ></textarea>
+      </div>
+
+      <!-- Privacy Note -->
+      <div class="privacy-note">
+        <app-icon name="shield-check" size="xs" class="privacy-icon" />
+        <span>نلتزم بالحفاظ على خصوصية بياناتك وتقتصر معلوماتك على تنسيق الموعد الطبي فقط.</span>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-submit-wrap">
+        <app-button
+          variant="primary"
+          size="lg"
+          [fullWidth]="true"
+          iconEnd="arrow-start"
+          ariaLabel="تجهيز وإرسال طلب الاستشارة"
+        >
+          متابعة وإرسال طلب الاستشارة
+        </app-button>
+      </div>
+    </form>
+  } @else {
+    <!-- Success State / Next Step WhatsApp Screen -->
+    <div class="submission-success-card">
+      <div class="success-icon-badge">
+        <app-icon name="check" size="lg" />
+      </div>
+
+      <h3 class="success-title">طلب الاستشارة جاهز للإرسال!</h3>
+      <p class="success-desc">
+        تم تجهيز بياناتك بنجاح. اضغط على الزر أدناه لفتح المحادثة عبر واتساب وإرسال الطلب مباشرة لفريق الاستقبال لتأكيد الموعد المناسب.
+      </p>
+
+      <div class="success-actions">
+        <button
+          type="button"
+          class="whatsapp-continue-btn touch-target"
+          (click)="openWhatsAppFlow()"
+          aria-label="المتابعة عبر واتساب"
+        >
+          <app-icon name="whatsapp" size="sm" />
+          <span>المتابعة عبر واتساب الآن</span>
+        </button>
+
+        <button
+          type="button"
+          class="reset-form-btn touch-target"
+          (click)="resetForm()"
+          aria-label="طلب استشارة جديدة"
+        >
+          <span>تعديل البيانات أو طلب جديد</span>
+        </button>
+      </div>
+    </div>
+  }
+</div>

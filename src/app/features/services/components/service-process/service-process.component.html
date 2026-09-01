@@ -1,0 +1,22 @@
+@if (steps().length > 0) {
+  <section class="section section-sage service-process-section" aria-label="خطوات تقديم الخدمة">
+    <div class="container container-max">
+      <app-section-heading
+        eyebrow="مراحل العلاج"
+        title="كيف تبدأ خطة العلاج؟"
+        description="خطوات طبية منظمة تضمن الدقة التامة والراحة النفسية طوال فترة تلقي الخدمة."
+        align="center"
+      />
+
+      <div class="process-steps-grid">
+        @for (step of steps(); track step.number) {
+          <div class="process-step-box">
+            <div class="step-badge">{{ step.number }}</div>
+            <h3 class="step-title">{{ step.titleAr }}</h3>
+            <p class="step-description">{{ step.descriptionAr }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}

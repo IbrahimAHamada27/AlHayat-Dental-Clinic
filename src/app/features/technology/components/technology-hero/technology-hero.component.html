@@ -1,0 +1,97 @@
+<section class="section tech-hero-section" aria-label="طب الأسنان الرقمي في عيادة الحياة">
+  <div class="container container-max">
+    <!-- Breadcrumb Navigation -->
+    <nav class="tech-breadcrumbs" aria-label="مسار التنقل">
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item">
+          <a routerLink="/" class="breadcrumb-link">الرئيسية</a>
+        </li>
+        <li class="breadcrumb-separator" aria-hidden="true">/</li>
+        <li class="breadcrumb-item active" aria-current="page">طب الأسنان الرقمي</li>
+      </ol>
+    </nav>
+
+    <div class="tech-hero-grid">
+      <div class="tech-hero-content">
+        <div class="hero-badge-strip">
+          <span class="eyebrow">DIGITAL DENTISTRY</span>
+          <app-badge variant="sage">تقنيات العيادة المعتمدة</app-badge>
+        </div>
+
+        <h1 class="tech-hero-title">
+          طب الأسنان الرقمي في عيادة الحياة
+        </h1>
+
+        <p class="tech-hero-subtitle">
+          نؤمن في عيادة الحياة بأن التكنولوجيا ليست الهدف في حد ذاتها؛ بل وسيلة لجعل بعض خطوات العلاج أكثر دقة وراحة وتنظيماً، من خلال اعتماد الماسح الفموي الرقمي (Intraoral Scanner) وسير العمل الرقمي في الحالات المناسبة.
+        </p>
+
+        <div class="tech-hero-actions">
+          <app-button
+            variant="primary"
+            size="lg"
+            iconEnd="arrow-start"
+            ariaLabel="احجز استشارتك في عيادة الحياة"
+            (btnClick)="onBook()"
+          >
+            احجز استشارتك
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            size="lg"
+            iconStart="whatsapp"
+            ariaLabel="اسألنا عن تقنيات العيادة عبر واتساب"
+            (btnClick)="onWhatsApp()"
+          >
+            اسألنا عن التقنية
+          </app-button>
+        </div>
+
+        <div class="tech-phone-strip">
+          <button
+            type="button"
+            class="phone-touch-link touch-target"
+            (click)="onCall()"
+            aria-label="الاتصال بالعيادة هاتفياً"
+          >
+            <app-icon name="phone" size="xs" class="phone-icon-svg" />
+            <span>للاستفسار والحجز: <strong class="phone-number">{{ config().contact.phoneFormatted }}</strong></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="tech-hero-visual-side">
+        <div class="scanner-hero-card">
+          <div class="scanner-chip-header">
+            <span class="status-dot"></span>
+            <span class="chip-text">3D Optical Scanning</span>
+          </div>
+
+          <div class="scanner-icon-center">
+            <div class="pulse-ring"></div>
+            <div class="scanner-icon-box">
+              <app-icon name="sparkle" size="xl" />
+            </div>
+          </div>
+
+          <h3 class="scanner-card-name">الماسح الضوئي الفموي ثلاثي الأبعاد</h3>
+          <p class="scanner-card-desc">
+            مقاسات رقمية متناهية الدقة للتركيبات التجميلية والتقويم بدون الحاجة لمعجون المقاسات التقليدي في الحالات المناسبة.
+          </p>
+
+          <div class="scanner-specs-row">
+            <div class="spec-item">
+              <span class="spec-label">طريقة الأخذ</span>
+              <span class="spec-val">مسح ضوئي رقمي</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">صيغة البيانات</span>
+              <span class="spec-val">نموذج 3D مباشر</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,198 @@
+<main class="locations-page-flow">
+  <!-- 1. Hero Section -->
+  <app-location-hero
+    [config]="config"
+    (bookingClick)="onBookingClick($event)"
+    (whatsAppClick)="onDirectWhatsApp($event)"
+    (phoneClick)="onDirectCall($event)"
+  />
+
+  <!-- 2. Branches Cards Catalog -->
+  <section class="section branches-catalog-section" aria-label="فروع العيادة ببرج العرب">
+    <div class="container container-max">
+      <app-section-heading
+        eyebrow="مواقع العيادة"
+        title="اختر الفرع الأقرب إليك"
+        description="يقدم كلا الفرعين رعاية طبية شاملة وفق أعلى معايير التعقيم والجودة السريرية."
+        align="center"
+      />
+
+      <div class="branches-grid">
+        @for (loc of locations; track loc.id) {
+          <app-clinic-location-card
+            [location]="loc"
+            (directionsClick)="onDirectionsClick($event)"
+            (phoneClick)="onPhoneClick($event)"
+            (whatsAppClick)="onWhatsAppClick($event)"
+          />
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Interactive Directions & Landmark Guide -->
+  <section class="section section-sage map-interactive-section" aria-label="دليل الوصول إلى الفروع">
+    <div class="container container-max">
+      <app-section-heading
+        eyebrow="إرشادات الوصول"
+        title="كيف تصل إلى عيادة الحياة بسهولة؟"
+        description="اختر الفرع لمعاينة خريطة الموقع والعلامات المميزة المحيطة به."
+      />
+
+      <div class="map-layout-grid">
+        <!-- Branch Tabs Selection -->
+        <div class="map-nav-sidebar">
+          <div class="branch-switch-tabs">
+            @for (loc of locations; track loc.id) {
+              <button
+                type="button"
+                class="branch-tab-btn touch-target"
+                [class.active]="selectedLocation().id === loc.id"
+                (click)="onSelectMapLocation(loc)"
+              >
+                <app-icon name="location" size="sm" class="tab-pin-icon" />
+                <div class="tab-content">
+                  <strong class="tab-title">{{ loc.nameAr }}</strong>
+                  <span class="tab-sub">{{ loc.addressAr }}</span>
+                </div>
+              </button>
+            }
+          </div>
+
+          <div class="selected-branch-details-box">
+            <h3 class="details-box-title">العلامات المميزة وإرشادات الدور:</h3>
+            <p class="details-box-text">{{ selectedLocation().directionsAr || selectedLocation().buildingDetailsAr }}</p>
+          </div>
+        </div>
+
+        <!-- Visual Map & Google Maps Button -->
+        <div class="map-visual-container">
+          <app-location-map
+            [location]="selectedLocation()"
+            (directionsClick)="onDirectionsClick($event)"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Shared Services Across Branches -->
+  <section class="section services-summary-section" aria-label="خدمات طب الأسنان المتاحة بالفروع">
+    <div class="container container-max">
+      <app-section-heading
+        eyebrow="الخدمات المتاحة"
+        title="رعاية متكاملة متوفرة في كلا الفرعين"
+        description="نحرص على توفير مختلف الإجراءات العلاجية والتجميلية في فرعي برج العرب الجديدة والقديمة."
+      />
+
+      <div class="services-compact-grid">
+        @for (srv of services; track srv.id) {
+          <a [routerLink]="['/services', srv.slug]" class="service-compact-card">
+            <div class="srv-icon-box">
+              <app-icon [name]="srv.iconName" size="sm" />
+            </div>
+            <div class="srv-info">
+              <h3 class="srv-title">{{ srv.titleAr }}</h3>
+              <p class="srv-desc">{{ srv.shortDescriptionAr }}</p>
+            </div>
+            <app-icon name="arrow-start" size="xs" class="srv-arrow" />
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Doctor Clinical Oversight Section -->
+  <section class="section doctor-oversight-section" aria-label="الإشراف الطبي بالعيادة">
+    <div class="container container-max">
+      <div class="doctor-oversight-card">
+        <div class="doctor-oversight-grid">
+          <div class="doctor-oversight-text">
+            <span class="eyebrow-accent">إشراف سريري مباشر</span>
+            <h2 class="oversight-title">الرعاية الطبية بإشراف د. معاذ سمير</h2>
+            <p class="oversight-desc">
+              تُقدم كافة الاستشارات والخطط العلاجية في فرعي برج العرب تحت الإشراف المباشر لدكتور معاذ سمير؛ حيث يحرص على دراسة كل حالة بدقة وتنسيق المواعيد لتحقيق أفضل نتائج علاجية مستقرة.
+            </p>
+            <div class="oversight-ctas">
+              <app-button
+                variant="primary"
+                size="md"
+                iconEnd="arrow-start"
+                [routerLink]="['/doctor']"
+              >
+                تعرف على د. معاذ سمير
+              </app-button>
+              <app-button
+                variant="secondary"
+                size="md"
+                iconStart="whatsapp"
+                (btnClick)="onDirectWhatsApp('locations_doctor_block')"
+              >
+                استفسار عبر واتساب
+              </app-button>
+            </div>
+          </div>
+
+          <div class="doctor-oversight-badge">
+            <div class="doc-badge-inner">
+              <app-icon name="user" size="lg" class="doc-badge-icon" />
+              <h3 class="doc-badge-name">{{ doctor.nameAr }}</h3>
+              <p class="doc-badge-title">{{ doctor.safeTitleAr }}</p>
+              <div class="branches-served-pills">
+                <span class="branch-pill">فرع برج العرب الجديدة</span>
+                <span class="branch-pill">فرع برج العرب القديمة</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Final Consultation CTA -->
+  <section class="section locations-final-cta-section" aria-label="حجز موعد استشارة">
+    <div class="container container-md text-center">
+      <div class="locations-cta-wrapper">
+        <span class="locations-cta-tag">حجز مباشر</span>
+        <h2 class="locations-cta-title">هل ترغب في زيارتنا في أقرب فرع إليك؟</h2>
+        <p class="locations-cta-subtitle">
+          تواصل معنا عبر واتساب أو اتصل هاتفياً لتحديد الموعد الأنسب في فرع برج العرب الجديدة أو فرع برج العرب القديمة.
+        </p>
+
+        <div class="locations-cta-btns">
+          <app-button
+            variant="primary"
+            size="lg"
+            iconEnd="arrow-start"
+            ariaLabel="احجز استشارتك الآن"
+            (btnClick)="onBookingClick('locations_final_cta')"
+          >
+            احجز استشارتك الآن
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            size="lg"
+            iconStart="whatsapp"
+            ariaLabel="تواصل عبر واتساب"
+            (btnClick)="onDirectWhatsApp('locations_final_cta_whatsapp')"
+          >
+            تواصل عبر واتساب
+          </app-button>
+        </div>
+
+        <div class="locations-cta-phone">
+          <button
+            type="button"
+            class="phone-touch-action touch-target"
+            (click)="onDirectCall('locations_final_cta_phone')"
+            aria-label="الاتصال بالعيادة هاتفياً"
+          >
+            <app-icon name="phone" size="sm" class="phone-action-svg" />
+            <span>الرقم الموحد: <strong class="phone-num">{{ config.contact.phoneFormatted }}</strong></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

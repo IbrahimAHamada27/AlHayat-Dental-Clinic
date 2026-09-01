@@ -1,0 +1,131 @@
+.academic-timeline-section {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.timeline-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  max-width: 900px;
+  margin-inline: auto;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.timeline-group {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl);
+}
+
+.timeline-group-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2xs);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-xs);
+}
+
+.timeline-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  position: relative;
+  padding-inline-start: var(--spacing-md);
+  border-inline-start: 2px solid var(--color-sage-border);
+}
+
+.timeline-entry {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    inset-inline-start: calc(var(--spacing-md) * -1 - 5px);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  .entry-year {
+    display: inline-block;
+    font-family: var(--font-family-latin);
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-accent);
+    margin-bottom: 2px;
+  }
+
+  .entry-title {
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary-dark);
+    margin: 0 0 2px;
+  }
+
+  .entry-sub {
+    font-size: var(--font-size-body-sm);
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .entry-desc {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+    margin-top: var(--spacing-2xs);
+  }
+}
+
+// Honest Pending Placeholder Card
+.timeline-pending-card {
+  max-width: 600px;
+  margin-inline: auto;
+  background-color: var(--color-surface);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  text-align: center;
+}
+
+.pending-icon-box {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: var(--color-sage-soft);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+  margin-bottom: var(--spacing-md);
+}
+
+.pending-title {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-dark);
+  margin-bottom: var(--spacing-xs);
+}
+
+.pending-desc {
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-inline: auto;
+  margin-bottom: var(--spacing-lg);
+}
+
+.pending-badge-wrap {
+  display: flex;
+  justify-content: center;
+}

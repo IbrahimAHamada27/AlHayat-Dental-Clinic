@@ -1,0 +1,37 @@
+@if (services().length > 0) {
+  <section class="section tech-services-section" aria-label="خدمات مرتبطة بالتقنيات الرقمية">
+    <div class="container container-max">
+      <app-section-heading
+        eyebrow="تكامل الخدمات"
+        title="خدمات تستفيد من التقنيات الرقمية في عيادتنا"
+        description="استكشف الإجراءات العلاجية والتجميلية التي نوظف فيها تقنيات المسح الضوئي الرقمي لخدمتك."
+      />
+
+      <div class="services-links-grid">
+        @for (srv of services(); track srv.id) {
+          <a
+            [routerLink]="['/services', srv.slug]"
+            class="service-link-card"
+            (click)="onServiceClick(srv.slug)"
+            [attr.aria-label]="srv.titleAr"
+          >
+            <div class="card-icon-box">
+              <app-icon [name]="srv.iconName" size="md" />
+            </div>
+
+            <div class="card-content-wrap">
+              <app-badge variant="sage" class="mb-xs">{{ srv.categoryAr }}</app-badge>
+              <h3 class="card-title">{{ srv.titleAr }}</h3>
+              <p class="card-desc">{{ srv.shortDescriptionAr }}</p>
+            </div>
+
+            <div class="card-link-arrow">
+              <span>تفاصيل الخدمة</span>
+              <app-icon name="arrow-start" size="xs" />
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+}

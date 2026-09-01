@@ -1,0 +1,325 @@
+:host {
+  display: block;
+  width: 100%;
+  margin-top: auto;
+}
+
+.site-footer {
+  background-color: var(--color-surface-dark);
+  color: var(--color-text-inverse-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-3xl);
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1.3fr 0.8fr 1.1fr 1fr;
+    gap: var(--spacing-xl);
+  }
+}
+
+// Brand Column
+.footer-brand-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.brand-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #a8d3c5;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-clinic-name {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-inverse);
+  line-height: 1.25;
+}
+
+.footer-clinic-name-en {
+  font-family: var(--font-family-latin);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: #8daea3;
+  text-transform: uppercase;
+}
+
+.footer-description {
+  font-size: var(--font-size-body-sm);
+  line-height: 1.65;
+  color: #9cbdb1;
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-doctor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background-color: rgba(255, 255, 255, 0.06);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-caption);
+  margin-bottom: var(--spacing-md);
+
+  .badge-label {
+    color: #8daea3;
+  }
+
+  .doctor-name {
+    color: var(--color-text-inverse);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .doctor-sub {
+    color: #a8d3c5;
+  }
+}
+
+.footer-social-links {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.social-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+  }
+}
+
+// Columns & Titles
+.footer-title {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-inverse);
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+  padding-bottom: var(--spacing-xs);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    inset-inline-start: 0;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-accent-light);
+    border-radius: var(--radius-pill);
+  }
+}
+
+// Links List
+.footer-links-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.footer-link {
+  font-size: var(--font-size-body-sm);
+  color: #9cbdb1;
+  text-decoration: none;
+  display: inline-block;
+  padding-block: 2px;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+
+  &:hover {
+    color: #ffffff;
+    transform: translateX(-4px);
+
+    [dir='ltr'] & {
+      transform: translateX(4px);
+    }
+  }
+}
+
+// Branches
+.footer-branches-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.branch-card {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.branch-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-3xs);
+}
+
+.branch-icon {
+  color: #a8d3c5;
+}
+
+.branch-name {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-inverse);
+  margin: 0;
+}
+
+.branch-address {
+  font-size: var(--font-size-caption);
+  color: #9cbdb1;
+  margin: 0 0 2px;
+}
+
+.branch-details,
+.branch-landmarks {
+  font-size: 0.72rem;
+  color: #7b9c92;
+  margin: 0;
+}
+
+// Contact items
+.footer-contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+  text-align: start;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--color-text-inverse);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+.contact-icon {
+  color: #a8d3c5;
+}
+
+.contact-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-label {
+  font-size: var(--font-size-caption);
+  color: #8daea3;
+}
+
+.contact-value {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-inverse);
+}
+
+.working-hours-summary {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) 0;
+  font-size: var(--font-size-caption);
+  color: #8daea3;
+
+  .hours-icon {
+    margin-top: 2px;
+    color: #a8d3c5;
+  }
+
+  .hours-title {
+    color: var(--color-text-inverse);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .hours-text {
+    margin: 2px 0 0;
+    color: #9cbdb1;
+  }
+}
+
+// Bottom Legal Bar
+.footer-bottom {
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  font-size: var(--font-size-caption);
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.footer-copyright p {
+  color: #7b9c92;
+  margin: 0;
+}
+
+.legal-links-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.legal-link {
+  color: #8daea3;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-text-inverse);
+    text-decoration: underline;
+  }
+}
