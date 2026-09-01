@@ -1,5 +1,6 @@
 .cases-preview-section {
-  background-color: var(--color-background);
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .case-card-wrapper {
@@ -10,13 +11,13 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  border-color: var(--color-border);
+  border: 1px solid var(--color-border);
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 
   &:hover {
-    transform: translateY(-4px);
-    border-color: var(--color-accent);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-sm);
   }
 }
 
@@ -25,9 +26,9 @@
 }
 
 .case-preview-frame {
-  height: 140px;
-  background: linear-gradient(135deg, var(--color-sage-soft) 0%, var(--color-background-soft) 100%);
-  border: 1px dashed var(--color-border-strong);
+  height: 190px;
+  background-color: var(--color-medical-blue);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   display: flex;
   flex-direction: column;
@@ -37,18 +38,16 @@
   position: relative;
   overflow: hidden;
 
-  .frame-tag-side {
-    position: absolute;
-    top: var(--spacing-xs);
-    inset-inline-start: var(--spacing-xs);
+  .case-real-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-slow);
+  }
 
-    .tag-label {
-      font-size: var(--font-size-caption);
-      color: var(--color-accent);
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 2px 8px;
-      border-radius: var(--radius-xs);
-    }
+  &:hover .case-real-img {
+    transform: scale(1.03);
   }
 
   .frame-icon-center {
@@ -60,7 +59,7 @@
 .case-title {
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-bold);
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
   margin-bottom: var(--spacing-xs);
   line-height: 1.35;
 }
@@ -78,22 +77,33 @@
   padding-top: var(--spacing-sm);
 }
 
-.case-disclaimer-pill {
-  font-size: var(--font-size-caption);
-  color: var(--color-text-muted);
+.case-detail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2xs);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-primary-dark);
+  }
 }
 
 .cases-medical-disclaimer {
   display: flex;
   align-items: flex-start;
   gap: var(--spacing-xs);
-  background-color: var(--color-background-soft);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   padding: var(--spacing-sm) var(--spacing-md);
   margin-top: var(--spacing-xl);
 
   .disc-icon {
-    color: var(--color-accent);
+    color: var(--color-primary);
     margin-top: 3px;
     flex-shrink: 0;
   }

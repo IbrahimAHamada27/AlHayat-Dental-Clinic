@@ -90,25 +90,29 @@ body {
   }
 }
 
-// Section Background Variants
+// Section Background Variants (Restrained Rhythm: Ivory -> White -> Medical Blue -> Ivory -> Dark Teal)
 .section-default {
-  background-color: var(--color-background);
+  background-color: var(--color-background); // Warm Ivory #F7F5F0
 }
 
 .section-surface {
-  background-color: var(--color-surface);
+  background-color: var(--color-surface); // Pure Soft White #FFFFFF
 }
 
 .section-soft {
-  background-color: var(--color-background-soft);
+  background-color: var(--color-background-soft); // Cool White #FBFCFC
 }
 
 .section-sage {
-  background-color: var(--color-sage-soft);
+  background-color: var(--color-sage-soft); // Soft Sage #EBF3F1
 }
 
-.section-dark {
-  background-color: var(--color-surface-dark);
+.section-medical-blue {
+  background-color: var(--color-medical-blue); // Very Light Medical Blue #F2F7F8
+}
+
+.section-primary {
+  background-color: var(--color-primary); // Deep Forest Green #164A45
   color: var(--color-text-inverse);
 
   h1, h2, h3, h4, .font-h1, .font-h2, .font-h3 {
@@ -120,10 +124,31 @@ body {
   }
 
   .eyebrow {
-    color: var(--color-accent-light);
+    color: var(--color-accent);
 
     &::before {
-      background-color: var(--color-accent-light);
+      background-color: var(--color-accent);
+    }
+  }
+}
+
+.section-dark {
+  background-color: var(--color-primary-dark); // Dark Teal #0E3734
+  color: var(--color-text-inverse);
+
+  h1, h2, h3, h4, .font-h1, .font-h2, .font-h3 {
+    color: var(--color-text-inverse);
+  }
+
+  p, .body-regular, .body-large {
+    color: var(--color-text-inverse-muted);
+  }
+
+  .eyebrow {
+    color: var(--color-accent);
+
+    &::before {
+      background-color: var(--color-accent);
     }
   }
 }

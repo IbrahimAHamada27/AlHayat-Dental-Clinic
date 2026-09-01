@@ -96,18 +96,18 @@
 }
 
 .btn-secondary {
-  background-color: var(--color-sage-soft);
+  background-color: var(--color-medical-blue);
   color: var(--color-primary);
-  border-color: var(--color-sage-border);
+  border-color: var(--color-border);
 
   &:hover:not(:disabled):not(.btn-loading) {
-    background-color: #e2ece6;
-    border-color: var(--color-accent);
+    background-color: var(--color-medical-blue-soft);
+    border-color: var(--color-primary);
     color: var(--color-primary-dark);
   }
 
   .btn-spinner {
-    border-color: rgba(14, 61, 54, 0.2);
+    border-color: rgba(22, 74, 69, 0.2);
     border-top-color: var(--color-primary);
   }
 }
@@ -115,16 +115,16 @@
 .btn-outline {
   background-color: transparent;
   color: var(--color-primary);
-  border-color: var(--color-border-strong);
+  border-color: var(--color-primary);
 
   &:hover:not(:disabled):not(.btn-loading) {
-    background-color: var(--color-primary-subtle);
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+    background-color: var(--color-medical-blue);
+    border-color: var(--color-primary-dark);
+    color: var(--color-primary-dark);
   }
 
   .btn-spinner {
-    border-color: rgba(14, 61, 54, 0.2);
+    border-color: rgba(22, 74, 69, 0.2);
     border-top-color: var(--color-primary);
   }
 }

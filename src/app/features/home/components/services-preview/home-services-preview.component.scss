@@ -19,7 +19,7 @@
 .featured-card {
   height: 100%;
   background-color: var(--color-surface);
-  border: 1px solid var(--color-border-strong);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
   display: flex;
@@ -41,18 +41,18 @@
   width: 64px;
   height: 64px;
   border-radius: var(--radius-md);
-  background-color: var(--color-sage-soft);
+  background-color: var(--color-medical-blue);
   color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.85;
+  border: 1px solid var(--color-border);
 }
 
 .featured-title {
   font-size: var(--font-size-h2);
   font-weight: var(--font-weight-bold);
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
   margin-top: var(--spacing-xs);
   margin-bottom: var(--spacing-sm);
 }
@@ -80,7 +80,7 @@
   color: var(--color-text);
 
   .point-check {
-    color: var(--color-accent);
+    color: var(--color-primary);
   }
 }
 
@@ -106,13 +106,9 @@
     box-shadow var(--transition-fast);
 
   &:hover {
-    transform: translateX(-4px);
-    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    border-color: var(--color-border-strong);
     box-shadow: var(--shadow-sm);
-
-    [dir='ltr'] & {
-      transform: translateX(4px);
-    }
 
     .srv-icon-box {
       background-color: var(--color-primary);
@@ -129,8 +125,9 @@
   width: 44px;
   height: 44px;
   border-radius: var(--radius-sm);
-  background-color: var(--color-sage-soft);
+  background-color: var(--color-medical-blue);
   color: var(--color-primary);
+  border: 1px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;

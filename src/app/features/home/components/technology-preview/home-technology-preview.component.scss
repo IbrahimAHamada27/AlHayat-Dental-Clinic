@@ -5,7 +5,7 @@
   align-items: center;
 
   @media (min-width: 992px) {
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1.15fr 0.85fr;
     gap: var(--spacing-3xl);
   }
 }
@@ -21,19 +21,26 @@
   display: flex;
   align-items: flex-start;
   gap: var(--spacing-md);
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--spacing-md) var(--spacing-lg);
+  box-shadow: var(--shadow-xs);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+  &:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-sm);
+  }
 }
 
 .benefit-icon-box {
   width: 40px;
   height: 40px;
   border-radius: var(--radius-sm);
-  background-color: rgba(70, 117, 104, 0.25);
-  color: #a8d3c5;
-  border: 1px solid rgba(70, 117, 104, 0.4);
+  background-color: var(--color-medical-blue);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,13 +55,13 @@
 .benefit-title {
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-text-inverse);
-  margin: 0 0 2px;
+  color: var(--color-primary);
+  margin: 0 0 4px;
 }
 
 .benefit-desc {
   font-size: var(--font-size-body-sm);
-  color: var(--color-text-inverse-muted);
+  color: var(--color-text-secondary);
   line-height: 1.6;
   margin: 0;
 }
@@ -65,65 +72,72 @@
 
 // Scanner Feature Card
 .tech-device-card {
-  background: linear-gradient(145deg, #113630 0%, #0a2521 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-xl);
-  padding: var(--spacing-xl);
-  box-shadow: var(--shadow-lg);
-  text-align: center;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
 }
 
-.scanner-badge-wrap {
-  margin-bottom: var(--spacing-lg);
+.scanner-img-frame {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-medical-blue);
+  margin-bottom: var(--spacing-md);
+
+  .scanner-real-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    display: block;
+    transition: transform var(--transition-slow);
+  }
+
+  &:hover .scanner-real-photo {
+    transform: scale(1.03);
+  }
+
+  .scanner-tag-pill {
+    position: absolute;
+    top: var(--spacing-xs);
+    right: var(--spacing-xs);
+    background: rgba(22, 74, 69, 0.88);
+    backdrop-filter: blur(6px);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-family: var(--font-family-latin);
+    font-weight: var(--font-weight-medium);
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
 }
 
-.scanner-chip {
-  display: inline-block;
-  font-family: var(--font-family-latin);
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #a8d3c5;
-  background-color: rgba(255, 255, 255, 0.08);
-  padding: 0.35rem 0.85rem;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.scanner-illustration {
-  margin-block: var(--spacing-lg);
-}
-
-.scanner-optic-circle {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(70, 117, 104, 0.4) 0%, rgba(14, 61, 54, 0.1) 70%);
-  border: 1px solid rgba(168, 211, 197, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-inline: auto;
-  color: #a8d3c5;
+.scanner-card-meta {
+  text-align: right;
 }
 
 .scanner-title {
-  font-family: var(--font-family-latin);
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   font-weight: var(--font-weight-bold);
-  color: var(--color-text-inverse);
-  margin-bottom: 2px;
+  color: var(--color-primary);
+  margin-bottom: 4px;
 }
 
 .scanner-subtitle {
   font-size: var(--font-size-body-sm);
-  color: #a8d3c5;
-  margin-bottom: var(--spacing-md);
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-sm);
 }
 
 .scanner-footer-text {
   font-size: var(--font-size-caption);
-  color: #8daea3;
+  color: var(--color-text-muted);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
 }

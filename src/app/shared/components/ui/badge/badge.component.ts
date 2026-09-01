@@ -39,13 +39,14 @@ export type BadgeVariant = 'sage' | 'primary' | 'outline' | 'subtle' | 'success'
 
         &.badge-sage {
           background-color: var(--color-sage-soft);
-          color: var(--color-accent);
-          border: 1px solid var(--color-sage-border);
+          color: var(--color-primary);
+          border: 1px solid var(--color-border);
         }
 
         &.badge-primary {
           background-color: var(--color-primary-subtle);
           color: var(--color-primary);
+          border: 1px solid var(--color-border);
         }
 
         &.badge-outline {
@@ -57,11 +58,13 @@ export type BadgeVariant = 'sage' | 'primary' | 'outline' | 'subtle' | 'success'
         &.badge-subtle {
           background-color: var(--color-background-soft);
           color: var(--color-text-muted);
+          border: 1px solid var(--color-border-subtle);
         }
 
         &.badge-success {
           background-color: var(--color-success-bg);
           color: var(--color-success);
+          border: 1px solid var(--color-border);
         }
       }
     `,

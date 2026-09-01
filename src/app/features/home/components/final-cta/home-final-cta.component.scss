@@ -1,5 +1,6 @@
 .final-cta-section {
-  background: linear-gradient(145deg, #0284c7 0%, #075985 100%);
+  background-color: var(--color-primary);
+  background-image: linear-gradient(145deg, #164a45 0%, #0e3734 100%);
   color: var(--color-text-inverse);
   padding-block: var(--spacing-3xl);
 
@@ -18,10 +19,9 @@
   font-size: var(--font-size-caption);
   font-weight: var(--font-weight-semibold);
   letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #a8d3c5;
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #dce4e1;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 0.35rem 0.85rem;
   border-radius: var(--radius-pill);
   margin-bottom: var(--spacing-md);
@@ -30,14 +30,14 @@
 .final-cta-title {
   font-size: var(--font-size-h2);
   font-weight: var(--font-weight-bold);
-  color: var(--color-text-inverse);
-  line-height: 1.3;
+  color: #ffffff;
+  line-height: 1.35;
   margin-bottom: var(--spacing-md);
 }
 
 .final-cta-desc {
   font-size: var(--font-size-body-lg);
-  color: #c8ded7;
+  color: #dce4e1;
   line-height: 1.7;
   margin-bottom: var(--spacing-2xl);
 }
@@ -61,7 +61,7 @@
   align-items: center;
   gap: var(--spacing-xs);
   font-size: var(--font-size-body-sm);
-  color: #a8d3c5;
+  color: #dce4e1;
   padding: var(--spacing-xs) var(--spacing-md);
   border-radius: var(--radius-sm);
   transition: color var(--transition-fast), background-color var(--transition-fast);
@@ -72,11 +72,12 @@
   }
 
   .phone-cta-icon {
-    color: #a8d3c5;
+    color: var(--color-accent);
   }
 
   .phone-number {
     color: #ffffff;
+    font-weight: var(--font-weight-bold);
   }
 }
 

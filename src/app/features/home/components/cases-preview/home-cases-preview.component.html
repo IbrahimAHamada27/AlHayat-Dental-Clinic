@@ -20,21 +20,29 @@
                 <app-badge variant="sage">{{ caseItem.categoryAr }}</app-badge>
               </div>
 
-              <!-- Case Visual Comparison Placeholder Box -->
+              <!-- Case Visual Comparison Image Box -->
               <div class="case-preview-frame">
-                <div class="frame-tag-side">
-                  <span class="tag-label">خطة علاجية مخصصة</span>
-                </div>
-                <div class="frame-icon-center">
-                  <app-icon name="tooth-align" size="lg" />
-                </div>
+                @if (caseItem.beforeImage) {
+                  <img
+                    [src]="caseItem.beforeImage"
+                    [alt]="caseItem.titleAr"
+                    class="case-real-img"
+                  />
+                } @else {
+                  <div class="frame-icon-center">
+                    <app-icon name="tooth-align" size="lg" />
+                  </div>
+                }
               </div>
 
               <h3 class="case-title">{{ caseItem.titleAr }}</h3>
               <p class="case-summary">{{ caseItem.summaryAr }}</p>
 
               <div class="case-footer">
-                <span class="case-disclaimer-pill">تشخيص سريري مخصص</span>
+                <a [routerLink]="['/cases', caseItem.slug]" class="case-detail-link">
+                  <span>تفاصيل وخطوات الحالة</span>
+                  <app-icon name="arrow-start" size="xs" />
+                </a>
               </div>
             </app-card>
           </div>

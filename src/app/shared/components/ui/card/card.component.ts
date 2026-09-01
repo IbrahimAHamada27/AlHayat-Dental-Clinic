@@ -50,7 +50,7 @@ export type CardVariant = 'default' | 'surface' | 'soft' | 'interactive' | 'bord
           cursor: pointer;
 
           &:hover {
-            border-color: var(--color-accent);
+            border-color: var(--color-border-strong);
             box-shadow: var(--shadow-sm);
             transform: translateY(-2px);
           }

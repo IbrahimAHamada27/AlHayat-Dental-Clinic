@@ -1,69 +1,80 @@
 // ==========================================================================
-// AL HAYAT DENTAL CLINIC — DESIGN TOKENS & VARIABLES
-// Premium Medical Editorial Palette & Metric Scale
+// AL HAYAT DENTAL CLINIC — MASTER DESIGN SYSTEM TOKENS
+// Quietly Premium Medical Identity & Exact Architectural Ratios
 // ==========================================================================
 
 :root {
-  // Brand Primary — Sky Blue / Medical Cyan (أزرق سماوي / لبني راقي)
-  --color-primary: #0284c7;
-  --color-primary-hover: #0369a1;
-  --color-primary-dark: #075985;
-  --color-primary-light: #38bdf8;
-  --color-primary-subtle: #f0f9ff;
+  // 1. Master Brand Colors
+  // Primary — Deep Forest Green (Primary buttons, key brand, important links)
+  --color-primary: #164a45;
+  --color-primary-hover: #0e3734;
+  --color-primary-dark: #0e3734;
+  --color-primary-light: #205c56;
+  --color-primary-subtle: #f2f7f8;
 
-  // Brand Accent / Secondary — Bright Sky Cyan
-  --color-accent: #0ea5e9;
-  --color-accent-hover: #0284c7;
-  --color-accent-light: #e0f2fe;
-  --color-sage-soft: #f0f9ff;
-  --color-sage-border: #bae6fd;
+  // Secondary — Muted Sage (Icons, soft borders, decorative accents)
+  --color-secondary: #8fafa5;
+  --color-secondary-hover: #7b9c92;
+  --color-sage: #8fafa5;
+  --color-sage-soft: #ebf3f1;
+  --color-sage-border: #dce4e1;
 
-  // Backgrounds — Pure Clean White & Soft Sky Tints
-  --color-background: #ffffff;
-  --color-background-soft: #f8fafc;
+  // Accent — Champagne Gold (Very limited: tiny lines, small numbers, micro-details)
+  --color-accent: #c7a96b;
+  --color-accent-hover: #b69656;
+  --color-accent-light: #f9f6f0;
+  --color-accent-border: #e8dfc9;
+
+  // Backgrounds — Warm Ivory (Primary page rhythm) & Cool White
+  --color-background: #f7f5f0;
+  --color-background-soft: #fbfcfc;
   --color-surface: #ffffff;
-  --color-surface-muted: #f0f9ff;
-  --color-surface-dark: #0369a1;
+  --color-surface-muted: #f2f7f8;
+  --color-surface-dark: #0e3734;
 
-  // Typography & Content — Slate Dark & Sky Accents
-  --color-text: #0f172a;
-  --color-text-secondary: #334155;
-  --color-text-muted: #64748b;
-  --color-text-light: #94a3b8;
+  // Supporting Medical Blue Surfaces (Extremely subtle, 10-15%)
+  --color-medical-blue: #f2f7f8;
+  --color-medical-blue-soft: #eaf2f3;
+
+  // Typography & Content — Charcoal & Slate Gray
+  --color-text: #1e2927;
+  --color-text-secondary: #4a5754;
+  --color-text-muted: #66736f;
+  --color-text-light: #8c9996;
   --color-text-inverse: #ffffff;
-  --color-text-inverse-muted: #e0f2fe;
+  --color-text-inverse-muted: #dce4e1;
 
-  // Medical Sky Borders
-  --color-border: #e2e8f0;
-  --color-border-strong: #cbd5e1;
-  --color-border-subtle: #f1f5f9;
-  --color-border-dark: rgba(255, 255, 255, 0.18);
+  // Borders — Soft Gray-Green (Restrained, subtle)
+  --color-border: #dce4e1;
+  --color-border-strong: #bac7c3;
+  --color-border-subtle: #ebf0ee;
+  --color-border-dark: rgba(255, 255, 255, 0.14);
 
-  // Semantic States
-  --color-success: #059669;
-  --color-success-bg: #ecfdf5;
-  --color-warning: #d97706;
-  --color-warning-bg: #fffbeb;
-  --color-error: #e11d48;
-  --color-error-bg: #fff1f2;
-  --color-info: #0284c7;
-  --color-info-bg: #f0f9ff;
+  // Semantic Feedback States
+  --color-success: #3f806c;
+  --color-success-bg: #edf5f2;
+  --color-warning: #c2821b;
+  --color-warning-bg: #fdfaf3;
+  --color-error: #c0392b;
+  --color-error-bg: #fdf2f2;
+  --color-info: #164a45;
+  --color-info-bg: #f2f7f8;
 
   // Typography Hierarchy
   --font-family-arabic: 'IBM Plex Sans Arabic', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-family-latin: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-family-base: var(--font-family-arabic);
 
-  // Font Sizes
-  --font-size-display: clamp(2rem, 4vw, 3.25rem);
-  --font-size-h1: clamp(1.75rem, 3.2vw, 2.5rem);
-  --font-size-h2: clamp(1.5rem, 2.5vw, 2rem);
-  --font-size-h3: clamp(1.25rem, 2vw, 1.5rem);
+  // Fluid Font Sizes
+  --font-size-display: clamp(2.25rem, 4.5vw, 3.5rem);
+  --font-size-h1: clamp(1.85rem, 3.5vw, 2.75rem);
+  --font-size-h2: clamp(1.45rem, 2.6vw, 2.15rem);
+  --font-size-h3: clamp(1.2rem, 2vw, 1.55rem);
   --font-size-h4: 1.125rem;
   --font-size-body-lg: 1.125rem;
   --font-size-body: 1rem;
   --font-size-body-sm: 0.875rem;
-  --font-size-caption: 0.75rem;
+  --font-size-caption: 0.8125rem;
   --font-size-button: 0.9375rem;
   --font-size-label: 0.8125rem;
 
@@ -73,7 +84,7 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  // Spacing Scale
+  // Spacing Scale (4, 8, 12, 16, 24, 32, 48, 72, 96, 120px)
   --spacing-3xs: 0.125rem; // 2px
   --spacing-2xs: 0.25rem;  // 4px
   --spacing-xs: 0.5rem;    // 8px
@@ -92,30 +103,30 @@
   --container-xl: 1200px;
   --container-max: 1320px;
 
-  // Layout Gutters
+  // Responsive Layout Gutters
   --gutter-mobile: 1rem;
   --gutter-tablet: 1.5rem;
   --gutter-desktop: 2rem;
 
-  // Border Radius (Moderate, Architectural, Non-AI Pill Aesthetic)
+  // Architectural Restrained Border Radii
   --radius-xs: 4px;
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
   --radius-pill: 9999px;
 
-  // Shadows (Restrained, Subtle Medical Depth)
-  --shadow-xs: 0 1px 2px rgba(14, 61, 54, 0.04);
-  --shadow-sm: 0 2px 6px rgba(14, 61, 54, 0.06);
-  --shadow-md: 0 6px 18px rgba(14, 61, 54, 0.07);
-  --shadow-lg: 0 12px 36px rgba(14, 61, 54, 0.09);
-  --shadow-navbar: 0 2px 14px rgba(14, 61, 54, 0.05);
+  // Very Subtle Shadows (rgba(14, 55, 52, ...))
+  --shadow-xs: 0 1px 3px rgba(14, 55, 52, 0.03);
+  --shadow-sm: 0 2px 10px rgba(14, 55, 52, 0.04);
+  --shadow-md: 0 8px 30px rgba(14, 55, 52, 0.07);
+  --shadow-lg: 0 16px 45px rgba(14, 55, 52, 0.08);
+  --shadow-navbar: 0 2px 12px rgba(14, 55, 52, 0.03);
 
   // Transitions
-  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-base: 250ms cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 160ms ease-out;
+  --transition-base: 220ms ease-out;
+  --transition-slow: 350ms ease-out;
 
   // Header & Navigation Heights
   --navbar-height: 76px;
@@ -125,3 +136,4 @@
   --z-index-drawer: 200;
   --z-index-sticky-bar: 90;
 }
+

@@ -82,9 +82,9 @@ import { IconComponent } from '../../../../shared/components/ui/icon/icon.compon
         width: 40px;
         height: 40px;
         border-radius: var(--radius-sm);
-        background-color: var(--color-sage-soft);
-        color: var(--color-accent);
-        border: 1px solid var(--color-sage-border);
+        background-color: var(--color-medical-blue);
+        color: var(--color-primary);
+        border: 1px solid var(--color-border);
         display: flex;
         align-items: center;
         justify-content: center;
