@@ -223,7 +223,7 @@
 }
 
 .doctor-oversight-card {
-  background: linear-gradient(145deg, #0e3d36 0%, #082622 100%);
+  background: linear-gradient(145deg, #0284c7 0%, #075985 100%);
   border-radius: var(--radius-xl);
   padding: var(--spacing-2xl);
   color: var(--color-text-inverse);
@@ -274,7 +274,7 @@
 }
 
 .doc-badge-inner {
-  background: linear-gradient(145deg, #13423a 0%, #0c2f29 100%);
+  background: linear-gradient(145deg, #0369a1 0%, #0c4a6e 100%);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-lg);
   padding: var(--spacing-xl);
@@ -284,7 +284,7 @@
   align-items: center;
 
   .doc-badge-icon {
-    color: #a8d3c5;
+    color: #bae6fd;
     margin-bottom: var(--spacing-sm);
   }
 
@@ -297,7 +297,7 @@
 
   .doc-badge-title {
     font-size: var(--font-size-body-sm);
-    color: #a8d3c5;
+    color: #bae6fd;
     margin-bottom: var(--spacing-md);
   }
 }
@@ -320,7 +320,7 @@
 
 // Final CTA
 .locations-final-cta-section {
-  background: linear-gradient(145deg, #0e3d36 0%, #082622 100%);
+  background: linear-gradient(145deg, #0284c7 0%, #075985 100%);
   color: var(--color-text-inverse);
   padding-block: var(--spacing-3xl);
 

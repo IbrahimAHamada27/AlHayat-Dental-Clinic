@@ -4,50 +4,50 @@
 // ==========================================================================
 
 :root {
-  // Brand Primary — Deep Sophisticated Medical Green
-  --color-primary: #0e3d36;
-  --color-primary-hover: #134e45;
-  --color-primary-dark: #082622;
-  --color-primary-light: #1b5c53;
-  --color-primary-subtle: #e6f0ed;
+  // Brand Primary — Sky Blue / Medical Cyan (أزرق سماوي / لبني راقي)
+  --color-primary: #0284c7;
+  --color-primary-hover: #0369a1;
+  --color-primary-dark: #075985;
+  --color-primary-light: #38bdf8;
+  --color-primary-subtle: #f0f9ff;
 
-  // Brand Accent / Secondary — Muted Sage
-  --color-accent: #467568;
-  --color-accent-hover: #375e53;
-  --color-accent-light: #d6e4de;
-  --color-sage-soft: #f0f5f2;
-  --color-sage-border: #d4e2db;
+  // Brand Accent / Secondary — Bright Sky Cyan
+  --color-accent: #0ea5e9;
+  --color-accent-hover: #0284c7;
+  --color-accent-light: #e0f2fe;
+  --color-sage-soft: #f0f9ff;
+  --color-sage-border: #bae6fd;
 
-  // Backgrounds — Warm Editorial Off-White & Clean Surface
-  --color-background: #faf8f5;
-  --color-background-soft: #f3efe8;
+  // Backgrounds — Pure Clean White & Soft Sky Tints
+  --color-background: #ffffff;
+  --color-background-soft: #f8fafc;
   --color-surface: #ffffff;
-  --color-surface-muted: #f7faf8;
-  --color-surface-dark: #0a2d28;
+  --color-surface-muted: #f0f9ff;
+  --color-surface-dark: #0369a1;
 
-  // Typography & Content — Charcoal & Muted Greens
-  --color-text: #162420;
-  --color-text-secondary: #3b4e47;
-  --color-text-muted: #62776f;
-  --color-text-light: #899c95;
+  // Typography & Content — Slate Dark & Sky Accents
+  --color-text: #0f172a;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748b;
+  --color-text-light: #94a3b8;
   --color-text-inverse: #ffffff;
-  --color-text-inverse-muted: #c8ded7;
+  --color-text-inverse-muted: #e0f2fe;
 
-  // Subtle Medical Borders
-  --color-border: #e2ede7;
-  --color-border-strong: #c8dcd2;
-  --color-border-subtle: #f0f5f2;
-  --color-border-dark: rgba(255, 255, 255, 0.12);
+  // Medical Sky Borders
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+  --color-border-subtle: #f1f5f9;
+  --color-border-dark: rgba(255, 255, 255, 0.18);
 
   // Semantic States
-  --color-success: #1b633e;
-  --color-success-bg: #edf7f0;
-  --color-warning: #b25e02;
-  --color-warning-bg: #fef5ea;
-  --color-error: #b72b2b;
-  --color-error-bg: #fdf2f2;
-  --color-info: #135f8a;
-  --color-info-bg: #eff7fc;
+  --color-success: #059669;
+  --color-success-bg: #ecfdf5;
+  --color-warning: #d97706;
+  --color-warning-bg: #fffbeb;
+  --color-error: #e11d48;
+  --color-error-bg: #fff1f2;
+  --color-info: #0284c7;
+  --color-info-bg: #f0f9ff;
 
   // Typography Hierarchy
   --font-family-arabic: 'IBM Plex Sans Arabic', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
