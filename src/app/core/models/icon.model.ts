@@ -27,4 +27,5 @@ export type IconName =
   | 'user'
   | 'star'
   | 'award'
+  | 'search'
   | 'external-link';

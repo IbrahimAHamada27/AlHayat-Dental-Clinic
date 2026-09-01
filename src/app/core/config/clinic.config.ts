@@ -84,6 +84,7 @@ export const CLINIC_LOCATIONS: ClinicLocation[] = [
     phoneFormatted: '015 017 01514',
     whatsapp: '01501701514',
     googleMapsUrl: 'https://maps.google.com/?q=%D8%A8%D8%B1%D8%AC+%D8%A7%D9%84%D8%B9%D8%B1%D8%A8+%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9+%D8%B4%D8%A7%D8%B1%D8%B9+%D8%A7%D9%84%D8%AC%D9%87%D8%A7%D8%B2+%D8%B5%D9%8A%D8%AF%D9%84%D9%8A%D8%A9+%D8%AF+%D8%B1%D8%B4%D8%A7',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=30.8789,29.5815&hl=ar&z=15&output=embed',
     services: [
       'orthodontics',
       'restorative-dentistry',
@@ -119,6 +120,7 @@ export const CLINIC_LOCATIONS: ClinicLocation[] = [
     phoneFormatted: '015 017 01514',
     whatsapp: '01501701514',
     googleMapsUrl: 'https://maps.google.com/?q=%D8%A8%D8%B1%D8%AC+%D8%A7%D9%84%D8%B9%D8%B1%D8%A8+%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D9%85%D8%A9+%D8%B4%D8%A7%D8%B1%D8%B9+%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A9+%D8%A7%D9%84%D8%B5%D8%AD%D9%8A%D8%A9',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=30.9167,29.5333&hl=ar&z=15&output=embed',
     services: [
       'orthodontics',
       'restorative-dentistry',
@@ -237,6 +239,7 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     categoryAr: 'تقويم الأسنان',
     categoryEn: 'Orthodontics',
     iconName: 'tooth-align',
+    heroImage: 'assets/images/cases/case-ortho-braces.jpg',
     isFeatured: true,
     isActive: true,
     whoItIsForAr: [
@@ -327,6 +330,7 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     categoryAr: 'العلاجات الترميمية',
     categoryEn: 'Restorative Care',
     iconName: 'tooth-fill',
+    heroImage: 'assets/images/cases/case-composite-anterior.jpg',
     isFeatured: true,
     isActive: true,
     whoItIsForAr: [
@@ -407,6 +411,7 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     categoryAr: 'العلاجات الترميمية',
     categoryEn: 'Restorative Care',
     iconName: 'root-canal',
+    heroImage: 'assets/images/doctor/dr-moaz-loupes.jpg',
     isFeatured: true,
     isActive: true,
     whoItIsForAr: [
@@ -487,6 +492,7 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     categoryAr: 'تجميل الأسنان والتركيبات',
     categoryEn: 'Cosmetics & Crowns',
     iconName: 'sparkle',
+    heroImage: 'assets/images/cases/case-smile-makeover.jpg',
     isFeatured: true,
     isActive: true,
     whoItIsForAr: [
@@ -568,6 +574,7 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     categoryAr: 'العناية الوقائية',
     categoryEn: 'Periodontal Care',
     iconName: 'shield-check',
+    heroImage: 'assets/images/cases/case-teeth-cleaning.jpg',
     isFeatured: true,
     isActive: true,
     whoItIsForAr: [
@@ -648,6 +655,7 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     categoryAr: 'رعاية الأطفال',
     categoryEn: 'Pediatric Care',
     iconName: 'heart-pulse',
+    heroImage: 'assets/images/doctor/dr-moaz-working.jpg',
     isFeatured: true,
     isActive: true,
     whoItIsForAr: [

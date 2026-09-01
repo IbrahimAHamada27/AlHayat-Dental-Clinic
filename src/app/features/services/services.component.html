@@ -71,9 +71,14 @@
               </div>
             </div>
 
-            <div class="featured-icon-side">
-              <div class="big-icon-frame">
-                <app-icon [name]="featured.iconName" size="xl" />
+            <div class="featured-image-side">
+              <div class="featured-image-frame">
+                <img
+                  [src]="featured.heroImage || 'assets/images/cases/case-ortho-braces.jpg'"
+                  [alt]="featured.titleAr"
+                  class="featured-real-image"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
@@ -90,8 +95,12 @@
             [attr.aria-label]="service.titleAr"
           >
             <div class="card-top-row">
-              <div class="service-icon-box">
-                <app-icon [name]="service.iconName" size="md" />
+              <div class="service-thumb-box">
+                @if (service.heroImage) {
+                  <img [src]="service.heroImage" [alt]="service.titleAr" class="service-thumb-img" loading="lazy" />
+                } @else {
+                  <app-icon [name]="service.iconName" size="md" />
+                }
               </div>
               <app-badge variant="sage">{{ service.categoryAr }}</app-badge>
             </div>

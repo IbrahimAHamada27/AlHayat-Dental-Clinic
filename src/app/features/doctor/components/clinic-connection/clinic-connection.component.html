@@ -33,7 +33,11 @@
       <div class="connection-brand-card">
         <div class="brand-card-inner">
           <div class="clinic-emblem">
-            <app-icon name="tooth-align" size="xl" class="emblem-icon" />
+            <img
+              src="assets/images/logo/clinic-logo.png"
+              [alt]="config().clinicNameAr"
+              class="clinic-logo-img"
+            />
           </div>
 
           <h3 class="clinic-brand-title">{{ config().clinicNameAr }}</h3>

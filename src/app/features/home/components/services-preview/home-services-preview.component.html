@@ -16,6 +16,16 @@
       @if (featuredService; as featured) {
         <div class="featured-service-block">
           <div class="featured-card">
+            <div class="featured-media-frame">
+              <img
+                [src]="featured.heroImage || 'assets/images/cases/case-ortho-braces.jpg'"
+                [alt]="featured.titleAr"
+                class="featured-photo"
+                loading="lazy"
+              />
+              <span class="featured-media-tag">خدمة تقويم تخصصية</span>
+            </div>
+
             <div class="featured-content">
               <app-badge variant="primary" class="mb-xs">من خدمات العيادة المميزة</app-badge>
               <h3 class="featured-title">{{ featured.titleAr }}</h3>
@@ -47,10 +57,6 @@
                 </app-button>
               </div>
             </div>
-
-            <div class="featured-icon-badge">
-              <app-icon [name]="featured.iconName" size="xl" />
-            </div>
           </div>
         </div>
       }
@@ -63,8 +69,12 @@
             class="service-item-card"
             [attr.aria-label]="srv.titleAr"
           >
-            <div class="srv-icon-box">
-              <app-icon [name]="srv.iconName" size="md" />
+            <div class="srv-thumb-box">
+              @if (srv.heroImage) {
+                <img [src]="srv.heroImage" [alt]="srv.titleAr" class="srv-thumb-img" loading="lazy" />
+              } @else {
+                <app-icon [name]="srv.iconName" size="sm" />
+              }
             </div>
             <div class="srv-text-block">
               <h4 class="srv-title">{{ srv.titleAr }}</h4>

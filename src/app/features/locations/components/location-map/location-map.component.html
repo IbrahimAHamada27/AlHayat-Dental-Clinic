@@ -1,12 +1,16 @@
 <div class="location-map-card" [attr.aria-label]="'خريطة وإرشادات الوصول إلى ' + location().nameAr">
   <div class="map-visual-frame">
-    <div class="map-grid-pattern"></div>
-    <div class="map-pin-indicator">
-      <div class="pin-pulse"></div>
-      <div class="pin-icon-wrap">
-        <app-icon name="location" size="md" />
-      </div>
-      <span class="pin-label">{{ location().nameAr }}</span>
+    <iframe
+      [src]="safeMapUrl()"
+      class="live-google-map"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      [title]="'خريطة موقع ' + location().nameAr"
+    ></iframe>
+    <div class="map-branch-floating-badge">
+      <app-icon name="location" size="xs" />
+      <span>{{ location().nameAr }}</span>
     </div>
   </div>
 
@@ -24,7 +28,7 @@
       (btnClick)="onOpenMap()"
       class="w-full"
     >
-      فتح الموقع على Google Maps
+      فتح الاتجاهات المباشرة في Google Maps
     </app-button>
   </div>
 </div>
