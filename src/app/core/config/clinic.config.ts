@@ -46,14 +46,14 @@ export const CLINIC_CONFIG: ClinicConfig = {
   ],
   defaultSeo: {
     siteName: 'عيادة الحياة لطب الأسنان | د. معاذ سمير',
-    siteUrl: 'https://alhayatdental.com',
-    defaultTitleAr: 'د. معاذ سمير | طبيب أسنان في برج العرب | عيادة الحياة لطب الأسنان',
-    defaultTitleEn: 'Dr. Moaz Samir | Dentist in Borg El Arab | Al Hayat Dental Clinic',
+    siteUrl: 'https://ibrahimahamada27.github.io/AlHayat-Dental-Clinic',
+    defaultTitleAr: 'عيادة الحياة لطب الأسنان | د. معاذ سمير — برج العرب',
+    defaultTitleEn: 'Dr. Moaz Samir | Al Hayat Dental Clinic — Borg El Arab',
     defaultDescriptionAr:
       'عيادة الحياة لطب الأسنان بإشراف د. معاذ سمير في برج العرب. رعاية متكاملة لصحة الفم، تقويم الأسنان، حشو العصب، والتركيبات التجميلية مع تقنيات طب الأسنان الرقمي.',
     defaultDescriptionEn:
       'Al Hayat Dental Clinic by Dr. Moaz Samir. Comprehensive oral care, orthodontics, root canal treatments, and cosmetic dentistry in New & Old Borg El Arab.',
-    ogImage: '/assets/images/branding/og-cover.jpg',
+    ogImage: 'assets/images/logo/logo-square.jpg',
     locale: 'ar_EG',
   },
 };

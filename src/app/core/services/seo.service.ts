@@ -26,9 +26,14 @@ export class SeoService {
 
     const description = seo.description || CLINIC_CONFIG.defaultSeo.defaultDescriptionAr;
     const url = seo.canonical || CLINIC_CONFIG.defaultSeo.siteUrl;
-    const image = seo.ogImage || `${CLINIC_CONFIG.defaultSeo.siteUrl}${CLINIC_CONFIG.defaultSeo.ogImage}`;
+    let image = seo.ogImage || CLINIC_CONFIG.defaultSeo.ogImage;
+    if (image && !image.startsWith('http://') && !image.startsWith('https://')) {
+      const cleanBase = CLINIC_CONFIG.defaultSeo.siteUrl.replace(/\/$/, '');
+      const cleanPath = image.replace(/^\//, '');
+      image = `${cleanBase}/${cleanPath}`;
+    }
     const ogType = seo.ogType || 'website';
-    const twitterCard = seo.twitterCard || 'summary_large_image';
+    const twitterCard = seo.twitterCard || 'summary';
 
     // Set Document Title
     this.titleService.setTitle(fullTitle);
