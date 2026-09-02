@@ -1,0 +1,8 @@
+# Robots.txt for Al Hayat Dental Clinic (Dr. Moaz Samir)
+# https://www.drmoazsamir.com
+
+User-agent: *
+Allow: /
+
+# Sitemap Index
+Sitemap: https://www.drmoazsamir.com/sitemap.xml
