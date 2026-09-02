@@ -33,7 +33,7 @@ export class SeoService {
       image = `${cleanBase}/${cleanPath}`;
     }
     const ogType = seo.ogType || 'website';
-    const twitterCard = seo.twitterCard || 'summary';
+    const twitterCard = seo.twitterCard || 'summary_large_image';
 
     // Set Document Title
     this.titleService.setTitle(fullTitle);
