@@ -7,7 +7,7 @@
     "build": "ng build",
     "postbuild": "node scripts/copy-404.js",
     "build:prod": "ng build --configuration production --base-href /",
-    "deploy": "npm run build:prod && npx gh-pages -d dist/al-hayat-dental-clinic/browser -b gh-pages",
+    "deploy": "npm run build:prod && node scripts/deploy-gh-pages.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
