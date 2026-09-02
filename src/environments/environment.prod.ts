@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  siteUrl: 'https://alhayatdental.com',
+  siteUrl: 'https://www.drmoazsamir.com',
   gaMeasurementId: '', // Production GA4 Measurement ID
   metaPixelId: '', // Production Meta Pixel ID
   enableAnalytics: true,

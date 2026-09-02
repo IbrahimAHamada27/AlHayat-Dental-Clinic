@@ -1,43 +1,98 @@
 <main class="not-found-page-flow section">
   <div class="container container-md text-center">
     <div class="not-found-card">
-      <div class="nf-code-badge">404</div>
-
-      <div class="nf-icon-wrap">
-        <app-icon name="alert-circle" size="xl" />
+      
+      <!-- Doctor Portrait & 404 Visual Anchor -->
+      <div class="nf-doctor-hero">
+        <div class="nf-doctor-avatar-wrap">
+          <img
+            [src]="doctor.image"
+            [alt]="doctor.nameAr"
+            class="nf-doctor-img"
+            width="130"
+            height="130"
+            loading="eager"
+          />
+          <div class="nf-badge-tag">
+            <app-icon name="award" size="xs" />
+            <span>{{ doctor.nameAr }}</span>
+          </div>
+        </div>
       </div>
 
-      <h1 class="nf-title">عذراً، لم نتمكن من العثور على الصفحة المطلوبة</h1>
+      <!-- 404 Code Badge -->
+      <div class="nf-code-badge">
+        <span class="pulse-dot"></span>
+        <span>خطأ 404 • مسار غير متوفر</span>
+      </div>
+
+      <!-- Main Headline & Explanation -->
+      <h1 class="nf-title">عذراً، يبدو أنك ضللت الطريق!</h1>
+      
       <p class="nf-desc">
-        ربما تم نقل الصفحة أو تغيير عنوان الرابط. يمكنك العودة للصفحة الرئيسية أو استكشاف خدمات وفروع عيادة الحياة لطب الأسنان.
+        الصفحة التي طلبتها غير متوفرة حالياً أو قد تم تغيير مسارها. لا تقلق، يمكنك دائماً العودة إلى الصفحة الرئيسية أو التواصل مباشرة مع فريق العيادة لمساعدتك.
       </p>
 
+      <!-- Primary Action Buttons -->
       <div class="nf-actions-grid">
-        <app-button variant="primary" size="lg" iconEnd="arrow-start" [routerLink]="['/']">
+        <app-button
+          variant="primary"
+          size="lg"
+          iconEnd="home"
+          [routerLink]="['/']"
+          class="nf-main-action"
+        >
           العودة للصفحة الرئيسية
         </app-button>
 
-        <app-button variant="secondary" size="lg" [routerLink]="['/services']">
+        <a
+          [href]="'https://wa.me/' + config.contact.whatsappRaw"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="nf-whatsapp-action"
+          aria-label="تواصل مع العيادة عبر واتساب"
+        >
+          <app-icon name="whatsapp" size="md" />
+          <span>تواصل عبر واتساب</span>
+        </a>
+
+        <app-button
+          variant="secondary"
+          size="lg"
+          iconEnd="tooth-align"
+          [routerLink]="['/services']"
+        >
           استعراض الخدمات
         </app-button>
-
-        <app-button variant="outline" size="lg" [routerLink]="['/contact']">
-          تواصل مع العيادة
-        </app-button>
       </div>
 
+      <!-- Quick Helpful Navigation -->
       <div class="nf-quick-links">
-        <span class="links-label">صفحات شائعة:</span>
+        <span class="links-label">صفحات قد تهمك للوصول السريع:</span>
         <div class="links-row">
-          <a routerLink="/doctor" class="quick-link">عن د. معاذ سمير</a>
-          <span class="link-dot">•</span>
-          <a routerLink="/locations" class="quick-link">فروع العيادة ببرج العرب</a>
-          <span class="link-dot">•</span>
-          <a routerLink="/technology" class="quick-link">الماسح الرقمي 3D</a>
-          <span class="link-dot">•</span>
-          <a routerLink="/blog" class="quick-link">مقالات التثقيف الصحي</a>
+          <a routerLink="/doctor" class="quick-link-pill">
+            <app-icon name="user" size="xs" />
+            <span>عن د. معاذ سمير</span>
+          </a>
+          <a routerLink="/locations" class="quick-link-pill">
+            <app-icon name="location" size="xs" />
+            <span>فروع برج العرب</span>
+          </a>
+          <a routerLink="/technology" class="quick-link-pill">
+            <app-icon name="sparkle" size="xs" />
+            <span>الماسح الرقمي 3D</span>
+          </a>
+          <a routerLink="/cases" class="quick-link-pill">
+            <app-icon name="award" size="xs" />
+            <span>حالات ونتائج العلاج</span>
+          </a>
+          <a routerLink="/contact" class="quick-link-pill">
+            <app-icon name="phone" size="xs" />
+            <span>حجز موعد واستشارة</span>
+          </a>
         </div>
       </div>
+
     </div>
   </div>
 </main>

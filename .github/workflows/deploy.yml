@@ -34,7 +34,7 @@ jobs:
         run: npm ci
 
       - name: Build Angular App
-        run: npx ng build --configuration production --base-href /AlHayat-Dental-Clinic/
+        run: npx ng build --configuration production --base-href /
 
       - name: Copy index.html to 404.html for SPA Routing
         run: cp dist/al-hayat-dental-clinic/browser/index.html dist/al-hayat-dental-clinic/browser/404.html

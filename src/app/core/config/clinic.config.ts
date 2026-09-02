@@ -46,7 +46,7 @@ export const CLINIC_CONFIG: ClinicConfig = {
   ],
   defaultSeo: {
     siteName: 'عيادة الحياة لطب الأسنان | د. معاذ سمير',
-    siteUrl: 'https://ibrahimahamada27.github.io/AlHayat-Dental-Clinic',
+    siteUrl: 'https://www.drmoazsamir.com',
     defaultTitleAr: 'عيادة الحياة لطب الأسنان | د. معاذ سمير — برج العرب',
     defaultTitleEn: 'Dr. Moaz Samir | Al Hayat Dental Clinic — Borg El Arab',
     defaultDescriptionAr:
