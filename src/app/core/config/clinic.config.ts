@@ -3,6 +3,7 @@ import { ClinicLocation } from '../models/location.model';
 import { Doctor } from '../models/doctor.model';
 import { ServiceItem } from '../models/service.model';
 import { TechnologyItem, CaseStudyItem, ArticleItem, TestimonialItem } from '../models/content.model';
+import { IconName } from '../models/icon.model';
 
 export const CLINIC_CONFIG: ClinicConfig = {
   clinicNameAr: 'عيادة الحياة لطب الأسنان',
@@ -1116,3 +1117,126 @@ export const INITIAL_ARTICLES: ArticleItem[] = [
 ];
 
 export const INITIAL_TESTIMONIALS: TestimonialItem[] = [];
+
+export interface ValuePillar {
+  icon: IconName;
+  titleAr: string;
+  titleEn: string;
+  descAr: string;
+  descEn: string;
+}
+
+export const VALUE_PILLARS: ValuePillar[] = [
+  {
+    icon: 'sparkle',
+    titleAr: 'تكنولوجيا متطورة',
+    titleEn: 'Advanced Technology',
+    descAr: 'أحدث ماسح ضوئي ثلاثي الأبعاد 3D Intraoral Scanner لتشخيص دقيق وسريع بدون مقاسات تقليدية.',
+    descEn: 'State-of-the-art 3D intraoral scanner for precise diagnosis and comfortable digital impressions.',
+  },
+  {
+    icon: 'heart-pulse',
+    titleAr: 'الراحة أولاً وبدون ألم',
+    titleEn: 'Comfort First',
+    descAr: 'بيئة هادئة ومريحة مع أحدث أساليب التخدير الحديث لعلاج هادئ تماماً وبدون أي ألم.',
+    descEn: 'A relaxing clinical environment and modern gentle anesthesia for stress-free treatment.',
+  },
+  {
+    icon: 'award',
+    titleAr: 'فريق طبي متخصص',
+    titleEn: 'Expert Team',
+    descAr: 'بإشراف د. معاذ سمير — طبيب وجراح الفم والأسنان بخبرة سريرية وأكاديمية متقدمة.',
+    descEn: 'Led by Dr. Moaz Samir with dedicated clinical expertise in dentistry and orthodontics.',
+  },
+  {
+    icon: 'shield-check',
+    titleAr: 'رعاية مخصصة وأمان 100%',
+    titleEn: 'Personalized Care & Safety',
+    descAr: 'خطة علاجية مفصلة تناسب احتياجات كل مريض مع أعلى معايير التعقيم ومكافحة العدوى.',
+    descEn: 'Tailored treatment plans with 100% surgical sterilization and international safety protocols.',
+  },
+];
+
+export interface ClinicStat {
+  value: string;
+  labelAr: string;
+  labelEn: string;
+  badgeAr: string;
+  icon: IconName;
+}
+
+export const CLINIC_STATS: ClinicStat[] = [
+  {
+    value: '+15',
+    labelAr: 'عاماً من الخبرة والتميز الأكاديمي والسريري',
+    labelEn: 'Years of Clinical & Academic Experience',
+    badgeAr: 'خبرة موثوقة',
+    icon: 'star',
+  },
+  {
+    value: '+5,000',
+    labelAr: 'مريض سعيد وابتسامة تم علاجها وتجميلها بنجاح',
+    labelEn: 'Happy Patients & Restored Smiles',
+    badgeAr: 'ثقة المرضى',
+    icon: 'user',
+  },
+  {
+    value: '100%',
+    labelAr: 'تعقيم جراحي بأحدث أجهزة الأوتوكلاف ومعايير الأمان',
+    labelEn: 'Surgical Sterilization & Safety Protocols',
+    badgeAr: 'أعلى أمان',
+    icon: 'shield-check',
+  },
+];
+
+export interface ClinicFaq {
+  id: string;
+  questionAr: string;
+  answerAr: string;
+  categoryAr: string;
+}
+
+export const CLINIC_FAQS: ClinicFaq[] = [
+  {
+    id: 'faq-best-clinic',
+    questionAr: 'ما الذي يجعل عيادة الحياة أفضل عيادة أسنان في برج العرب؟',
+    answerAr:
+      'تتميز عيادة الحياة بإشراف مباشر من د. معاذ سمير، وامتلاكها لأحدث أجهزة طب الأسنان الرقمي مثل الماسح الضوئي ثلاثي الأبعاد (3D Intraoral Scanner) الذي يغني عن المقاسات التقليدية المزعجة، وتطبيق أعلى معايير التعقيم الجراحي بنسبة 100%، وتوفير فرعين مجهزين بالكامل في برج العرب الجديدة (أول شارع الجهاز) وبرج العرب القديمة (شارع الوحدة الصحية).',
+    categoryAr: 'عن العيادة',
+  },
+  {
+    id: 'faq-painless-root-canal',
+    questionAr: 'هل جلسات حشو وعلاج العصب مؤلمة في عيادة الحياة؟',
+    answerAr:
+      'إطلاقاً. نعتمد في عيادة الحياة على تقنيات علاج الجذور الحديثة بالموتور والروتاري (Rotary Endodontics) مع التخدير الموضعي الدقيق، مما يتيح إتمام تنظيف وحشو القنوات العصبية بجلسات مريحة وسريعة بدون أي ألم، والتخلص الفوري من ألم العصب الحاد.',
+    categoryAr: 'حشو العصب',
+  },
+  {
+    id: 'faq-intraoral-scanner',
+    questionAr: 'ما هي مميزات الماسح الضوئي ثلاثي الأبعاد (3D Intraoral Scanner) مقارنة بالمقاسات العادية؟',
+    answerAr:
+      'الماسح الضوئي الفموي هو كاميرا رقمية فائقة الدقة تلتقط آلاف الصور ثلاثية الأبعاد للأسنان والفكين في ثوانٍ معدودة. هذا يلغي تماماً الحاجة إلى قوالب وعجائن المقاسات التقليدية التي تسبب الغثيان والانزعاج، ويمنحنا دقة ميكرونية لتصنيع التركيبات وتيجان الزيركون والإيماكس وتقويم الأسنان بدقة وتطابق تام.',
+    categoryAr: 'التكنولوجيا الرقمية',
+  },
+  {
+    id: 'faq-orthodontics-types',
+    questionAr: 'ما هي أنواع تقويم الأسنان المتاحة في برج العرب مع د. معاذ سمير؟',
+    answerAr:
+      'نوفر في العيادة خيارات تقويم الأسنان المتنوعة المناسبة للأطفال والبالغين، ومنها: التقويم الشفاف غير المرئي (Clear Aligners)، التقويم المعدني الثابت التقليدي عالي الفعالية، والتقويم الخزفي التجميلي، مع خطة سداد مريحة ومتابعة شهرية دقيقة حتى الوصول لابتسامة متناسقة وإطباق سليم.',
+    categoryAr: 'تقويم الأسنان',
+  },
+  {
+    id: 'faq-cosmetic-crowns',
+    questionAr: 'ما الفرق بين فينير الأسنان وتيجان الزيركون والإيماكس؟',
+    answerAr:
+      'الفينير (Veneers) هو عدسات خزفية رقيقة توضع على السطح الخارجي للأسنان الأمامية لتعديل اللون وتسكير الفراغات وتجميل الابتسامة، بينما تيجان الزيركون تتميز بصلابة فائقة تناسب الأضراس الخلفية والمضغ القوي، وتيجان الإيماكس (E-Max) توفر أعلى درجات الشفافية والجمال الطبيعي للأسنان الأمامية.',
+    categoryAr: 'تجميل الأسنان',
+  },
+  {
+    id: 'faq-branches-appointment',
+    questionAr: 'كيف أحجز موعداً وما هي مواعيد العمل في فرعي برج العرب؟',
+    answerAr:
+      'يمكنك الحجز بسهولة مباشرة عبر واتساب على الرقم 01501701514 أو بالاتصال الهاتفي. فرع برج العرب الجديدة (أول شارع الجهاز، أعلى صيدلية د. رشا) يعمل طوال الأسبوع من 2:30 ظهراً حتى 9:30 مساءً. وفرع برج العرب القديمة (شارع الوحدة الصحية) يعمل من السبت إلى الخميس من 3:30 عصراً حتى 10:00 مساءً.',
+    categoryAr: 'المواعيد والحجز',
+  },
+];

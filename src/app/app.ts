@@ -4,7 +4,6 @@ import { filter } from 'rxjs/operators';
 import { NavbarComponent } from './shared/components/layout/navbar/navbar.component';
 import { FooterComponent } from './shared/components/layout/footer/footer.component';
 import { MobileContactBarComponent } from './shared/components/layout/mobile-contact-bar/mobile-contact-bar.component';
-import { CookieConsentComponent } from './shared/components/ui/cookie-consent/cookie-consent.component';
 import { AnalyticsService } from './core/services/analytics.service';
 
 @Component({
@@ -15,7 +14,6 @@ import { AnalyticsService } from './core/services/analytics.service';
     NavbarComponent,
     FooterComponent,
     MobileContactBarComponent,
-    CookieConsentComponent,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',

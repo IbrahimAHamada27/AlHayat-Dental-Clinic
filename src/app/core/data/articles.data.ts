@@ -404,4 +404,231 @@ export const DENTAL_ARTICLES: Article[] = [
     isFeatured: false,
     status: 'published',
   },
+  {
+    id: 'art-orthodontics-guide',
+    slug: 'orthodontics-complete-guide-borg-el-arab',
+    titleAr: 'دليل تقويم الأسنان الشامل في برج العرب: الأنواع والمراحل مع د. معاذ سمير',
+    titleEn: 'Comprehensive Orthodontics Guide in Borg El Arab',
+    excerptAr:
+      'كل ما تود معرفته عن تقويم الأسنان ببرج العرب: الفرق بين التقويم الشفاف والمعدني، متى تبدأ العلاج، وخطوات تصميم ابتسامتك بدقة مع د. معاذ سمير.',
+    excerptEn:
+      'All you need to know about orthodontics in Borg El Arab: Clear aligners vs traditional braces, treatment phases, and smile design.',
+    category: 'orthodontics',
+    categoryAr: 'تقويم الأسنان',
+    categoryEn: 'Orthodontics',
+    tags: [
+      'تقويم اسنان برج العرب',
+      'دكتور تقويم اسنان',
+      'التقويم الشفاف',
+      'تقويم الاسنان المعدني',
+      'دكتور معاذ سمير',
+      'برج العرب الجديدة',
+    ],
+    readingTimeMinutes: 5,
+    publishedDate: '2026-09-05',
+    authorId: 'dr-moaz-samir',
+    authorNameAr: 'د. معاذ سمير',
+    authorTitleAr: 'طبيب وجراح الفم والأسنان — أخصائي تقويم الأسنان',
+    featuredImage: 'assets/images/cases/case-ortho-braces.jpg',
+    blocks: [
+      {
+        type: 'heading',
+        level: 2,
+        id: 'ortho-importance',
+        textAr: 'لماذا يعتبر تقويم الأسنان استثماراً لصحتك وليس لمظهرك فقط؟',
+      },
+      {
+        type: 'paragraph',
+        textAr:
+          'تقويم الأسنان لا يقتصر على تحسين المظهر الجمالي للابتسامة فحسب، بل يلعب دوراً جوهرياً في تصحيح إطباق الفكين وتسهيل تنظيف الأسنان لمنع تراكم الجير والتسوس وأمراض اللثة المزمنة، وتخفيف الضغط غير المتوازن على مفصل الفك (TMJ).',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        id: 'ortho-types-comparison',
+        textAr: 'أنواع تقويم الأسنان المتاحة في عيادة الحياة ببرج العرب',
+      },
+      {
+        type: 'list',
+        itemsAr: [
+          '🔹 التقويم الشفاف غير المرئي (Clear Aligners): قوالب شفافة متحركة ومريحة تكاد تكون غير مرئية، تتيح تناول الطعام وتنظيف الأسنان بحرية تامة.',
+          '🔹 التقويم المعدني الثابت التقليدي: الحل الأكثر انتشاراً وقوة لعلاج أصعب حالات اعوجاج وتزاحم الأسنان بدقة وسرعة وبأفضل تكلفة.',
+          '🔹 التقويم الخزفي التجميلي (Ceramic Braces): حاصرات بلون السن الطبيعي تمنح مظهراً غير لافت ومناسباً للبالغين والشباب.',
+          '🔹 التقويم الوقائي للأطفال: تعديل مسار نمو الفكين والأسنان الدائمة في مرحلة مبكرة لتجنب الجراحات المعقدة لاحقاً.',
+        ],
+      },
+      {
+        type: 'callout',
+        variant: 'tip',
+        titleAr: 'خطتك العلاجية بالماسح الضوئي الرقمي ثلاثي الأبعاد',
+        textAr:
+          'في عيادة الحياة، نقوم بتصوير الأسنان باستخدام أحدث ماسح ضوئي 3D داخل الفم، لنعرض لك محاكاة رقمية دقيقة لشكل أسنانك ومراحل حركتها والنتيجة النهائية المتوقعة قبل بدء العلاج، وبدون أي قوالب عجينية تقليدية.',
+      },
+    ],
+    faqs: [
+      {
+        questionAr: 'ما هو السن المناسب لبدء تقويم الأسنان؟',
+        answerAr:
+          'يمكن فحص الطفل تقويمياً بدءاً من عمر 7 سنوات لاكتشاف أي خلل مبكر في نمو الفكين، ولكن تقويم الأسنان فعال وناجح تماماً في أي عمر للبالغين والشباب طالما كانت اللثة والعظام بحالة صحية سليمة.',
+      },
+      {
+        questionAr: 'كم تستغرق مدة علاج تقويم الأسنان في المتوسط؟',
+        answerAr:
+          'تتراوح المدة عادة بين 6 أشهر للحالات البسيطة إلى 18 - 24 شهراً للحالات المعقدة، ويتم تحديد الخطة والجدول الزمني بدقة في أول جلسة استشارة مع د. معاذ سمير.',
+      },
+    ],
+    relatedServiceSlugs: ['orthodontics'],
+    relatedCaseSlugs: ['case-orthodontics-adult'],
+    relatedLocationSlugs: ['new-borg-el-arab', 'old-borg-el-arab'],
+    isFeatured: true,
+    status: 'published',
+  },
+  {
+    id: 'art-painless-root-canal',
+    slug: 'painless-root-canal-rotary-endodontics',
+    titleAr: 'علاج وحشو العصب بدون ألم في برج العرب: أحدث تقنيات الروتاري والتشخيص الرقمي',
+    titleEn: 'Painless Root Canal Treatment with Rotary Endodontics in Borg El Arab',
+    excerptAr:
+      'تخلص من ألم العصب في جلسات مريحة وهادئة تماماً. كيف تحول تقنيات الروتاري والتخدير الحديث علاج العصب إلى تجربة خالية من الخوف والألم.',
+    excerptEn:
+      'Relieve severe toothache painlessly. How modern rotary systems make root canal therapy smooth and comfortable.',
+    category: 'restorative',
+    categoryAr: 'علاج الجذور وحشو العصب',
+    categoryEn: 'Root Canal Therapy',
+    tags: [
+      'حشو عصب بدون الم برج العرب',
+      'علاج الجذور برج العرب',
+      'دكتور اسنان برج العرب',
+      'حشو عصب روتاري',
+      'الم الضرس وعلاجه',
+      'دكتور معاذ سمير',
+    ],
+    readingTimeMinutes: 4,
+    publishedDate: '2026-09-05',
+    authorId: 'dr-moaz-samir',
+    authorNameAr: 'د. معاذ سمير',
+    authorTitleAr: 'طبيب وجراح الفم والأسنان — عيادة الحياة',
+    featuredImage: 'assets/images/cases/case-molar-composite.jpg',
+    blocks: [
+      {
+        type: 'heading',
+        level: 2,
+        id: 'why-root-canal',
+        textAr: 'متى تحتاج إلى علاج وحشو العصب؟',
+      },
+      {
+        type: 'paragraph',
+        textAr:
+          'عندما يصل التسوس العميق إلى حجرة اللب والعصب الداخلي، أو نتيجة صدمة قوية بالسن، تلتهب الأنسجة العصبية مسببة ألماً نابضاً شديداً يزداد ليلاً ومع المشروبات الساخنة. حشو العصب هو الإجراء الطبي المنقذ الذي يحافظ على سنك الطبيعي مدى الحياة ويجنبك خلعه.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        id: 'rotary-advantages',
+        textAr: 'مميزات حشو العصب بالروتاري في عيادة الحياة ببرج العرب',
+      },
+      {
+        type: 'list',
+        itemsAr: [
+          '✨ علاج بدون أي ألم: باستخدام تخدير موضعي موضعي فائق الفاعلية واللطف.',
+          '✨ أجهزة تحديد طول القنوات الرقمية (Apex Locator): لتنظيف كامل القناة العصبية حتى نهايتها بدقة ميكرونية وتجنب أي التهاب مستقبلي.',
+          '✨ مبارد الروتاري المرنة من النيكل تيتانيوم: لتنظيف القنوات المنحنية بسرعة ودقة متناهية دون إضعاف جدران السن.',
+          '✨ تقليل عدد الجلسات: إمكانية إنهاء علاج العصب في جلسة واحدة أو جلستين فقط في بيئة هادئة ومريحة.',
+        ],
+      },
+      {
+        type: 'callout',
+        variant: 'info',
+        titleAr: 'أهمية التاج أو الحشوة بعد علاج العصب',
+        textAr:
+          'السن المعالج عصبياً يصبح أكثر هشاشة بعد فقدان تغذيته الداخلية، لذلك ينصح د. معاذ سمير دائماً بحمايته بتاج زيركون أو إيماكس أو حشوة تجميلية مدعمة لضمان تحمله لقوى المضغ لسنوات طويلة.',
+      },
+    ],
+    faqs: [
+      {
+        questionAr: 'هل حشو العصب مؤلم أثناء أو بعد الجلسة؟',
+        answerAr:
+          'أثناء الجلسة لا تشعر بأي ألم بفضل التخدير الدقيق. وبعد الجلسة قد يحدث انزعاج بسيط مؤقت يزول تماماً بمسكن عادي خفيف خلال 24 ساعة.',
+      },
+    ],
+    relatedServiceSlugs: ['root-canal', 'restorative-dentistry'],
+    relatedCaseSlugs: ['composite-aesthetic-fillings'],
+    relatedLocationSlugs: ['new-borg-el-arab', 'old-borg-el-arab'],
+    isFeatured: true,
+    status: 'published',
+  },
+  {
+    id: 'art-cosmetic-veneers-zirconia',
+    slug: 'cosmetic-dentistry-veneers-zirconia-emax',
+    titleAr: 'التركيبات التجميلية للأسنان: الفرق بين الزيركون والإيماكس والفينير ببرج العرب',
+    titleEn: 'Cosmetic Dentistry: Zirconia, E-Max, and Veneers in Borg El Arab',
+    excerptAr:
+      'دليلك لاختيار أفضل تركيبة تجميلية لأسنانك: مقارنة شاملة بين الفينير وعدسات الأسنان وتيجان الزيركون وإيماكس للحصول على ابتسامة طبيعية متألقة.',
+    excerptEn:
+      'Compare dental veneers, zirconia crowns, and E-max restorations for a natural and durable Hollywood smile.',
+    category: 'cosmetic',
+    categoryAr: 'تجميل وتركيبات الأسنان',
+    categoryEn: 'Cosmetic & Restorative Dentistry',
+    tags: [
+      'تجميل اسنان برج العرب',
+      'فينير اسنان برج العرب',
+      'تركيبات زيركون برج العرب',
+      'تيجان ايماكس',
+      'ابتسامة هوليوود',
+      'دكتور معاذ سمير',
+    ],
+    readingTimeMinutes: 4,
+    publishedDate: '2026-09-05',
+    authorId: 'dr-moaz-samir',
+    authorNameAr: 'د. معاذ سمير',
+    authorTitleAr: 'طبيب وجراح الفم والأسنان — عيادة الحياة',
+    featuredImage: 'assets/images/cases/case-molar-composite.jpg',
+    blocks: [
+      {
+        type: 'heading',
+        level: 2,
+        id: 'cosmetic-intro',
+        textAr: 'كيف تختار التركيبة الأنسب لابتسامتك؟',
+      },
+      {
+        type: 'paragraph',
+        textAr:
+          'تطورت علوم طب الأسنان التجميلي ليصبح بالإمكان تعويض الأسنان المكسورة أو المتصبغة أو تعديل اصطفافها وحجمها بأعلى درجات التوافق الحيوي والمظهر الطبيعي الشفاف الذي لا يمكن تمييزه عن الأسنان الحقيقية.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        id: 'materials-breakdown',
+        textAr: 'مقارنة بين خامات التركيبات الأكثر طلباً في برج العرب',
+      },
+      {
+        type: 'list',
+        itemsAr: [
+          '💎 تيجان الزيركون (Zirconia): تمتاز بقوة وصلابة هائلة لا تنكسر، وهي الخيار الذهبي للأضراس الخلفية والمضغ القوي والجسور الطويلة.',
+          '💎 تيجان وقشور الإيماكس (E-Max): زجاج سيراميكي فائق النقاء وشفافية تحاكي بريق مينا السن الطبيعي، وهي الخيار الأفضل للأسنان الأمامية.',
+          '💎 الفينير وعدسات الابتسامة (Veneers): رقاقات سيراميكية بالغة النحافة تلصق على الواجهة الأمامية دون برد جائر للأسنان لتصحيح اللون والفراغات.',
+        ],
+      },
+      {
+        type: 'callout',
+        variant: 'tip',
+        titleAr: 'دقة المقاسات الرقمية بالماسح الضوئي 3D',
+        textAr:
+          'تصنيع التركيبات في عيادة الحياة يعتمد على المقاسات الرقمية بدقة الميكرون، مما يضمن انطباق التاج على اللثة بإحكام تام لمنع تراكم بقايا الطعام والروائح الكريهة.',
+      },
+    ],
+    faqs: [
+      {
+        questionAr: 'كم سنة تدوم تيجان الزيركون والإيماكس؟',
+        answerAr:
+          'مع العناية الفموية اليومية والفحص الدوري، تدوم تيجان الزيركون والإيماكس لأكثر من 15 عاماً بنجاح وثبات تام في اللون والصلابة.',
+      },
+    ],
+    relatedServiceSlugs: ['cosmetic-dentistry', 'restorative-dentistry'],
+    relatedCaseSlugs: ['composite-aesthetic-fillings'],
+    relatedLocationSlugs: ['new-borg-el-arab', 'old-borg-el-arab'],
+    isFeatured: true,
+    status: 'published',
+  },
 ];
+

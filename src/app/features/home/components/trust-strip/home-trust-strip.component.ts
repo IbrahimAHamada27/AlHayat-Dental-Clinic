@@ -1,54 +1,27 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from '../../../../shared/components/ui/icon/icon.component';
+import { VALUE_PILLARS } from '../../../../core/config/clinic.config';
 
 @Component({
   selector: 'app-home-trust-strip',
   standalone: true,
   imports: [CommonModule, IconComponent],
   template: `
-    <section class="trust-strip-section" aria-label="بيانات العيادة الأساسية">
+    <section class="trust-strip-section" aria-label="ركائز عيادة الحياة">
       <div class="container container-max">
-        <div class="trust-grid">
-          <div class="trust-item">
-            <div class="trust-icon-box">
-              <app-icon name="user" size="sm" />
+        <div class="pillars-grid">
+          @for (pillar of pillars; track pillar.titleAr) {
+            <div class="pillar-card">
+              <div class="pillar-icon-box">
+                <app-icon [name]="pillar.icon" size="md" />
+              </div>
+              <div class="pillar-content">
+                <h3 class="pillar-title">{{ pillar.titleAr }}</h3>
+                <p class="pillar-desc">{{ pillar.descAr }}</p>
+              </div>
             </div>
-            <div class="trust-text">
-              <span class="trust-label">إشراف طبي مباشر</span>
-              <strong class="trust-value">د. معاذ سمير</strong>
-            </div>
-          </div>
-
-          <div class="trust-item">
-            <div class="trust-icon-box">
-              <app-icon name="tooth-align" size="sm" />
-            </div>
-            <div class="trust-text">
-              <span class="trust-label">العلامة الطبية</span>
-              <strong class="trust-value">عيادة الحياة لطب الأسنان</strong>
-            </div>
-          </div>
-
-          <div class="trust-item">
-            <div class="trust-icon-box">
-              <app-icon name="location" size="sm" />
-            </div>
-            <div class="trust-text">
-              <span class="trust-label">فروع العيادة</span>
-              <strong class="trust-value">برج العرب الجديدة والقديمة</strong>
-            </div>
-          </div>
-
-          <div class="trust-item">
-            <div class="trust-icon-box">
-              <app-icon name="sparkle" size="sm" />
-            </div>
-            <div class="trust-text">
-              <span class="trust-label">التقنيات السريرية</span>
-              <strong class="trust-value">طب أسنان رقمي وتعقيم متكامل</strong>
-            </div>
-          </div>
+          }
         </div>
       </div>
     </section>
@@ -58,57 +31,80 @@ import { IconComponent } from '../../../../shared/components/ui/icon/icon.compon
       .trust-strip-section {
         background-color: var(--color-surface);
         border-bottom: 1px solid var(--color-border);
-        padding-block: var(--spacing-lg);
+        padding-block: var(--spacing-xl);
       }
 
-      .trust-grid {
+      .pillars-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-md);
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
 
-        @media (min-width: 992px) {
+        @media (min-width: 600px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 1024px) {
           grid-template-columns: repeat(4, 1fr);
           gap: var(--spacing-xl);
         }
       }
 
-      .trust-item {
+      .pillar-card {
         display: flex;
-        align-items: center;
-        gap: var(--spacing-sm);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+        padding: var(--spacing-lg);
+        background: var(--color-background);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--color-border-subtle);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 24px rgba(22, 74, 69, 0.08);
+          border-color: var(--color-primary-light);
+        }
       }
 
-      .trust-icon-box {
-        width: 40px;
-        height: 40px;
-        border-radius: var(--radius-sm);
-        background-color: var(--color-medical-blue);
+      .pillar-icon-box {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius-md);
+        background: linear-gradient(135deg, rgba(22, 74, 69, 0.1) 0%, rgba(22, 74, 69, 0.04) 100%);
         color: var(--color-primary);
-        border: 1px solid var(--color-border);
+        border: 1px solid rgba(22, 74, 69, 0.15);
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
       }
 
-      .trust-text {
+      .pillar-content {
         display: flex;
         flex-direction: column;
+        gap: 6px;
       }
 
-      .trust-label {
-        font-size: var(--font-size-caption);
-        color: var(--color-text-muted);
-      }
-
-      .trust-value {
-        font-size: var(--font-size-body-sm);
-        font-weight: var(--font-weight-semibold);
+      .pillar-title {
+        font-size: var(--font-size-body-lg);
+        font-weight: var(--font-weight-bold);
         color: var(--color-primary-dark);
+        margin: 0;
         line-height: 1.3;
+      }
+
+      .pillar-desc {
+        font-size: var(--font-size-caption);
+        color: var(--color-text-secondary);
+        line-height: 1.55;
+        margin: 0;
       }
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeTrustStripComponent {}
+export class HomeTrustStripComponent {
+  readonly pillars = VALUE_PILLARS;
+}
+

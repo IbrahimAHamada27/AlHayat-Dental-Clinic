@@ -10,6 +10,7 @@ import { HomeWhyClinicComponent } from './components/why-clinic/home-why-clinic.
 import { HomeCasesPreviewComponent } from './components/cases-preview/home-cases-preview.component';
 import { HomeLocationsPreviewComponent } from './components/locations-preview/home-locations-preview.component';
 import { HomeArticlesPreviewComponent } from './components/articles-preview/home-articles-preview.component';
+import { HomeFaqComponent } from './components/faq/home-faq.component';
 import { HomeFinalCtaComponent } from './components/final-cta/home-final-cta.component';
 import { SeoService } from '../../core/services/seo.service';
 import { AnalyticsService } from '../../core/services/analytics.service';
@@ -38,6 +39,7 @@ import {
     HomeCasesPreviewComponent,
     HomeLocationsPreviewComponent,
     HomeArticlesPreviewComponent,
+    HomeFaqComponent,
     HomeFinalCtaComponent,
   ],
   template: `
@@ -83,7 +85,10 @@ import {
       <!-- 9. Educational Articles Preview -->
       <app-home-articles-preview [articles]="articles" />
 
-      <!-- 10. Final Calm Reassuring CTA -->
+      <!-- 10. Dental FAQs Section -->
+      <app-home-faq />
+
+      <!-- 11. Final Calm Reassuring CTA -->
       <app-home-final-cta
         [config]="config"
         (bookingClick)="onBookingClick($event)"

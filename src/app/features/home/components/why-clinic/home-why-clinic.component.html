@@ -1,25 +1,48 @@
-<section class="section why-clinic-section" aria-label="فلسفة ومعايير الرعاية في عيادة الحياة">
+<section class="section about-vision-section" aria-label="عن عيادة الحياة وإحصائيات الرعاية">
   <div class="container container-max">
-    <div class="why-header-wrap">
-      <app-section-heading
-        eyebrow="فلسفة الرعاية"
-        title="لأن كل حالة لها قصتها واحتياجاتها الخاصة"
-        description="نحرص على بناء علاقة علاجية مبنية على الثقة والشفافية الطبية لضمان سلامة وراحة أسنانك."
-        align="center"
-      />
-    </div>
+    <div class="about-vision-grid">
+      <!-- Text & Vision Column -->
+      <div class="about-content">
+        <span class="eyebrow">عن عيادة الحياة — د. معاذ سمير</span>
+        <h2 class="about-title">
+          حيث تجتمع <span class="text-primary-teal">التكنولوجيا الرقمية</span> مع الرعاية الإنسانية الفائقة.
+        </h2>
+        <p class="about-lead">
+          رسالتنا في عيادة الحياة بسيطة وواضحة: مساعدتك في الحصول على صحة فموية مثالية وابتسامة واثقة، من خلال خطط علاجية دقيقة، مريحة، ومصممة خصيصاً لتناسب احتياجاتك.
+        </p>
+        <p class="about-body">
+          بإشراف د. معاذ سمير، نحرص في فرعينا ببرج العرب الجديدة وبرج العرب القديمة على توفير بيئة علاجية هادئة تخلو تماماً من التوتر، مدعومة بأحدث تقنيات التشخيص الرقمي ثلاثي الأبعاد والتعقيم الجراحي الدقيق بنسبة 100%.
+        </p>
 
-    <!-- 4 Pillars Staggered Grid -->
-    <div class="pillars-grid">
-      @for (pillar of pillars; track pillar.title) {
-        <div class="pillar-card">
-          <div class="pillar-icon-box">
-            <app-icon [name]="pillar.icon" size="md" />
-          </div>
-          <h3 class="pillar-title">{{ pillar.title }}</h3>
-          <p class="pillar-desc">{{ pillar.desc }}</p>
+        <div class="about-actions">
+          <app-button variant="primary" size="md" routerLink="/doctor" iconEnd="arrow-start">
+            تعرف على مسيرة د. معاذ سمير
+          </app-button>
+          <app-button variant="outline" size="md" routerLink="/technology" iconEnd="arrow-start">
+            استكشف أجهزتنا الرقمية
+          </app-button>
         </div>
-      }
+      </div>
+
+      <!-- Visual & Floating Stats Column -->
+      <div class="about-visual-col">
+        <div class="stats-column">
+          @for (stat of stats; track stat.value) {
+            <div class="stat-card">
+              <div class="stat-icon-wrap">
+                <app-icon [name]="stat.icon" size="md" />
+              </div>
+              <div class="stat-info">
+                <div class="stat-top-row">
+                  <span class="stat-number">{{ stat.value }}</span>
+                  <app-badge variant="sage">{{ stat.badgeAr }}</app-badge>
+                </div>
+                <p class="stat-label">{{ stat.labelAr }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
     </div>
   </div>
 </section>
