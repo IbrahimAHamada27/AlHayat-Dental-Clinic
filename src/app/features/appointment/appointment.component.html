@@ -1,0 +1,275 @@
+<div class="appointment-page">
+  <!-- Header / Breadcrumbs -->
+  <header class="app-hero">
+    <div class="container container-max">
+      <nav class="page-breadcrumbs" aria-label="مسار التنقل">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a routerLink="/" class="breadcrumb-link">الرئيسية</a>
+          </li>
+          <li class="breadcrumb-separator" aria-hidden="true">/</li>
+          <li class="breadcrumb-item active" aria-current="page">حجز موعد</li>
+        </ol>
+      </nav>
+
+      <div class="app-hero-center">
+        <!-- Floating Tooth Icon / Aesthetic Badge (Matches 11-Appointment.png) -->
+        <div class="hero-icon-pill">
+          <app-icon name="calendar" size="lg" />
+        </div>
+        <h1 class="app-title">احجز موعد كشف أو استشارة</h1>
+        <p class="app-subtitle">
+          تفضل بتعبئة بياناتك وسيتواصل معك فريق الاستقبال ود. معاذ سمير لتأكيد موعدك
+          في فرع برج العرب الأنسب لك دون أي انتظار.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Booking Section -->
+  <main class="app-main-section">
+    <div class="container container-max">
+      <div class="app-layout-grid">
+        <!-- Booking Form Container (Main) -->
+        <div class="booking-form-card">
+          @if (isSubmitted()) {
+            <div class="success-banner">
+              <div class="success-icon-wrap">
+                <app-icon name="check" size="lg" />
+              </div>
+              <h3 class="success-title">تم إرسال طلب الحجز بنجاح!</h3>
+              <p class="success-desc">
+                تم تحويل تفاصيل موعدك مباشرة عبر واتساب إلى فريق استقبال عيادة الحياة.
+                سنقوم بمراجعة الموعد وتأكيده معك في أسرع وقت.
+              </p>
+              <div class="success-actions">
+                <app-button
+                  variant="primary"
+                  size="md"
+                  iconStart="whatsapp"
+                  (btnClick)="onSubmitWhatsApp()"
+                >
+                  إعادة إرسال الرسالة
+                </app-button>
+                <app-button
+                  variant="outline"
+                  size="md"
+                  (btnClick)="resetForm()"
+                >
+                  حجز موعد آخر
+                </app-button>
+              </div>
+            </div>
+          } @else {
+            <form [formGroup]="bookingForm" (ngSubmit)="onSubmitWhatsApp()" class="form-body">
+              <!-- Branch Selection Radio Buttons -->
+              <div class="form-group branch-selector-group">
+                <label class="form-label">اختر فرع العيادة الأقرب لك: <span class="req">*</span></label>
+                <div class="branch-toggle-row">
+                  @for (br of branchesList; track br.id) {
+                    <button
+                      type="button"
+                      class="branch-toggle-btn"
+                      [class.active]="selectedBranch() === br.id"
+                      (click)="onBranchSelect(br.id)"
+                    >
+                      <app-icon name="location" size="sm" class="btn-icon" />
+                      <div class="btn-text">
+                        <span class="btn-title">{{ br.nameAr }}</span>
+                        <span class="btn-sub">{{ br.hoursAr }}</span>
+                      </div>
+                    </button>
+                  }
+                </div>
+              </div>
+
+              <!-- Two Column Inputs: Name & Phone -->
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="patientName" class="form-label">
+                    اسم المريض بالكامل <span class="req">*</span>
+                  </label>
+                  <input
+                    id="patientName"
+                    type="text"
+                    formControlName="patientName"
+                    class="form-control"
+                    placeholder="مثال: أحمد محمد علي"
+                    [class.is-invalid]="bookingForm.get('patientName')?.invalid && bookingForm.get('patientName')?.touched"
+                  />
+                  @if (bookingForm.get('patientName')?.invalid && bookingForm.get('patientName')?.touched) {
+                    <span class="error-hint">يرجى كتابة الاسم الثلاثي على الأقل</span>
+                  }
+                </div>
+
+                <div class="form-group">
+                  <label for="phone" class="form-label">
+                    رقم الهاتف / واتساب <span class="req">*</span>
+                  </label>
+                  <input
+                    id="phone"
+                    type="tel"
+                    dir="ltr"
+                    formControlName="phone"
+                    class="form-control phone-input"
+                    placeholder="01012345678"
+                    [class.is-invalid]="bookingForm.get('phone')?.invalid && bookingForm.get('phone')?.touched"
+                  />
+                  @if (bookingForm.get('phone')?.invalid && bookingForm.get('phone')?.touched) {
+                    <span class="error-hint">يرجى كتابة رقم هاتف صحيح</span>
+                  }
+                </div>
+              </div>
+
+              <!-- Two Column Inputs: Service & Preferred Time -->
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="service" class="form-label">
+                    الخدمة أو المشكلة التي ترغب بعلاجها <span class="req">*</span>
+                  </label>
+                  <select id="service" formControlName="service" class="form-control form-select">
+                    @for (srv of serviceOptions; track srv.value) {
+                      <option [value]="srv.value">{{ srv.label }}</option>
+                    }
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="preferredTime" class="form-label">
+                    الفترة المفضلة للحضور <span class="req">*</span>
+                  </label>
+                  <select id="preferredTime" formControlName="preferredTime" class="form-control form-select">
+                    @for (t of timeSlots; track t.value) {
+                      <option [value]="t.value">{{ t.label }}</option>
+                    }
+                  </select>
+                </div>
+              </div>
+
+              <!-- Preferred Date & Notes -->
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="preferredDate" class="form-label">التاريخ المقترح (اختياري)</label>
+                  <input
+                    id="preferredDate"
+                    type="date"
+                    formControlName="preferredDate"
+                    class="form-control"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="notes" class="form-label">ملاحظات إضافية أو أعراض خاصة</label>
+                  <input
+                    id="notes"
+                    type="text"
+                    formControlName="notes"
+                    class="form-control"
+                    placeholder="مثال: ألم شديد عند شرب الماء البارد، الرغبة في عمل تقويم..."
+                  />
+                </div>
+              </div>
+
+              <!-- Submit Button Row -->
+              <div class="form-submit-row">
+                <app-button
+                  type="submit"
+                  variant="primary"
+                  size="lg"
+                  [fullWidth]="true"
+                  iconStart="whatsapp"
+                >
+                  تأكيد طلب الموعد عبر واتساب
+                </app-button>
+              </div>
+
+              <div class="or-divider">
+                <span>أو يمكنك الحجز هاتفياً مباشرة</span>
+              </div>
+
+              <div class="call-direct-wrap">
+                <app-button
+                  type="button"
+                  variant="outline"
+                  size="md"
+                  [fullWidth]="true"
+                  iconStart="phone"
+                  (btnClick)="onCallDirectly()"
+                >
+                  الاتصال بالعيادة: {{ config.contact.phoneFormatted }}
+                </app-button>
+              </div>
+            </form>
+          }
+        </div>
+
+        <!-- Sidebar / Info Card (From template) -->
+        <aside class="appointment-sidebar">
+          <!-- Doctor / Clinic Card -->
+          <div class="doctor-badge-card">
+            <div class="doctor-info-top">
+              <div class="doc-avatar">
+                <app-icon name="user" size="lg" />
+              </div>
+              <div>
+                <span class="doc-label">طبيب أسنان وإشراف علاجي</span>
+                <h3 class="doc-name">{{ doctor.nameAr }}</h3>
+                <span class="doc-title-sub">{{ config.clinicNameAr }}</span>
+              </div>
+            </div>
+            <p class="doc-quote">
+              "نحرص في عيادة الحياة على توفير تجربة علاجية هادئة وخالية تماماً من الألم
+              باستخدام أحدث تقنيات الفحص الرقمي والتعقيم الفندقي."
+            </p>
+          </div>
+
+          <!-- Branches Card -->
+          <div class="branches-sidebar-card">
+            <h4 class="b-title">عناوين وفروع العيادة</h4>
+
+            <div class="b-item">
+              <app-icon name="location" size="sm" class="b-icon" />
+              <div>
+                <strong class="b-name">فرع برج العرب الجديدة</strong>
+                <p class="b-desc">أول شارع الجهاز – أعلى صيدلية د. رشا – الدور الأول بجوار سيتي لاب</p>
+                <span class="b-time">مواعيد العمل: ٢:٣٠ ظهراً – ٩:٣٠ مساءً</span>
+              </div>
+            </div>
+
+            <div class="b-item">
+              <app-icon name="location" size="sm" class="b-icon" />
+              <div>
+                <strong class="b-name">فرع برج العرب القديمة</strong>
+                <p class="b-desc">شارع الوحدة الصحية – خلف مكتب البريد ومسجد التقوى</p>
+                <span class="b-time">مواعيد العمل: ٣:٣٠ عصراً – ١٠:٠٠ مساءً</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guarantees & Features Card -->
+          <div class="guarantees-card">
+            <h4 class="g-title">مميزات الحجز معنا</h4>
+            <ul class="g-list">
+              <li>
+                <app-icon name="check" size="xs" class="check-icon" />
+                <span>تقنية الماسح الضوئي ثلاثي الأبعاد بدون قوالب مزعجة</span>
+              </li>
+              <li>
+                <app-icon name="check" size="xs" class="check-icon" />
+                <span>علاج عصب بدون ألم بجلسة واحدة أو جلستين</span>
+              </li>
+              <li>
+                <app-icon name="check" size="xs" class="check-icon" />
+                <span>تعقيم جراحي فندقي معتمد 100% لكل مريض</span>
+              </li>
+              <li>
+                <app-icon name="check" size="xs" class="check-icon" />
+                <span>مواعيد دقيقة بدون فترات انتظار طويلة</span>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</div>

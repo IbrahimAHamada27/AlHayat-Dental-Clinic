@@ -48,8 +48,10 @@ export class NavbarComponent {
     { label: 'الخدمات', path: '/services' },
     { label: 'التقنيات', path: '/technology' },
     { label: 'الحالات', path: '/cases' },
+    { label: 'الأسئلة الشائعة', path: '/faqs' },
     { label: 'المقالات', path: '/blog' },
     { label: 'الفروع', path: '/locations' },
+    { label: 'تواصل معنا', path: '/contact' },
   ];
 
   constructor() {
@@ -97,8 +99,7 @@ export class NavbarComponent {
   onBookingClick(source = 'navbar_desktop'): void {
     this.analyticsService.trackBookingStart(source);
     this.closeMobileMenu();
-    // Default flow navigates to contact / consultation section
-    this.router.navigate(['/contact']);
+    this.router.navigate(['/appointment']);
   }
 
   onWhatsAppClick(context = 'navbar_whatsapp'): void {

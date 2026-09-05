@@ -62,14 +62,34 @@ export const routes: Routes = [
       import('./features/blog/blog-detail.component').then((m) => m.BlogDetailComponent),
   },
   {
-    path: 'contact',
+    path: 'faqs',
     loadComponent: () =>
-      import('./features/contact/contact.component').then((m) => m.ContactComponent),
+      import('./features/faq/faq.component').then((m) => m.FaqComponent),
+  },
+  {
+    path: 'faq',
+    redirectTo: 'faqs',
+    pathMatch: 'full',
+  },
+  {
+    path: 'appointment',
+    loadComponent: () =>
+      import('./features/appointment/appointment.component').then((m) => m.AppointmentComponent),
   },
   {
     path: 'booking',
-    redirectTo: 'contact',
+    redirectTo: 'appointment',
     pathMatch: 'full',
+  },
+  {
+    path: 'about',
+    redirectTo: 'doctor',
+    pathMatch: 'full',
+  },
+  {
+    path: 'contact',
+    loadComponent: () =>
+      import('./features/contact/contact.component').then((m) => m.ContactComponent),
   },
   {
     path: 'privacy',

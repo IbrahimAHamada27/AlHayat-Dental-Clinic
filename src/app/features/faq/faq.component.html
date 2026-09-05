@@ -1,0 +1,270 @@
+<div class="faq-page">
+  <!-- Top Breadcrumb & Hero -->
+  <header class="faq-hero">
+    <div class="container container-max">
+      <nav class="page-breadcrumbs" aria-label="مسار التنقل">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a routerLink="/" class="breadcrumb-link">الرئيسية</a>
+          </li>
+          <li class="breadcrumb-separator" aria-hidden="true">/</li>
+          <li class="breadcrumb-item active" aria-current="page">الأسئلة الشائعة</li>
+        </ol>
+      </nav>
+
+      <div class="faq-hero-content">
+        <app-badge variant="sage" class="hero-badge">دليلك الطبي الموثوق</app-badge>
+        <h1 class="faq-hero-title">الأسئلة الشائعة حول علاج وتجميل الأسنان</h1>
+        <p class="faq-hero-subtitle">
+          إجابات علمية دقيقة بإشراف د. معاذ سمير عن تقنيات العيادة، مواعيد العمل، الأسعار،
+          وعلاجات الأسنان بفرعي برج العرب الجديدة وبرج العرب القديمة.
+        </p>
+
+        <div class="faq-hero-actions">
+          <app-button
+            routerLink="/appointment"
+            variant="primary"
+            size="lg"
+            iconEnd="arrow-start"
+          >
+            احجز موعد كشف واستشارة
+          </app-button>
+
+          <app-button
+            variant="secondary"
+            size="lg"
+            iconStart="whatsapp"
+            (btnClick)="onAskDoctor()"
+          >
+            اسأل الدكتور عبر واتساب
+          </app-button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="faq-main-section">
+    <div class="container container-max">
+      <div class="faq-layout-grid">
+        <!-- Left / Primary Column: Filters, Search & Accordion -->
+        <div class="faq-content-column">
+          <!-- Search Box -->
+          <div class="faq-search-box">
+            <app-icon name="search" size="sm" class="search-icon" />
+            <input
+              type="text"
+              class="search-input"
+              placeholder="ابحث عن سؤالك أو العَرَض الذي تشعر به (مثل: عصب، تقويم، ألم، زيركون)..."
+              [ngModel]="searchQuery()"
+              (ngModelChange)="searchQuery.set($event)"
+              aria-label="البحث في الأسئلة الشائعة"
+            />
+            @if (searchQuery()) {
+              <button
+                type="button"
+                class="search-clear-btn"
+                (click)="searchQuery.set('')"
+                aria-label="مسح نص البحث"
+              >
+                <app-icon name="close" size="xs" />
+              </button>
+            }
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div class="faq-categories-scroll" role="tablist" aria-label="أقسام الأسئلة الشائعة">
+            @for (cat of categories; track cat.key) {
+              <button
+                type="button"
+                class="category-pill"
+                [class.active]="selectedCategory() === cat.key"
+                (click)="setCategory(cat.key)"
+                role="tab"
+                [attr.aria-selected]="selectedCategory() === cat.key"
+              >
+                {{ cat.labelAr }}
+              </button>
+            }
+          </div>
+
+          <!-- Accordion FAQ Items -->
+          <div class="faq-accordion-container" role="region" aria-label="قائمة الأسئلة والإجابات">
+            @if (filteredFaqs().length === 0) {
+              <div class="faq-empty-state">
+                <app-icon name="info" size="lg" class="empty-icon" />
+                <h3 class="empty-title">لم نجد نتائج مطابقة لبحثك</h3>
+                <p class="empty-desc">
+                  يمكنك إعادة صياغة كلمات البحث، أو مراسلة د. معاذ سمير مباشرة للاستفسار عن أي تفاصيل.
+                </p>
+                <app-button
+                  variant="primary"
+                  size="md"
+                  iconStart="whatsapp"
+                  (btnClick)="onAskDoctor()"
+                >
+                  استشر الدكتور على واتساب
+                </app-button>
+              </div>
+            } @else {
+              @for (faq of filteredFaqs(); track faq.id) {
+                <div
+                  class="faq-card"
+                  [class.is-expanded]="openFaqId() === faq.id"
+                >
+                  <button
+                    type="button"
+                    class="faq-card-header"
+                    [attr.aria-expanded]="openFaqId() === faq.id"
+                    (click)="toggleFaq(faq.id)"
+                  >
+                    <div class="faq-q-details">
+                      <span class="faq-item-cat">{{ faq.categoryNameAr }}</span>
+                      <h2 class="faq-item-question">{{ faq.questionAr }}</h2>
+                    </div>
+                    <div class="faq-toggle-icon">
+                      <app-icon
+                        [name]="openFaqId() === faq.id ? 'chevron-up' : 'chevron-down'"
+                        size="sm"
+                      />
+                    </div>
+                  </button>
+
+                  @if (openFaqId() === faq.id) {
+                    <div class="faq-card-body">
+                      <p class="faq-item-answer">{{ faq.answerAr }}</p>
+                    </div>
+                  }
+                </div>
+              }
+            }
+          </div>
+        </div>
+
+        <!-- Right / Secondary Column: Timetable & Quick Info (As seen in Dentino template) -->
+        <aside class="faq-sidebar" aria-label="مواعيد العمل ومعلومات التواصل">
+          <!-- Timetable Card -->
+          <div class="timetable-card">
+            <div class="card-header">
+              <div class="icon-circle">
+                <app-icon name="clock" size="md" />
+              </div>
+              <h3 class="card-title">مواعيد عمل العيادة</h3>
+              <p class="card-subtitle">عيادة الحياة — فرعي برج العرب</p>
+            </div>
+
+            <div class="timetable-list">
+              <div class="time-row">
+                <span class="day">السبت – الخميس</span>
+                <span class="hours">٤:٠٠ م – ١٠:٠٠ م</span>
+              </div>
+              <div class="time-row">
+                <span class="day">برج العرب الجديدة</span>
+                <span class="hours">٢:٣٠ م – ٩:٣٠ م</span>
+              </div>
+              <div class="time-row">
+                <span class="day">برج العرب القديمة</span>
+                <span class="hours">٣:٣٠ م – ١٠:٠٠ م</span>
+              </div>
+              <div class="time-row closed-row">
+                <span class="day">الجمعة</span>
+                <span class="status-closed">مخصص للطوارئ والتنسيق</span>
+              </div>
+            </div>
+
+            <div class="card-cta">
+              <app-button
+                routerLink="/appointment"
+                variant="primary"
+                size="md"
+                [fullWidth]="true"
+                iconEnd="arrow-start"
+              >
+                احجز موعدك الآن
+              </app-button>
+            </div>
+          </div>
+
+          <!-- Contact Direct Card -->
+          <div class="contact-support-card">
+            <h4 class="support-title">هل تحتاج لمساعدة فورية؟</h4>
+            <p class="support-desc">
+              فريق الاستقبال ود. معاذ سمير جاهزون للرد على استفساراتكم وتحديد الموعد الأنسب.
+            </p>
+
+            <div class="support-actions">
+              <button
+                type="button"
+                class="contact-action-item touch-target"
+                (click)="onAskDoctor()"
+              >
+                <div class="action-icon whatsapp-bg">
+                  <app-icon name="whatsapp" size="sm" />
+                </div>
+                <div class="action-text">
+                  <span class="action-label">استشارة عبر واتساب</span>
+                  <span class="action-val">{{ config.contact.phoneFormatted }}</span>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                class="contact-action-item touch-target"
+                (click)="onPhoneCall()"
+              >
+                <div class="action-icon phone-bg">
+                  <app-icon name="phone" size="sm" />
+                </div>
+                <div class="action-text">
+                  <span class="action-label">اتصال هاتفي مباشر</span>
+                  <span class="action-val">{{ config.contact.phoneFormatted }}</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Branches Card -->
+          <div class="branches-mini-card">
+            <h4 class="mini-title">فروعنا ببرج العرب</h4>
+            <div class="branch-item">
+              <app-icon name="location" size="sm" class="b-icon" />
+              <div>
+                <strong>برج العرب الجديدة:</strong>
+                <p>أول شارع الجهاز، أعلى صيدلية د. رشا، بجوار سيتي لاب</p>
+              </div>
+            </div>
+            <div class="branch-item">
+              <app-icon name="location" size="sm" class="b-icon" />
+              <div>
+                <strong>برج العرب القديمة:</strong>
+                <p>شارع الوحدة الصحية، خلف مكتب البريد ومسجد التقوى</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Bottom Banner -->
+      <section class="faq-bottom-banner" aria-label="طلب استشارة مباشرة">
+        <div class="banner-inner">
+          <div class="banner-text">
+            <h2 class="banner-title">جاهز لبدء رحلة ابتسامتك المثالية بدون ألم؟</h2>
+            <p class="banner-desc">
+              احجز كشفك الآن مع د. معاذ سمير واستمتع بأحدث التقنيات الرقمية والماسح ثلاثي الأبعاد.
+            </p>
+          </div>
+          <div class="banner-btns">
+            <app-button
+              routerLink="/appointment"
+              variant="primary"
+              size="lg"
+              iconEnd="arrow-start"
+            >
+              احجز موعدك الآن
+            </app-button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>

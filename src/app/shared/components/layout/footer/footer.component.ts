@@ -24,12 +24,14 @@ export class FooterComponent {
 
   readonly quickLinks = [
     { label: 'الرئيسية', path: '/' },
-    { label: 'عن الدكتور', path: '/doctor' },
+    { label: 'عن د. معاذ سمير', path: '/doctor' },
+    { label: 'احجز موعدك أونلاين', path: '/appointment' },
     { label: 'الخدمات العلاجية', path: '/services' },
-    { label: 'التقنيات الحديثة', path: '/technology' },
+    { label: 'التقنيات والماسح الرقمي', path: '/technology' },
     { label: 'الحالات والنتائج', path: '/cases' },
+    { label: 'الأسئلة الشائعة (FAQs)', path: '/faqs' },
     { label: 'المقالات الطبية', path: '/blog' },
-    { label: 'الفروع ومواعيد العمل', path: '/locations' },
+    { label: 'فروعنا ومواعيد العمل', path: '/locations' },
     { label: 'تواصل معنا', path: '/contact' },
   ];
 

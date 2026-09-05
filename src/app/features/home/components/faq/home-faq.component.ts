@@ -7,11 +7,14 @@ import { BadgeComponent } from '../../../../shared/components/ui/badge/badge.com
 import { CLINIC_FAQS, ClinicFaq } from '../../../../core/config/clinic.config';
 import { WhatsAppService } from '../../../../core/services/whatsapp.service';
 
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-home-faq',
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     SectionHeadingComponent,
     IconComponent,
     ButtonComponent,
@@ -62,15 +65,25 @@ import { WhatsAppService } from '../../../../core/services/whatsapp.service';
 
         <!-- Extra Question CTA -->
         <div class="faq-bottom-cta">
-          <p class="faq-cta-text">هل لديك سؤال آخر لم تجد إجابته هنا؟</p>
-          <app-button
-            variant="primary"
-            size="md"
-            iconStart="whatsapp"
-            (btnClick)="onAskWhatsApp()"
-          >
-            اسأل د. معاذ سمير مباشرة عبر واتساب
-          </app-button>
+          <p class="faq-cta-text">هل لديك استفسار آخر وتريد إجابة مفصلة؟</p>
+          <div class="faq-actions-group">
+            <app-button
+              routerLink="/faqs"
+              variant="outline"
+              size="md"
+              iconEnd="arrow-start"
+            >
+              عرض دليل الأسئلة الشائعة بالكامل
+            </app-button>
+            <app-button
+              variant="primary"
+              size="md"
+              iconStart="whatsapp"
+              (btnClick)="onAskWhatsApp()"
+            >
+              اسأل د. معاذ سمير مباشرة عبر واتساب
+            </app-button>
+          </div>
         </div>
       </div>
     </section>
@@ -179,9 +192,17 @@ import { WhatsAppService } from '../../../../core/services/whatsapp.service';
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: var(--spacing-sm);
+        gap: var(--spacing-md);
         margin-top: var(--spacing-xxl);
         text-align: center;
+      }
+
+      .faq-actions-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        flex-wrap: wrap;
       }
 
       .faq-cta-text {

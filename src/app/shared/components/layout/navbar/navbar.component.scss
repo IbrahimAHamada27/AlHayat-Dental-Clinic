@@ -105,20 +105,17 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: var(--spacing-md);
-
-  @media (min-width: 1200px) {
-    gap: var(--spacing-lg);
-  }
+  gap: clamp(6px, 1.1vw, 20px);
 }
 
 .nav-link {
   position: relative;
-  font-size: var(--font-size-button);
+  font-size: clamp(0.82rem, 0.92vw, 0.92rem);
   font-weight: var(--font-weight-medium);
   color: var(--color-text-secondary);
   padding-block: var(--spacing-xs);
-  padding-inline: var(--spacing-2xs);
+  padding-inline: 3px;
+  white-space: nowrap;
   text-decoration: none;
   transition: color var(--transition-fast);
 
