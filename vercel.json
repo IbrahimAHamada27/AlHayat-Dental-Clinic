@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "outputDirectory": "dist/al-hayat-dental-clinic/browser",
+  "outputDirectory": "dist/al-hayat-dental-clinic",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
