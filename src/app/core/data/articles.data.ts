@@ -218,6 +218,7 @@ export const DENTAL_ARTICLES: Article[] = [
     categoryAr: 'طب الأسنان الرقمي',
     categoryEn: 'Digital Dentistry',
     tags: ['طب الأسنان الرقمي', 'Intraoral Scanner', 'تركيبات الأسنان', 'برج العرب'],
+    featuredImage: 'assets/images/technology/intraoral-scanner.jpg',
     readingTimeMinutes: 4,
     publishedDate: '2026-08-20',
     updatedDate: '2026-09-01',

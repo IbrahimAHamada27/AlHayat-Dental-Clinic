@@ -15,10 +15,6 @@
             (click)="onServiceClick(srv.slug)"
             [attr.aria-label]="srv.titleAr"
           >
-            <div class="card-icon-box">
-              <app-icon [name]="srv.iconName" size="md" />
-            </div>
-
             <div class="card-text-block">
               <app-badge variant="sage" class="mb-xs">{{ srv.categoryAr }}</app-badge>
               <h3 class="card-title">{{ srv.titleAr }}</h3>

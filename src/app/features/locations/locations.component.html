@@ -88,9 +88,6 @@
       <div class="services-compact-grid">
         @for (srv of services; track srv.id) {
           <a [routerLink]="['/services', srv.slug]" class="service-compact-card">
-            <div class="srv-icon-box">
-              <app-icon [name]="srv.iconName" size="sm" />
-            </div>
             <div class="srv-info">
               <h3 class="srv-title">{{ srv.titleAr }}</h3>
               <p class="srv-desc">{{ srv.shortDescriptionAr }}</p>

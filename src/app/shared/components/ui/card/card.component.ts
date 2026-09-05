@@ -30,12 +30,16 @@ export type CardVariant = 'default' | 'surface' | 'soft' | 'interactive' | 'bord
         background-color: var(--color-surface);
         border: 1px solid var(--color-border);
         border-radius: var(--radius-md);
-        padding: var(--spacing-xl);
+        padding: var(--spacing-lg);
         position: relative;
         transition:
           border-color var(--transition-base),
           box-shadow var(--transition-base),
           transform var(--transition-base);
+
+        @media (min-width: 768px) {
+          padding: var(--spacing-xl);
+        }
 
         &.card-soft {
           background-color: var(--color-background-soft);
@@ -61,7 +65,11 @@ export type CardVariant = 'default' | 'surface' | 'soft' | 'interactive' | 'bord
         }
 
         &.padding-spacious {
-          padding: var(--spacing-2xl);
+          padding: var(--spacing-xl);
+
+          @media (min-width: 768px) {
+            padding: var(--spacing-2xl);
+          }
         }
       }
     `,

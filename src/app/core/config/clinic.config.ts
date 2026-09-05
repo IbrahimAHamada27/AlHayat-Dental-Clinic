@@ -824,6 +824,7 @@ export const INITIAL_TECHNOLOGY: TechnologyItem[] = [
         answerAr: 'نعم، نعتمد سير العمل الرقمي لمرضانا في فرع برج العرب الجديدة وبرج العرب القديمة بالتنسيق المسبق مع الطبيب.',
       },
     ],
+    image: 'assets/images/technology/intraoral-scanner.jpg',
     isFeatured: true,
   },
   {

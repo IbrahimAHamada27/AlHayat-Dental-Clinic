@@ -165,28 +165,10 @@
     border-color: var(--color-accent);
     box-shadow: var(--shadow-xs);
 
-    .srv-icon-box {
-      background-color: var(--color-primary);
-      color: #ffffff;
-    }
-
     .srv-title {
       color: var(--color-primary);
     }
   }
-}
-
-.srv-icon-box {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-xs);
-  background-color: var(--color-sage-soft);
-  color: var(--color-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .srv-info {

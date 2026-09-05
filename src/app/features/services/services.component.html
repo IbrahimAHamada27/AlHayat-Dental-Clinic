@@ -95,13 +95,6 @@
             [attr.aria-label]="service.titleAr"
           >
             <div class="card-top-row">
-              <div class="service-thumb-box">
-                @if (service.heroImage) {
-                  <img [src]="service.heroImage" [alt]="service.titleAr" class="service-thumb-img" loading="lazy" />
-                } @else {
-                  <app-icon [name]="service.iconName" size="md" />
-                }
-              </div>
               <app-badge variant="sage">{{ service.categoryAr }}</app-badge>
             </div>
 

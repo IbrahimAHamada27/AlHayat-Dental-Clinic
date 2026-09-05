@@ -101,8 +101,8 @@
     <div class="grid-3">
       @for (srv of services; track srv.id) {
         <app-card variant="surface" [routerLink]="['/services', srv.slug]" class="service-preview-card">
-          <div class="service-icon-box">
-            <app-icon [name]="srv.iconName" size="lg" />
+          <div class="card-top-row">
+            <app-badge variant="sage">{{ srv.categoryAr }}</app-badge>
           </div>
           <h3 class="service-title">{{ srv.titleAr }}</h3>
           <p class="service-desc">{{ srv.shortDescriptionAr }}</p>
