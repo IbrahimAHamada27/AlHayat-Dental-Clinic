@@ -56,7 +56,25 @@
             </div>
           </div>
         }
+
+        <!-- Memberships entries -->
+        @if (doctor().memberships && doctor().memberships!.length > 0) {
+          <div class="timeline-group">
+            <h3 class="timeline-group-title">
+              <app-icon name="award" size="xs" />
+              <span>العضويات والجمعيات الطبية</span>
+            </h3>
+            <div class="timeline-items">
+              @for (mem of doctor().memberships!; track mem) {
+                <div class="timeline-entry">
+                  <h4 class="entry-title">{{ mem }}</h4>
+                </div>
+              }
+            </div>
+          </div>
+        }
       </div>
+
     } @else {
       <!-- Minimalist Honest Notice: Zero fake data fabricated -->
       <div class="timeline-pending-card">

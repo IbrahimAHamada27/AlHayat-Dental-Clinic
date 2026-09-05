@@ -2,6 +2,121 @@ import { Article } from '../models/article.model';
 
 export const DENTAL_ARTICLES: Article[] = [
   {
+    id: 'art-tartar-signs',
+    slug: 'tartar-warning-signs-and-scaling',
+    titleAr: 'علامات بتقولك إنك محتاج تنظيف جير!',
+    titleEn: '5 Signs You Need Professional Dental Scaling',
+    excerptAr:
+      'لو عندك واحدة أو أكتر من العلامات دي، ما تستناش المشكلة تكبر! الجير مش مجرد مشكلة في شكل الأسنان بل يهدد صحة اللثة.',
+    excerptEn:
+      'Key warning signs indicating dental tartar accumulation and why professional cleaning is required.',
+    category: 'oral-hygiene',
+    categoryAr: 'تنظيف الجير وصحة اللثة',
+    categoryEn: 'Tartar Scaling & Gum Care',
+    tags: ['تنظيف الجير', 'جير الأسنان', 'صحة اللثة', 'تنظيف الأسنان', 'دكتور معاذ سمير', 'برج العرب'],
+    readingTimeMinutes: 3,
+    publishedDate: '2026-09-05',
+    authorId: 'dr-moaz-samir',
+    authorNameAr: 'د. معاذ سمير',
+    authorTitleAr: 'طبيب أسنان — عيادة الحياة لطب الأسنان',
+    blocks: [
+      {
+        type: 'heading',
+        level: 2,
+        id: 'tartar-signs-intro',
+        textAr: 'أبرز علامات الحاجة لإزالة وتنظيف الجير',
+      },
+      {
+        type: 'paragraph',
+        textAr:
+          'لو عندك واحدة أو أكتر من العلامات دي، ما تستناش المشكلة تكبر، فصحة أسنانك ونظافتها تبدأ بإزالة الجير والتكلسات في الوقت المناسب.',
+      },
+      {
+        type: 'list',
+        itemsAr: [
+          '🔸 رائحة فم مزعجة بشكل متكرر.',
+          '🔸 نزيف اللثة أثناء غسل الأسنان بالفرشاة.',
+          '🔸 اصفرار أو تراكمات جيرية واضحة على الأسنان.',
+          '🔸 إحساس بخشونة أو طبقة صلبة على سطح الأسنان.',
+          '🔸 احمرار أو تورم وانزعاج في اللثة.',
+        ],
+      },
+      {
+        type: 'callout',
+        variant: 'tip',
+        titleAr: 'ليه الجير مش مجرد مشكلة في شكل الأسنان؟',
+        textAr:
+          'الجير مش مجرد مشكلة في شكل الأسنان؛ تراكمه ممكن يهيّج اللثة ويسبب التهابها ورائحة الفم الكريهة، والجير المتصلب لا يمكن إزالته بالفرشاة العادية ويحتاج لتنظيف احترافي بالموجات فوق الصوتية عند طبيب الأسنان.',
+      },
+    ],
+    faqs: [
+      {
+        questionAr: 'هل يمكن إزالة الجير المتصلب بالفرشاة والمعجون في المنزل؟',
+        answerAr:
+          'لا، الجير عبارة عن بلاك متصلّب وملتصق بشدة بسطح السن ولا يزول بالفرشاة المنزلية، ويحتاج لأجهزة تنظيف الجير الدقيقة في عيادة الأسنان.',
+      },
+    ],
+    relatedServiceSlugs: ['teeth-cleaning'],
+    relatedLocationSlugs: ['new-borg-el-arab', 'old-borg-el-arab'],
+    isFeatured: true,
+    status: 'published',
+  },
+  {
+    id: 'art-tartar-pigmentation',
+    slug: 'tartar-and-stains-oral-health-impact',
+    titleAr: 'تراكم الجير والتصبغات مش مجرد مشكلة في شكل الأسنان!',
+    titleEn: 'Tartar and Stains: Impact Beyond Appearance',
+    excerptAr:
+      'هل بتلاحظ تغير لون أسنانك أو وجود ترسبات صفراء وبنية؟ تعرف على تأثير الجير والتصبغات على صحة الفم واللثة.',
+    excerptEn:
+      'Understanding how plaque, tartar, and surface stains cause gum inflammation and tooth issues.',
+    category: 'oral-hygiene',
+    categoryAr: 'العناية باللثة والتنظيف',
+    categoryEn: 'Gum Health & Scaling',
+    tags: ['تراكم الجير', 'تصبغات الأسنان', 'إزالة الجير', 'ابتسامة صحية', 'دكتور معاذ سمير', 'برج العرب'],
+    readingTimeMinutes: 3,
+    publishedDate: '2026-09-05',
+    authorId: 'dr-moaz-samir',
+    authorNameAr: 'د. معاذ سمير',
+    authorTitleAr: 'طبيب أسنان — عيادة الحياة لطب الأسنان',
+    blocks: [
+      {
+        type: 'heading',
+        level: 2,
+        id: 'stains-and-tartar',
+        textAr: 'هل بتلاحظ ترسبات أو التغير في لون الأسنان؟',
+      },
+      {
+        type: 'paragraph',
+        textAr:
+          'بتلاحظ إن أسنانك لونها اتغير؟ أو فيه ترسبات صفراء أو بنية حوالين الأسنان واللثة؟ ممكن يكون السبب تراكم الجير والتصبغات.',
+      },
+      {
+        type: 'paragraph',
+        textAr:
+          'الجير هو بلاك متصلّب، ومش بيختفي بالفرشاة العادية، ومع تراكمه ممكن يسبب التهاب ونزيف اللثة، رائحة الفم الكريهة ومشاكل بالأسنان واللثة.',
+      },
+      {
+        type: 'callout',
+        variant: 'info',
+        titleAr: 'فوائد التنظيف الاحترافي للأسنان',
+        textAr:
+          'تنظيف الأسنان بشكل احترافي بيساعد على إزالة الجير والتصبغات السطحية والحفاظ على ابتسامة أنظف وصحة أفضل للثة.. ابتسامتك مش بس شكل دي جزء من صحتك.',
+      },
+    ],
+    faqs: [
+      {
+        questionAr: 'كم مرة يُنصح بإجراء تنظيف الأسنان وإزالة التصبغات؟',
+        answerAr:
+          'يُنصح بإجراء تنظيف احترافي للجير والتصبغات السطحية كل 6 أشهر للحفاظ على سلامة اللثة والوقاية من الالتهابات.',
+      },
+    ],
+    relatedServiceSlugs: ['teeth-cleaning'],
+    relatedLocationSlugs: ['new-borg-el-arab', 'old-borg-el-arab'],
+    isFeatured: true,
+    status: 'published',
+  },
+  {
     id: 'art-001',
     slug: 'when-to-start-orthodontics',
     titleAr: 'متى يجب استشارة طبيب الأسنان بشأن تقويم الأسنان؟',

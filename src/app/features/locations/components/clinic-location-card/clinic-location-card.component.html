@@ -51,10 +51,21 @@
       </div>
     }
 
+    @if (location().workingHoursAr) {
+      <div class="address-item-row">
+        <app-icon name="calendar" size="xs" class="row-icon" />
+        <div class="row-text">
+          <strong class="row-label">مواعيد العمل:</strong>
+          <span class="row-value">{{ location().workingHoursAr }} ({{ location().workingDaysAr }})</span>
+        </div>
+      </div>
+    }
+
     @if (location().directionsAr) {
       <p class="directions-summary">{{ location().directionsAr }}</p>
     }
   </div>
+
 
   <!-- Actions Row -->
   <div class="branch-card-actions">

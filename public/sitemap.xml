@@ -150,6 +150,18 @@
 
   <!-- Educational Blog Articles -->
   <url>
+    <loc>https://www.drmoazsamir.com/blog/tartar-warning-signs-and-scaling</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.drmoazsamir.com/blog/tartar-and-stains-oral-health-impact</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.drmoazsamir.com/blog/when-to-start-orthodontics</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>

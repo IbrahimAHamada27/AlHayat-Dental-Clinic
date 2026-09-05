@@ -19,6 +19,10 @@ export interface ClinicLocation {
   directionsEn?: string;
   descriptionAr?: string;
   descriptionEn?: string;
+  workingHoursAr?: string;
+  workingHoursEn?: string;
+  workingDaysAr?: string;
+  workingDaysEn?: string;
   phone: string;
   phoneFormatted?: string;
   whatsapp: string;
@@ -27,3 +31,4 @@ export interface ClinicLocation {
   services?: string[];
   isPrimary?: boolean;
 }
+

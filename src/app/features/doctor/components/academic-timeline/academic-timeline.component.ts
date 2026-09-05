@@ -23,7 +23,9 @@ export class AcademicTimelineComponent {
       (d.experience && d.experience.length > 0) ||
       (d.certifications && d.certifications.length > 0) ||
       (d.courses && d.courses.length > 0) ||
-      (d.conferences && d.conferences.length > 0)
+      (d.conferences && d.conferences.length > 0) ||
+      (d.memberships && d.memberships.length > 0)
     );
   }
 }
+
